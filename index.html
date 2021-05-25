@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Partner API Reference</title>
+    <title>Partner API Reference (BETA)</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -282,7 +282,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-a0a03a07.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-a9fde460.js"></script>
 
@@ -291,7 +291,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -299,15 +299,23 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-1e815a84.png" class="logo" alt="" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-        </div>
+      <img src="images/logo-40c41f01.png" class="logo" alt="" />
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#server-side-integration" class="toc-h2 toc-link" data-title="Server-side Integration">Server-side Integration</a>
+                  </li>
+                  <li>
+                    <a href="#client-side-integration" class="toc-h2 toc-link" data-title="Client-side Integration">Client-side Integration</a>
+                  </li>
+              </ul>
+          </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
               <ul class="toc-list-h2">
@@ -385,7 +393,138 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='authentication'>Authentication</h1><h2 id='access-token'>Access Token</h2>
+        <aside class="warning">This API is still in BETA.</aside>
+<h1 id='getting-started'>Getting Started</h1>
+<p>There are two parts to integrating with Rotor Videos:</p>
+
+<ol>
+<li><strong>Server-side Integration</strong> - Retrieve an individual user&#39;s OAuth access token using the Partner&#39;s credentials.</li>
+<li><strong>Client-side Integration</strong> - The Rotor React component, built by Rotor Videos, to consume the API and allow partners to embed video creation flows into their artists&#39; dashboards.</li>
+</ol>
+<h2 id='server-side-integration'>Server-side Integration</h2>
+<p>All sessions using the Rotor API start by having the Partner use their OAuth client credentials to request a Partner level access token for the Rotor API. After this initial &quot;handshake&quot;, the Partner then uses their Partner level access token to request a User level access token for use in Rotor React.</p>
+
+<p>This access token should be used to initialize the Rotor React component and will be used for all subsequent Rotor API calls in the user&#39;s session, from the browser.</p>
+<h3 id='user-integration'>User integration</h3>
+<p>The user registration/signin request is authorized with the Partner&#39;s access token, and the response will be an access token scoped to the User.</p>
+
+<p>The first time the <code>register</code> endpoint is called, it will create the managed user on Rotor and then return an access token for that managed user. Subsequent calls to <code>register</code> will simply return an access token for the existing managed user.</p>
+
+<p>An example node app handling the server requests:</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">node-fetch</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">userUID</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">yargs</span><span class="dl">'</span><span class="p">).</span><span class="nx">argv</span><span class="p">.</span><span class="nx">_</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">apiEndpoint</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://rotorvideos.com/</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">clientId</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ROTORVIDEOS_APP_CLIENT_ID</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">clientSecret</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ROTORVIDEOS_APP_CLIENT_SECRET</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">userIDBody</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">user</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">user_uid</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">userUID</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Create or Find User based on Partner's unique user id.</span>
+<span class="kd">function</span> <span class="nx">handleAuthorizeUserCallback</span><span class="p">(</span><span class="nx">body</span><span class="p">){</span>
+  <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">apiEndpoint</span><span class="p">}</span><span class="s2">/api/partner/v1/register`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">userIDBody</span><span class="p">),</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+      <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">body</span><span class="p">.</span><span class="nx">token_type</span><span class="p">}</span><span class="s2"> </span><span class="p">${</span><span class="nx">body</span><span class="p">.</span><span class="nx">access_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">){</span>
+      <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusText</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">jsonResponse</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jsonResponse</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">));</span>
+<span class="p">}</span>
+
+
+<span class="c1">// Partner App Authentication</span>
+<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">();</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">grant_type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">client_credentials</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">apiEndpoint</span><span class="p">}</span><span class="s2">/oauth/token`</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/x-www-form-urlencoded</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="s2">`Basic </span><span class="p">${</span><span class="nx">Buffer</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">clientId</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">:</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">clientSecret</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="dl">'</span><span class="s1">base64</span><span class="dl">'</span><span class="p">)}</span><span class="s2">`</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">params</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">jsonResponse</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jsonResponse</span><span class="p">);</span>
+  <span class="nx">handleAuthorizeUserCallback</span><span class="p">(</span><span class="nx">jsonResponse</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">));</span>
+
+</code></pre></div>
+<p>See the <a href='#authentication'>Authentication Section</a> for more details on the register endpoint.</p>
+<h2 id='client-side-integration'>Client-side Integration</h2>
+<p>The React component has been built to integrate into an existing React app, such as an artist&#39;s track list page.</p>
+
+<p>Video Creation is on a per track basis. When the <code>&lt;RotorVideosButton /&gt;</code> component is loaded for each track, we sent the track and metadata to Rotor API for analysis. We use the data we gather to automate part of the process.</p>
+
+<blockquote>
+<p>To install the Rotor React component, you can use the following:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">--save</span> rotor-React
+
+<span class="c"># or if you use yarn...</span>
+<span class="nv">$ </span>yarn add <span class="nt">--dev</span> rotor-React
+</code></pre></div><h3 id='access-token'>Access Token</h3>
+<p>In order to authorize requests, the component requires a valid OAuth Access Token for each user. The OAuth Access Token is obtained from the server-side integration (as mentioned above), which can be loaded upon session creation, or upon the loading of the page you wish to embed the component.</p>
+<h3 id='embedding-rotor-react'>Embedding Rotor React</h3>
+<p>The following example React app shows how Rotor React is easily embedded into an existing page, listing the tracks, providing a &quot;Videos&quot; button for each track. This button will open a modal to the video creation flows the component provides.</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">React</span><span class="dl">'</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">RotorVideosProvider</span><span class="p">,</span> <span class="nx">RotorVideosButton</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">rotor-React</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">rotor-React/dist/index.css</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="nx">useStorage</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./useStorage</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">ExampleArtistTrackList</span> <span class="o">=</span> <span class="p">(</span> <span class="nx">tracks</span> <span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">rotorAccessToken</span><span class="p">,</span> <span class="nx">setRotorAccessToken</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useStorage</span><span class="p">(</span>
+    <span class="s2">`</span><span class="p">${</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">}</span><span class="s2">-rotorAccessToken`</span>
+  <span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">RotorVideosProvider</span> <span class="nx">accessToken</span><span class="o">=</span><span class="p">{</span><span class="nx">rotorAccessToken</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">tracks</span> <span class="o">&amp;&amp;</span> <span class="nx">tracks</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">track</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+        <span class="o">&lt;&gt;</span>
+          <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">track</span><span class="p">.</span><span class="nx">trackName</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">RotorVideosButton</span>
+            <span class="nx">artistName</span><span class="o">=</span><span class="p">{</span><span class="nx">track</span><span class="p">.</span><span class="nx">artistName</span><span class="p">}</span>
+            <span class="nx">artworkUrl</span><span class="o">=</span><span class="p">{</span><span class="nx">track</span><span class="p">.</span><span class="nx">artworkUrl</span><span class="p">}</span>
+            <span class="nx">audioUrl</span><span class="o">=</span><span class="p">{</span><span class="nx">track</span><span class="p">.</span><span class="nx">audioUrl</span><span class="p">}</span>
+            <span class="nx">trackName</span><span class="o">=</span><span class="p">{</span><span class="nx">track</span><span class="p">.</span><span class="nx">trackName</span><span class="p">}</span>
+            <span class="nx">trackId</span><span class="o">=</span><span class="p">{</span><span class="nx">track</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span>
+          <span class="sr">/</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/</span><span class="err">&gt;
+</span>      <span class="p">))}</span>
+    <span class="o">&lt;</span><span class="sr">/RotorVideosProvider</span><span class="err">&gt;
+</span>  <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><h1 id='authentication'>Authentication</h1><h2 id='access-token'>Access Token</h2>
 <p>Register a user for the Partner API; if they exist in our system, an access token is returned. If not, we generate a new account, then return an access token for them.</p>
 
 <blockquote>
@@ -991,9 +1130,6 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-          </div>
       </div>
     </div>
   </body>
