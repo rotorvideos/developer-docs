@@ -4,7 +4,7 @@ Previews are videos that are used to demonstrate the variants for a given style.
 
 ## Create Previews
 
-> To create preview videos of a given style, use the following:
+> **To create preview videos of a given style, use the following:**
 
 ```shell
 curl -XPOST
@@ -20,7 +20,7 @@ curl -XPOST
   }'
 ```
 
-> The above command returns JSON structured like this:
+> **The above command returns JSON structured like this:**
 
 ```json
 {
@@ -81,9 +81,7 @@ style_id | A unique identifier for the style you want to preview.
 
 ## Get Previews
 
-Return the available preview videos for a track with a given style.
-
-> To get the previews for a track use the following:
+> **To get the previews for a track use the following:**
 
 ```shell
 curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/previews/11" \
@@ -91,7 +89,7 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/previews/1
   -H "Content-Type: application/json"
 ```
 
-> The above command returns JSON structured like this:
+> **The above command returns JSON structured like this:**
 
 ```json
 {
@@ -137,3 +135,5 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/previews/1
   }
 }
 ```
+
+Return the available preview videos for a track with a given style.

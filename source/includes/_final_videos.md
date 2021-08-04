@@ -4,7 +4,7 @@ Render the final HD version of a video for a track. The `variant_id` will determ
 
 ## Create Final Video
 
-> To create the final video for a track, use the following:
+> **To create the final video for a track, use the following:**
 
 ```shell
 curl -XPOST
@@ -21,7 +21,7 @@ curl -XPOST
   }'
 ```
 
-> The above command returns JSON structured like this:
+> **The above command returns JSON structured like this:**
 
 ```json
 {
@@ -61,9 +61,7 @@ variant_id | A unique identifier for the variant you want to render.
 
 ## Get A Final Video
 
-Return a final video for a given variant id.
-
-> To get the renders for a variant use the following:
+> **To get the renders for a variant use the following:**
 
 ```shell
 curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos/31" \
@@ -71,7 +69,7 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos/31"
   -H "Content-Type: application/json"
 ```
 
-> The above command returns JSON structured like this:
+> **The above command returns JSON structured like this:**
 
 ```json
 {
@@ -97,11 +95,11 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos/31"
 }
 ```
 
+Return a final video for a given variant id.
+
 ## Get All Final Videos
 
-Return all rendered final videos.
-
-> To get all the final HD videos for a track, use the following:
+> **To get all the final HD videos for a track, use the following:**
 
 ```shell
 curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos" \
@@ -109,7 +107,7 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos" \
   -H "Content-Type: application/json"
 ```
 
-> The above command returns JSON structured like this:
+> **The above command returns JSON structured like this:**
 
 ```json
 {
@@ -144,3 +142,5 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos" \
   }
 }
 ```
+
+Return all rendered final videos.

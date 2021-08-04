@@ -635,3 +635,19 @@ html, body {
 .copy-clipboard:hover {
   opacity: 0.8;
 }
+
+[data-title="Get Started"] {
+  border-top: 1px solid $nav-footer-border-color;
+  font-size: 1.2em;
+  margin-top: 0.7em;
+  padding: 0.5em 1em;
+}
+
+[data-title="Browse API"] {
+  border-top: 1px solid $nav-footer-border-color;
+  border-bottom: 1px solid $nav-footer-border-color;
+  font-size: 1.2em;
+  padding: 0.5em 1em;
+}
+
+
