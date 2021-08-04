@@ -90,6 +90,15 @@ The first time the `register` endpoint is called, it will create the managed use
 See the <a href='#authentication'>Authentication Section</a> for more details on the register endpoint.
 
 ## Client-side Integration
+> **To install the Rotor React component, you can use the following:**
+
+```shell
+$ npm install --save rotor-react
+
+# or if you use yarn...
+$ yarn add --dev rotor-react
+```
+
 > **Example React app embedding Rotor React**
 
 > The following example shows how Rotor React is easily embedded into an existing page, listing the tracks, providing a "Videos" button for each track. This button will open a modal to the video creation flows the component provides.
@@ -131,14 +140,6 @@ The React component has been built to integrate into an existing React app, such
 
 Video Creation is on a per track basis. When the `<RotorVideosButton />` component is loaded for each track, we sent the track and metadata to Rotor API for analysis. We use the data we gather to automate part of the process.
 
-> **To install the Rotor React component, you can use the following:**
-
-```shell
-$ npm install --save rotor-react
-
-# or if you use yarn...
-$ yarn add --dev rotor-react
-```
 
 ### Access Token
 
