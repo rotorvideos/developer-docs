@@ -32,7 +32,7 @@ curl -XPOST
         {
           "id": 99,
           "title": "The Organism",
-          "duration": "03:40",
+          "duration": 220,
           "video_url": null,
           "style_id": 11,
           "variant_id": 31,
@@ -80,7 +80,7 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos/31"
         {
           "id": 99,
           "title": "The Organism",
-          "duration": "03:40",
+          "duration": 220,
           "video_url": "https://example.com/The-Oraganism-Final.mp4",
           "style_id": 11,
           "variant_id": 31,
@@ -118,7 +118,7 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos" \
         {
           "id": 99,
           "title": "The Organism",
-          "duration": "03:40",
+          "duration": 220,
           "video_url": "https://example.com/The-Oraganism-Landscape-Final.mp4",
           "style_id": 11,
           "variant_id": 31,
@@ -129,7 +129,7 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos" \
         {
           "id": 100,
           "title": "The Organism (Vertical (9x16))",
-          "duration": "03:40",
+          "duration": 220,
           "video_url": "https://example.com/The-Oraganism-Vertical-Final.mp4",
           "style_id": 11,
           "variant_id": 32,
