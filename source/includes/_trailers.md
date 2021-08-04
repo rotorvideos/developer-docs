@@ -24,7 +24,7 @@ curl -XPOST
         {
           "id": 103,
           "title": "The Organism (Vinyl)",
-          "duration": "00:05",
+          "duration": 5,
           "video_url": null,
           "style_id": 12,
           "variant_id": 36,
@@ -35,7 +35,7 @@ curl -XPOST
         {
           "id": 102,
           "title": "The Organism (Horizon)",
-          "duration": "00:05",
+          "duration": 5,
           "video_url": null,
           "style_id": 11,
           "variant_id": 33,
@@ -76,7 +76,7 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/trailers" 
         {
           "id": 103,
           "title": "The Organism (Vinyl)",
-          "duration": "00:05",
+          "duration": 5,
           "video_url": "https://example.com/The-Oraganism-Vinyl.mp4",
           "style_id": 12,
           "variant_id": 36,
@@ -87,7 +87,7 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/trailers" 
         {
           "id": 102,
           "title": "The Organism (Horizon)",
-          "duration": "00:05",
+          "duration": 5,
           "video_url": "https://example.com/The-Oraganism-Horizon.mp4",
           "style_id": 11,
           "variant_id": 33,

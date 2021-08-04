@@ -9,6 +9,7 @@ includes:
   - tracks
   - artwork
   - trailers
+  - styles
   - previews
   - final_videos
   - errors
