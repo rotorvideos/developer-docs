@@ -1,14 +1,14 @@
-# Final Video
+# Final Videos
 
-Render the final HD version of your video.
+Render the final HD version of a video for a track. The `variant_id` will determin the aspect ratio.
 
 ## Create Final Video
 
-> To create the final video use the following:
+> To create the final video for a track, use the following:
 
 ```shell
 curl -XPOST
-"http://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos" \
+"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos" \
   -H "Authorization: Bearer <insert token here>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -101,10 +101,10 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos/31"
 
 Return all rendered final videos.
 
-> To get the renders for a track use the following:
+> To get all the final HD videos for a track, use the following:
 
 ```shell
-curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos/31" \
+curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos" \
   -H "Authorization: Bearer <insert token here>" \
   -H "Content-Type: application/json"
 ```

@@ -4,11 +4,11 @@ Trailers are a short 5 second clip of your video to demonstrate each of the vide
 
 ## Create Trailers
 
-> To create trailers use the following:
+> To create trailers for a track, use the following:
 
 ```shell
 curl -XPOST
-"http://rotorvideos.com/api/partner/v1/tracks/unique-identifier/trailers" \
+"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/trailers" \
   -H "Authorization: Bearer <insert token here>" \
   -H "Content-Type: application/json"
 ```
@@ -57,7 +57,7 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 
 ## Get Trailers
 
-> To get the trailers for a track use the following:
+> To get the trailers for a track, use the following:
 
 ```shell
 curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/trailers" \

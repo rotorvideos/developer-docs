@@ -1,14 +1,14 @@
 # Previews
 
-Previews are watermarked videos that are used to demonstrate the variants for a given style.
+Previews are videos that are used to demonstrate the variants for a given style.
 
 ## Create Previews
 
-> To create previews use the following:
+> To create preview videos of a given style, use the following:
 
 ```shell
 curl -XPOST
-"http://rotorvideos.com/api/partner/v1/tracks/unique-identifier/previews" \
+"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/previews" \
   -H "Authorization: Bearer <insert token here>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -81,7 +81,7 @@ style_id | A unique identifier for the style you want to preview.
 
 ## Get Previews
 
-Return the available previews for a given style.
+Return the available preview videos for a track with a given style.
 
 > To get the previews for a track use the following:
 

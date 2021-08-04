@@ -2,10 +2,10 @@
 
 ## Create Artwork
 
-> To create a artwork use the following:
+> To upload/create artwork for a track, use the following:
 
 ```shell
-curl -XPOST "http://rotorvideos.com/api/partner/v1/tracks/unique-identifier/artwork" \
+curl -XPOST "https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/artwork" \
   -H "Authorization: Bearer <insert token here>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -44,12 +44,12 @@ Parameter | Description
 id | A unique identifier for the track.
 url | A URL that the track can be accessed from.
 
-## Get Track
+## Get Artwork
 
-> To get a track use the following:
+> To get the artwork for a track, use the following:
 
 ```shell
-curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier" \
+curl "https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier" \
   -H "Authorization: Bearer <insert token here>" \
   -H "Content-Type: application/json"
 ```

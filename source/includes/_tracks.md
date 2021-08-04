@@ -2,10 +2,10 @@
 
 ## Create Track
 
-> To create a track use the following:
+> To upload/create a track, use the following:
 
 ```shell
-curl -XPOST "http://rotorvideos.com/api/partner/v1/tracks" \
+curl -XPOST "https://api.rotorvideos.com/api/partner/v1/tracks" \
   -H "Authorization: Bearer <insert token here>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -54,7 +54,7 @@ url | A URL that the track can be accessed from.
 > To get a track use the following:
 
 ```shell
-curl "http://rotorvideos.com/api/partner/v1/tracks/unique-identifier" \
+curl "https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier" \
   -H "Authorization: Bearer <insert token here>" \
   -H "Content-Type: application/json"
 ```

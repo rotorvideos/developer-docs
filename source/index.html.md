@@ -1,8 +1,8 @@
 ---
-title: Partner API Reference (BETA)
+title: Rotor Developer Docs (BETA)
 
 toc_footers:
-  - <a href='https://rotorvideo.com'>Rotor Videos</a>
+  - <a href='https://rotorvideos.com'>Rotor Videos</a>
 
 includes:
   - authentication
@@ -10,7 +10,7 @@ includes:
   - artwork
   - trailers
   - previews
-  - final_video
+  - final_videos
   - errors
 
 search: true
@@ -30,11 +30,12 @@ There are two parts to integrating with Rotor Videos:
 
 ## Server-side Integration
 
-All sessions using the Rotor API start by having the Partner use their OAuth client credentials to request a Partner level access token for the Rotor API. After this initial "handshake", the Partner then uses their Partner level access token to request a User level access token for use in Rotor React.
+All sessions using the Rotor API start by having the Partner use their OAuth client credentials to make a server-to-server request for a User level access token for use in Rotor React, thus associating the user ID from the Partner’s platform with a managed User object and Account on the Rotor platform.
 
-This access token should be used to initialize the Rotor React component and will be used for all subsequent Rotor API calls in the user's session, from the browser.
+This user's OAuth Access Token is then used to initialize the Rotor React component and will be used for all subsequent Rotor API calls in the user's session, from the browser.
 
 ### User integration
+
 The user registration/signin request is authorized with the Partner's access token, and the response will be an access token scoped to the User.
 
 The first time the `register` endpoint is called, it will create the managed user on Rotor and then return an access token for that managed user. Subsequent calls to `register` will simply return an access token for the existing managed user.
@@ -45,7 +46,7 @@ An example node app handling the server requests:
 const fetch = require('node-fetch');
 const userUID = require('yargs').argv._[0];
 
-const apiEndpoint = 'https://rotorvideos.com/'
+const apiEndpoint = 'https://api.rotorvideos.com'
 const clientId = process.env.ROTORVIDEOS_APP_CLIENT_ID;
 const clientSecret = process.env.ROTORVIDEOS_APP_CLIENT_SECRET;
 
@@ -120,10 +121,10 @@ Video Creation is on a per track basis. When the `<RotorVideosButton />` compone
 > To install the Rotor React component, you can use the following:
 
 ```shell
-$ npm install --save rotor-React
+$ npm install --save rotor-react
 
 # or if you use yarn...
-$ yarn add --dev rotor-React
+$ yarn add --dev rotor-react
 ```
 
 ### Access Token
@@ -138,8 +139,8 @@ The following example React app shows how Rotor React is easily embedded into an
 ```javascript
 import React from 'React'
 
-import { RotorVideosProvider, RotorVideosButton } from 'rotor-React';
-import 'rotor-React/dist/index.css';
+import { RotorVideosProvider, RotorVideosButton } from 'rotor-react';
+import 'rotor-react/dist/index.css';
 
 import useStorage from './useStorage';
 
@@ -167,5 +168,4 @@ const ExampleArtistTrackList = ( tracks ) => {
   )
 }
 ```
-
 
