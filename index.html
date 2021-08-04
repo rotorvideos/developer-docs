@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Partner API Reference (BETA)</title>
+    <title>Rotor Developer Docs (BETA)</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -344,7 +344,7 @@
                     <a href="#create-artwork" class="toc-h2 toc-link" data-title="Create Artwork">Create Artwork</a>
                   </li>
                   <li>
-                    <a href="#get-track" class="toc-h2 toc-link" data-title="Get Track">Get Track</a>
+                    <a href="#get-artwork" class="toc-h2 toc-link" data-title="Get Artwork">Get Artwork</a>
                   </li>
               </ul>
           </li>
@@ -371,7 +371,7 @@
               </ul>
           </li>
           <li>
-            <a href="#final-video" class="toc-h1 toc-link" data-title="Final Video">Final Video</a>
+            <a href="#final-videos" class="toc-h1 toc-link" data-title="Final Videos">Final Videos</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#create-final-video" class="toc-h2 toc-link" data-title="Create Final Video">Create Final Video</a>
@@ -389,7 +389,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://rotorvideo.com'>Rotor Videos</a></li>
+            <li><a href='https://rotorvideos.com'>Rotor Videos</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -404,9 +404,9 @@
 <li><strong>Client-side Integration</strong> - The Rotor React component, built by Rotor Videos, to consume the API and allow partners to embed video creation flows into their artists&#39; dashboards.</li>
 </ol>
 <h2 id='server-side-integration'>Server-side Integration</h2>
-<p>All sessions using the Rotor API start by having the Partner use their OAuth client credentials to request a Partner level access token for the Rotor API. After this initial &quot;handshake&quot;, the Partner then uses their Partner level access token to request a User level access token for use in Rotor React.</p>
+<p>All sessions using the Rotor API start by having the Partner use their OAuth client credentials to make a server-to-server request for a User level access token for use in Rotor React, thus associating the user ID from the Partner’s platform with a managed User object and Account on the Rotor platform.</p>
 
-<p>This access token should be used to initialize the Rotor React component and will be used for all subsequent Rotor API calls in the user&#39;s session, from the browser.</p>
+<p>This user&#39;s OAuth Access Token is then used to initialize the Rotor React component and will be used for all subsequent Rotor API calls in the user&#39;s session, from the browser.</p>
 <h3 id='user-integration'>User integration</h3>
 <p>The user registration/signin request is authorized with the Partner&#39;s access token, and the response will be an access token scoped to the User.</p>
 
@@ -416,7 +416,7 @@
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">node-fetch</span><span class="dl">'</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">userUID</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">yargs</span><span class="dl">'</span><span class="p">).</span><span class="nx">argv</span><span class="p">.</span><span class="nx">_</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 
-<span class="kd">const</span> <span class="nx">apiEndpoint</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://rotorvideos.com/</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">apiEndpoint</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://api.rotorvideos.com</span><span class="dl">'</span>
 <span class="kd">const</span> <span class="nx">clientId</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ROTORVIDEOS_APP_CLIENT_ID</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">clientSecret</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ROTORVIDEOS_APP_CLIENT_SECRET</span><span class="p">;</span>
 
@@ -488,18 +488,18 @@
 <blockquote>
 <p>To install the Rotor React component, you can use the following:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">--save</span> rotor-React
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">--save</span> rotor-react
 
 <span class="c"># or if you use yarn...</span>
-<span class="nv">$ </span>yarn add <span class="nt">--dev</span> rotor-React
+<span class="nv">$ </span>yarn add <span class="nt">--dev</span> rotor-react
 </code></pre></div><h3 id='access-token'>Access Token</h3>
 <p>In order to authorize requests, the component requires a valid OAuth Access Token for each user. The OAuth Access Token is obtained from the server-side integration (as mentioned above), which can be loaded upon session creation, or upon the loading of the page you wish to embed the component.</p>
 <h3 id='embedding-rotor-react'>Embedding Rotor React</h3>
 <p>The following example React app shows how Rotor React is easily embedded into an existing page, listing the tracks, providing a &quot;Videos&quot; button for each track. This button will open a modal to the video creation flows the component provides.</p>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">React</span><span class="dl">'</span>
 
-<span class="k">import</span> <span class="p">{</span> <span class="nx">RotorVideosProvider</span><span class="p">,</span> <span class="nx">RotorVideosButton</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">rotor-React</span><span class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="dl">'</span><span class="s1">rotor-React/dist/index.css</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">RotorVideosProvider</span><span class="p">,</span> <span class="nx">RotorVideosButton</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">rotor-react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">rotor-react/dist/index.css</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="nx">useStorage</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./useStorage</span><span class="dl">'</span><span class="p">;</span>
 
@@ -532,7 +532,7 @@
 <blockquote>
 <p>To get an access token use the following:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"http://rotorvideos.com/api/partner/v1/register"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"https://api.rotorvideos.com/api/partner/v1/register"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
@@ -564,14 +564,14 @@
 </thead><tbody>
 <tr>
 <td>user_uid</td>
-<td>A unique identifier for the user.</td>
+<td>A unique identifier (on the partner platform) for the user.</td>
 </tr>
 </tbody></table>
 <h1 id='tracks'>Tracks</h1><h2 id='create-track'>Create Track</h2>
 <blockquote>
-<p>To create a track use the following:</p>
+<p>To upload/create a track, use the following:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"http://rotorvideos.com/api/partner/v1/tracks"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
@@ -628,7 +628,7 @@ The <code>url</code> will return as <code>null</code> here because this process 
 <blockquote>
 <p>To get a track use the following:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://rotorvideos.com/api/partner/v1/tracks/unique-identifier"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -646,9 +646,9 @@ The <code>url</code> will return as <code>null</code> here because this process 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='artwork'>Artwork</h1><h2 id='create-artwork'>Create Artwork</h2>
 <blockquote>
-<p>To create a artwork use the following:</p>
+<p>To upload/create artwork for a track, use the following:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"http://rotorvideos.com/api/partner/v1/tracks/unique-identifier/artwork"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/artwork"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
@@ -693,11 +693,11 @@ The <code>url</code> will return as <code>null</code> here because this process 
 <td>A URL that the track can be accessed from.</td>
 </tr>
 </tbody></table>
-<h2 id='get-track'>Get Track</h2>
+<h2 id='get-artwork'>Get Artwork</h2>
 <blockquote>
-<p>To get a track use the following:</p>
+<p>To get the artwork for a track, use the following:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://rotorvideos.com/api/partner/v1/tracks/unique-identifier"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -716,10 +716,10 @@ The <code>url</code> will return as <code>null</code> here because this process 
 <p>Trailers are a short 5 second clip of your video to demonstrate each of the video style options.</p>
 <h2 id='create-trailers'>Create Trailers</h2>
 <blockquote>
-<p>To create trailers use the following:</p>
+<p>To create trailers for a track, use the following:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span>
-<span class="s2">"http://rotorvideos.com/api/partner/v1/tracks/unique-identifier/trailers"</span> <span class="se">\</span>
+<span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/trailers"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -765,7 +765,7 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 </aside>
 <h2 id='get-trailers'>Get Trailers</h2>
 <blockquote>
-<p>To get the trailers for a track use the following:</p>
+<p>To get the trailers for a track, use the following:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/trailers"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
@@ -806,13 +806,13 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='previews'>Previews</h1>
-<p>Previews are watermarked videos that are used to demonstrate the variants for a given style.</p>
+<p>Previews are videos that are used to demonstrate the variants for a given style.</p>
 <h2 id='create-previews'>Create Previews</h2>
 <blockquote>
-<p>To create previews use the following:</p>
+<p>To create preview videos of a given style, use the following:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span>
-<span class="s2">"http://rotorvideos.com/api/partner/v1/tracks/unique-identifier/previews"</span> <span class="se">\</span>
+<span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/previews"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
@@ -887,7 +887,7 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 </tr>
 </tbody></table>
 <h2 id='get-previews'>Get Previews</h2>
-<p>Return the available previews for a given style.</p>
+<p>Return the available preview videos for a track with a given style.</p>
 
 <blockquote>
 <p>To get the previews for a track use the following:</p>
@@ -941,14 +941,14 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='final-video'>Final Video</h1>
-<p>Render the final HD version of your video.</p>
+</span></code></pre></div><h1 id='final-videos'>Final Videos</h1>
+<p>Render the final HD version of a video for a track. The <code>variant_id</code> will determin the aspect ratio.</p>
 <h2 id='create-final-video'>Create Final Video</h2>
 <blockquote>
-<p>To create the final video use the following:</p>
+<p>To create the final video for a track, use the following:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span>
-<span class="s2">"http://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos"</span> <span class="se">\</span>
+<span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
@@ -1043,9 +1043,9 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 <p>Return all rendered final videos.</p>
 
 <blockquote>
-<p>To get the renders for a track use the following:</p>
+<p>To get all the final HD videos for a track, use the following:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos/31"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -1099,6 +1099,10 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 <tr>
 <td>401</td>
 <td>Unauthorized</td>
+</tr>
+<tr>
+<td>402</td>
+<td>Quota Exceeded</td>
 </tr>
 <tr>
 <td>403</td>
