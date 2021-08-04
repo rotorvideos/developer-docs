@@ -4,7 +4,7 @@ These ofter options to style your video based on a theme.
 
 ## Get Styles
 
-> To get the available styles, use the following:
+> **To get the available styles, use the following:**
 
 ```shell
 curl "https://api.rotorvideos.com/api/partner/v1/styles" \
@@ -12,39 +12,40 @@ curl "https://api.rotorvideos.com/api/partner/v1/styles" \
   -H "Content-Type: application/json"
 ```
 
-> The above command returns JSON structured like this:
+> **The above command returns JSON structured like this:**
 
 ```json
 {
-      "attributes": {
-        "id": 11,
-        "title": "Vinyl",
-        "preview": "https://example.com/style-11-preview.mp4",
-        "variants": [
-          {
-            "id": 31,
-            "title": "Landscape (16x9)",
-            "preview": "https://example.com/variant-31-preview.mp4",
-            "aspect_ratio": "16x9",
-            "duration": 3
-          },
-          {
-            "id": 32,
-            "title": "Vertical (9x16)",
-            "preview": "",
-            "preview": "https://example.com/variant-32-preview.mp4",
-            "aspect_ratio": "9x16",
-            "duration": 3
-          },
-          {
-            "id": 33,
-            "title": "Square (1x1)",
-            "preview": "https://example.com/variant-33-preview.mp4",
-            "aspect_ratio": "1x1",
-            "duration": 3
-          }
-        ]
+  "attributes": {
+    "id": 11,
+    "title": "Vinyl",
+    "preview": "https://example.com/style-11-preview.mp4",
+    "variants": [
+      {
+        "id": 31,
+        "title": "Landscape (16x9)",
+        "preview": "https://example.com/variant-31-preview.mp4",
+        "aspect_ratio": "16x9",
+        "duration": 3
+      },
+      {
+        "id": 32,
+        "title": "Vertical (9x16)",
+        "preview": "",
+        "preview": "https://example.com/variant-32-preview.mp4",
+        "aspect_ratio": "9x16",
+        "duration": 3
+      },
+      {
+        "id": 33,
+        "title": "Square (1x1)",
+        "preview": "https://example.com/variant-33-preview.mp4",
+        "aspect_ratio": "1x1",
+        "duration": 3
       }
+    ]
+  }
+}
 
 ```
 
