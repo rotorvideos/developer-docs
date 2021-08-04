@@ -497,6 +497,14 @@
 <p>See the <a href='#authentication'>Authentication Section</a> for more details on the register endpoint.</p>
 <h2 id='client-side-integration'>Client-side Integration</h2>
 <blockquote>
+<p><strong>To install the Rotor React component, you can use the following:</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">--save</span> rotor-react
+
+<span class="c"># or if you use yarn...</span>
+<span class="nv">$ </span>yarn add <span class="nt">--dev</span> rotor-react
+</code></pre></div>
+<blockquote>
 <p><strong>Example React app embedding Rotor React</strong></p>
 
 <p>The following example shows how Rotor React is easily embedded into an existing page, listing the tracks, providing a &quot;Videos&quot; button for each track. This button will open a modal to the video creation flows the component provides.</p>
@@ -535,15 +543,7 @@
 <p>The React component has been built to integrate into an existing React app, such as an artist&#39;s track list page.</p>
 
 <p>Video Creation is on a per track basis. When the <code>&lt;RotorVideosButton /&gt;</code> component is loaded for each track, we sent the track and metadata to Rotor API for analysis. We use the data we gather to automate part of the process.</p>
-
-<blockquote>
-<p><strong>To install the Rotor React component, you can use the following:</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">--save</span> rotor-react
-
-<span class="c"># or if you use yarn...</span>
-<span class="nv">$ </span>yarn add <span class="nt">--dev</span> rotor-react
-</code></pre></div><h3 id='access-token'>Access Token</h3>
+<h3 id='access-token'>Access Token</h3>
 <p>In order to authorize requests, the component requires a valid OAuth Access Token for each user. The OAuth Access Token is obtained from the server-side integration (as mentioned above), which can be loaded upon session creation, or upon the loading of the page you wish to embed the component.</p>
 <h1 id='browse-api'>Browse API</h1><h1 id='authentication'>Authentication</h1><h2 id='access-token'>Access Token</h2>
 <blockquote>
