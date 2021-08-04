@@ -20,4 +20,4 @@ search: true
 
 code_clipboard: true
 ---
-<aside class="warning">This API is still in BETA.</aside>
+<aside class="warning beta-banner">This API is still in BETA.</aside>
