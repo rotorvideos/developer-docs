@@ -16,37 +16,62 @@ curl "https://api.rotorvideos.com/api/partner/v1/styles" \
 
 ```json
 {
-  "attributes": {
-    "id": 11,
-    "title": "Vinyl",
-    "preview": "https://example.com/style-11-preview.mp4",
-    "variants": [
-      {
-        "id": 31,
-        "title": "Landscape (16x9)",
-        "preview": "https://example.com/variant-31-preview.mp4",
-        "aspect_ratio": "16x9",
-        "duration": 3
-      },
-      {
-        "id": 32,
-        "title": "Vertical (9x16)",
-        "preview": "",
-        "preview": "https://example.com/variant-32-preview.mp4",
-        "aspect_ratio": "9x16",
-        "duration": 3
-      },
-      {
-        "id": 33,
-        "title": "Square (1x1)",
-        "preview": "https://example.com/variant-33-preview.mp4",
-        "aspect_ratio": "1x1",
-        "duration": 3
+  "data": [
+    {
+      "attributes": {
+        "id": 11,
+        "title": "Vinyl",
+        "preview": "https://example.com/style-11-preview.mp4",
+        "variants": [
+          {
+            "id": 31,
+            "title": "Landscape (16x9)",
+            "preview": "https://example.com/variant-31-preview.mp4",
+            "aspect_ratio": "16x9",
+            "duration": 3
+          },
+          {
+            "id": 32,
+            "title": "Vertical (9x16)",
+            "preview": "https://example.com/variant-32-preview.mp4",
+            "aspect_ratio": "9x16",
+            "duration": 3
+          },
+          {
+            "id": 33,
+            "title": "Square (1x1)",
+            "preview": "https://example.com/variant-33-preview.mp4",
+            "aspect_ratio": "1x1",
+            "duration": 3
+          }
+        ]
       }
-    ]
-  }
+    },
+    {
+      "attributes": {
+        "id": 12,
+        "title": "Horizon",
+        "preview": "https://example.com/style-12-preview.mp4",
+        "variants": [
+          {
+            "id": 34,
+            "title": "Landscape (16x9)",
+            "preview": "https://example.com/variant-34-preview.mp4",
+            "aspect_ratio": "16x9",
+            "duration": 5
+          },
+          {
+            "id": 36,
+            "title": "Square (1x1)",
+            "preview": "https://example.com/variant-36-preview.mp4",
+            "aspect_ratio": "1x1",
+            "duration": 5
+          }
+        ]
+      }
+    }
+  ]
 }
-
 ```
 
 This returns all the available styles that you can choose to base your video
