@@ -49,7 +49,7 @@ url | A URL that the track can be accessed from.
 > **To get the artwork for a track, use the following:**
 
 ```shell
-curl "https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier" \
+curl "https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/artwork" \
   -H "Authorization: Bearer <insert token here>" \
   -H "Content-Type: application/json"
 ```
