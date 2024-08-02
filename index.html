@@ -315,9 +315,6 @@
                   <li>
                     <a href="#server-side-integration" class="toc-h2 toc-link" data-title="Server-side Integration">Server-side Integration</a>
                   </li>
-                  <li>
-                    <a href="#client-side-integration" class="toc-h2 toc-link" data-title="Client-side Integration">Client-side Integration</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -414,7 +411,6 @@
 
 <ol>
 <li><strong>Server-side Integration</strong> - Retrieve an individual user&#39;s OAuth access token using the Partner&#39;s credentials.</li>
-<li><strong>Client-side Integration</strong> - The Rotor React component, built by Rotor Videos, to consume the API and allow partners to embed video creation flows into their artists&#39; dashboards.</li>
 </ol>
 <h2 id='server-side-integration'>Server-side Integration</h2>
 <blockquote>
@@ -431,7 +427,7 @@
   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">user</span><span class="dl">"</span><span class="p">,</span>
     <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">user_uid</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">userUID</span><span class="p">}</span><span class="s2">`</span>
+      <span class="na">remote_user_id</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">userUID</span><span class="p">}</span><span class="s2">`</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -495,54 +491,6 @@
 <p>The first time the <code>register</code> endpoint is called, it will create the managed user on Rotor and then return an access token for that managed user. Subsequent calls to <code>register</code> will simply return an access token for the existing managed user.</p>
 
 <p>See the <a href='#authentication'>Authentication Section</a> for more details on the register endpoint.</p>
-<h2 id='client-side-integration'>Client-side Integration</h2>
-<blockquote>
-<p><strong>To install the Rotor React component, you can use the following:</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">--save</span> rotor-react
-
-<span class="c"># or if you use yarn...</span>
-<span class="nv">$ </span>yarn add <span class="nt">--dev</span> rotor-react
-</code></pre></div>
-<blockquote>
-<p><strong>Example React app embedding Rotor React</strong></p>
-
-<p>The following example shows how Rotor React is easily embedded into an existing page, listing the tracks, providing a &quot;Videos&quot; button for each track. This button will open a modal to the video creation flows the component provides.</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">React</span><span class="dl">'</span>
-
-<span class="k">import</span> <span class="p">{</span> <span class="nx">RotorVideosProvider</span><span class="p">,</span> <span class="nx">RotorVideosButton</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">rotor-react</span><span class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="dl">'</span><span class="s1">rotor-react/dist/index.css</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="k">import</span> <span class="nx">useStorage</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./useStorage</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">ExampleArtistTrackList</span> <span class="o">=</span> <span class="p">(</span> <span class="nx">tracks</span> <span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-
-  <span class="kd">const</span> <span class="p">[</span><span class="nx">rotorAccessToken</span><span class="p">,</span> <span class="nx">setRotorAccessToken</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useStorage</span><span class="p">(</span>
-    <span class="s2">`</span><span class="p">${</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">}</span><span class="s2">-rotorAccessToken`</span>
-  <span class="p">);</span>
-
-  <span class="k">return</span> <span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">RotorVideosProvider</span> <span class="nx">accessToken</span><span class="o">=</span><span class="p">{</span><span class="nx">rotorAccessToken</span><span class="p">}</span><span class="o">&gt;</span>
-      <span class="p">{</span><span class="nx">tracks</span> <span class="o">&amp;&amp;</span> <span class="nx">tracks</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">track</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
-        <span class="o">&lt;&gt;</span>
-          <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">track</span><span class="p">.</span><span class="nx">trackName</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
-</span>          <span class="o">&lt;</span><span class="nx">RotorVideosButton</span>
-            <span class="nx">artistName</span><span class="o">=</span><span class="p">{</span><span class="nx">track</span><span class="p">.</span><span class="nx">artistName</span><span class="p">}</span>
-            <span class="nx">artworkUrl</span><span class="o">=</span><span class="p">{</span><span class="nx">track</span><span class="p">.</span><span class="nx">artworkUrl</span><span class="p">}</span>
-            <span class="nx">audioUrl</span><span class="o">=</span><span class="p">{</span><span class="nx">track</span><span class="p">.</span><span class="nx">audioUrl</span><span class="p">}</span>
-            <span class="nx">trackName</span><span class="o">=</span><span class="p">{</span><span class="nx">track</span><span class="p">.</span><span class="nx">trackName</span><span class="p">}</span>
-            <span class="nx">trackId</span><span class="o">=</span><span class="p">{</span><span class="nx">track</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span>
-          <span class="sr">/</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="sr">/</span><span class="err">&gt;
-</span>      <span class="p">))}</span>
-    <span class="o">&lt;</span><span class="sr">/RotorVideosProvider</span><span class="err">&gt;
-</span>  <span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>The React component has been built to integrate into an existing React app, such as an artist&#39;s track list page.</p>
-
-<p>Video Creation is on a per track basis. When the <code>&lt;RotorVideosButton /&gt;</code> component is loaded for each track, we sent the track and metadata to Rotor API for analysis. We use the data we gather to automate part of the process.</p>
 <h3 id='access-token'>Access Token</h3>
 <p>In order to authorize requests, the component requires a valid OAuth Access Token for each user. The OAuth Access Token is obtained from the server-side integration (as mentioned above), which can be loaded upon session creation, or upon the loading of the page you wish to embed the component.</p>
 <h1 id='browse-api'>Browse API</h1><h1 id='authentication'>Authentication</h1><h2 id='access-token'>Access Token</h2>
