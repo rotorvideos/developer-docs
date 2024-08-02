@@ -3,7 +3,6 @@
 There are two parts to integrating with Rotor Videos:
 
 1. **Server-side Integration** - Retrieve an individual user's OAuth access token using the Partner's credentials.
-2. **Client-side Integration** - The Rotor React component, built by Rotor Videos, to consume the API and allow partners to embed video creation flows into their artists' dashboards.
 
 ## Server-side Integration
 > **An example Node app handling the server requests**
@@ -20,7 +19,7 @@ const userIDBody = {
   data: {
     type: "user",
     attributes: {
-      user_uid: `${userUID}`
+      remote_user_id: `${userUID}`
     }
   }
 }
@@ -88,58 +87,6 @@ The first time the `register` endpoint is called, it will create the managed use
 
 
 See the <a href='#authentication'>Authentication Section</a> for more details on the register endpoint.
-
-## Client-side Integration
-> **To install the Rotor React component, you can use the following:**
-
-```shell
-$ npm install --save rotor-react
-
-# or if you use yarn...
-$ yarn add --dev rotor-react
-```
-
-> **Example React app embedding Rotor React**
-
-> The following example shows how Rotor React is easily embedded into an existing page, listing the tracks, providing a "Videos" button for each track. This button will open a modal to the video creation flows the component provides.
-
-```javascript
-import React from 'React'
-
-import { RotorVideosProvider, RotorVideosButton } from 'rotor-react';
-import 'rotor-react/dist/index.css';
-
-import useStorage from './useStorage';
-
-const ExampleArtistTrackList = ( tracks ) => {
-
-  const [rotorAccessToken, setRotorAccessToken] = useStorage(
-    `${window.location.href}-rotorAccessToken`
-  );
-
-  return (
-    <RotorVideosProvider accessToken={rotorAccessToken}>
-      {tracks && tracks.map((track) => (
-        <>
-          <h2>{track.trackName}</h2>
-          <RotorVideosButton
-            artistName={track.artistName}
-            artworkUrl={track.artworkUrl}
-            audioUrl={track.audioUrl}
-            trackName={track.trackName}
-            trackId={track.id}
-          />
-        </>
-      ))}
-    </RotorVideosProvider>
-  )
-}
-```
-
-The React component has been built to integrate into an existing React app, such as an artist's track list page.
-
-Video Creation is on a per track basis. When the `<RotorVideosButton />` component is loaded for each track, we sent the track and metadata to Rotor API for analysis. We use the data we gather to automate part of the process.
-
 
 ### Access Token
 
