@@ -76,3 +76,8 @@ curl "https://api.rotorvideos.com/api/partner/v1/styles" \
 
 This returns all the available styles that you can choose to base your video
 on. You can see a short preview each via the <code>preview</code> attribute.
+
+### HTTP Request
+
+`GET "https://api.rotorvideos.com/api/partner/v1/styles"`
+

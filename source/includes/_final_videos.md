@@ -1,14 +1,13 @@
 # Final Videos
 
-Render the final HD version of a video for a track. The `variant_id` will determin the aspect ratio.
+Render the final HD version of a video for a track. The `variant_id` will determine the aspect ratio.
 
 ## Create Final Video
 
 > **To create the final video for a track, use the following:**
 
 ```shell
-curl -XPOST
-"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos" \
+curl -XPOST "https://api.rotorvideos.com/api/partner/v1/tracks/:id/videos" \
   -H "Authorization: Bearer <insert token here>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -46,25 +45,32 @@ curl -XPOST
 }
 ```
 
-This creates the video asynchronously. Use this endpoint in combination with the get video endpoint to identify when the final video is ready.
+This creates the video asynchronously. Use this endpoint in combination with the get video endpoint to identify when the
+final video is ready.
 
 <aside class="notice">
 The <code>video_url</code> will return as <code>null</code> here because this process is asynchronous. The <code>video_url</code> will be populated when the upload has finished.
 </aside>
 
+### HTTP Request
+
+`POST "https://api.rotorvideos.com/api/partner/v1/tracks/:id/videos"`
+
+
 ### Data Attributes
 
-Parameter | Description
---------- | -----------
-style_id | A unique identifier for the style you want to render.
-variant_id | A unique identifier for the variant you want to render.
+| Parameter  | Description                                             |
+|------------|---------------------------------------------------------|
+| style_id   | A unique identifier for the style you want to render.   |
+| variant_id | A unique identifier for the variant you want to render. |
+
 
 ## Get A Final Video
 
 > **To get the renders for a variant use the following:**
 
 ```shell
-curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos/31" \
+curl "https://rotorvideos.com/api/partner/v1/tracks/:id/videos/:variant_id" \
   -H "Authorization: Bearer <insert token here>" \
   -H "Content-Type: application/json"
 ```
@@ -88,7 +94,6 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos/31"
           "progress_message": null,
           "aspect_ratio": "16x9"
         }
-        ]
       ]
     }
   }
@@ -97,12 +102,25 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos/31"
 
 Return a final video for a given variant id.
 
+### HTTP Request
+
+`GET "https://rotorvideos.com/api/partner/v1/tracks/:id/videos/:variant_id"`
+
+
+### URL Parameters
+
+| Parameter  | Description                                             |
+|------------|---------------------------------------------------------|
+| id         | A unique identifier for the track.                      |
+| variant_id | A unique identifier for the variant you want to render. |
+
+
 ## Get All Final Videos
 
 > **To get all the final HD videos for a track, use the following:**
 
 ```shell
-curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos" \
+curl "https://rotorvideos.com/api/partner/v1/tracks/:id/videos" \
   -H "Authorization: Bearer <insert token here>" \
   -H "Content-Type: application/json"
 ```
@@ -144,3 +162,14 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos" \
 ```
 
 Return all rendered final videos.
+
+
+### HTTP Request
+
+`GET "https://rotorvideos.com/api/partner/v1/tracks/:id/videos"`
+
+### URL Parameters
+
+| Parameter | Description                                |
+|-----------|--------------------------------------------|
+| id        | A unique identifier for the track.         |

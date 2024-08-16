@@ -2,6 +2,7 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
+@import 'image-zoom';
 // @import 'rtl'; // uncomment to switch to RTL format
 
 /*
@@ -23,6 +24,8 @@ under the License.
 ////////////////////////////////////////////////////////////////////////////////
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
 
 html, body {
   @extend %default-font;
@@ -31,9 +34,11 @@ html, body {
   height: 100%;
   padding: 0;
   color: $main-text;
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: none; /* Never autoresize text */
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -73,13 +78,14 @@ html, body {
 
   // This is the logo at the top of the ToC
   .logo-wrapper {
-    margin: 1.5em 2.5em;
+    margin: 1.5em 0 1.5em 1.5em;
   }
 
   .logo {
     display: block;
     margin-bottom: $logo-margin;
     max-width: 100%;
+    height: 40px;
   }
 
   &>.search {
@@ -203,7 +209,7 @@ html, body {
 .toc-link, .toc-footer li {
   display: block;
   overflow-x: hidden;
-  padding: 0 $nav-padding 0 $nav-padding;
+  padding: $nav-vertical-padding $nav-padding $nav-vertical-padding $nav-padding;
   text-overflow: ellipsis;
   white-space: nowrap;
   text-decoration: none;
@@ -211,6 +217,11 @@ html, body {
   transition-property: background;
   transition-duration: 130ms;
   transition-timing-function: linear;
+
+  &:hover {
+    transition: background 0.3s ease-in-out;
+    background-color: $nav-hover-bg;
+  }
 }
 
 // button to show navigation on mobile devices
@@ -351,11 +362,11 @@ html, body {
 
   h1 {
     @extend %header-font;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
     margin-top: 2em;
     margin-bottom: $h1-margin-bottom;
-    background-color: #fdfdfd;
+    background-color: #f6f8f9;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     font-size: 25px;
@@ -417,6 +428,7 @@ html, body {
       border-bottom: 1px solid #ccc;
       padding: 5px 10px;
       vertical-align: bottom;
+      background-color: #d2d2d2;
     }
 
     td {
@@ -424,15 +436,15 @@ html, body {
     }
 
     tr:last-child {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #d2d2d2;
     }
 
     tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
+      background-color: lighten(#e7e7e7,8.5%);
     }
 
     tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+      background-color: lighten(#e7e7e7,6%);
     }
   }
 
@@ -502,10 +514,10 @@ html, body {
   }
 
   .search-highlight {
-    border: 1px solid #F7E633;
+    border: 1px solid #f15c99;
     border-radius: 4px;
     margin: -3px;
-    background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
+    background: linear-gradient(to top left, #f15c99 0%, #e46498 100%);
     padding: 2px;
   }
 }
@@ -637,15 +649,15 @@ html, body {
 }
 
 [data-title="Get Started"] {
-  border-top: 1px solid $nav-footer-border-color;
+  border-top: 1px solid $nav-border-color;
   font-size: 1.2em;
   margin-top: 0.7em;
   padding: 0.5em 1em;
 }
 
-[data-title="Browse API"] {
-  border-top: 1px solid $nav-footer-border-color;
-  border-bottom: 1px solid $nav-footer-border-color;
+[data-title="REST API"], [data-title="JavaScript API"] {
+  border-top: 1px solid $nav-border-color;
+  border-bottom: 1px solid $nav-border-color;
   font-size: 1.2em;
   padding: 0.5em 1em;
 }
