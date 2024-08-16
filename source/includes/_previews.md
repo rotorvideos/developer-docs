@@ -7,8 +7,7 @@ Previews are videos that are used to demonstrate the variants for a given style.
 > **To create preview videos of a given style, use the following:**
 
 ```shell
-curl -XPOST
-"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/previews" \
+curl -XPOST "https://api.rotorvideos.com/api/partner/v1/tracks/:id/previews" \
   -H "Authorization: Bearer <insert token here>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -67,24 +66,36 @@ curl -XPOST
 }
 ```
 
-This creates the previews asynchronously. Use this endpoint in combination with the get previews endpoint to identify when the preview videos are ready.
+This creates the previews asynchronously. Use this endpoint in combination with the get previews endpoint to identify
+when the preview videos are ready.
 
 <aside class="notice">
 The <code>video_url</code> will return as <code>null</code> here because this process is asynchronous. The <code>video_url</code> will be populated when the upload has finished.
 </aside>
 
+### HTTP Request
+
+`GET "https://api.rotorvideos.com/api/partner/v1/tracks/:id/previews"`
+
+### URL Parameters
+
+| Parameter | Description                                |
+|-----------|--------------------------------------------|
+| id        | A unique identifier for the track.         |
+
+
 ### Data Attributes
 
-Parameter | Description
---------- | -----------
-style_id | A unique identifier for the style you want to preview.
+| Parameter | Description                                            |
+|-----------|--------------------------------------------------------|
+| style_id  | A unique identifier for the style you want to preview. |
 
 ## Get Previews
 
 > **To get the previews for a track use the following:**
 
 ```shell
-curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/previews/11" \
+curl "https://rotorvideos.com/api/partner/v1/tracks/:track_id/previews/:style_id" \
   -H "Authorization: Bearer <insert token here>" \
   -H "Content-Type: application/json"
 ```
@@ -137,3 +148,16 @@ curl "https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/previews/1
 ```
 
 Return the available preview videos for a track with a given style.
+
+
+### HTTP Request
+
+`GET "https://rotorvideos.com/api/partner/v1/tracks/:track_id/previews/:style_id"`
+
+
+### URL Parameters
+
+| Parameter | Description                        |
+|-----------|------------------------------------|
+| track_id  | A unique identifier for the track. |
+| style_id  | A unique identifier for the style. |

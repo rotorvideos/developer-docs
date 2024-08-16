@@ -2,6 +2,7 @@
 //= require ./app/_copy
 //= require ./app/_toc
 //= require ./app/_lang
+//= require ./app/_image_zoom
 
 function adjustLanguageSelectorWidth() {
   const elem = $('.dark-box > .lang-selector');
