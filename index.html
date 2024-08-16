@@ -6,6 +6,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Rotor Developer Docs (BETA)</title>
+    <link href="images/favicon-16x16-ea47df0d.png" rel="icon" type="image/png" />
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -282,9 +283,9 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-3f326190.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-a9fde460.js"></script>
+    <link href="stylesheets/screen-8292e0ca.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-7ae61719.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-1728c014.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -301,7 +302,7 @@
     <div class="toc-wrapper">
       <div class="logo-wrapper">
         <a href="/">
-          <img src="images/logo-40c41f01.png" class="logo" alt="" />
+          <img src="images/logo-bd323589.png" class="logo" alt="" />
         </a>
       </div>
         <div class="search">
@@ -313,18 +314,24 @@
             <a href="#get-started" class="toc-h1 toc-link" data-title="Get Started">Get Started</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#server-side-integration" class="toc-h2 toc-link" data-title="Server-side Integration">Server-side Integration</a>
+                    <a href="#get-started-server-side-integration" class="toc-h2 toc-link" data-title="Server-side Integration">Server-side Integration</a>
+                  </li>
+                  <li>
+                    <a href="#get-started-client-side-integration" class="toc-h2 toc-link" data-title="Client-side Integration">Client-side Integration</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#browse-api" class="toc-h1 toc-link" data-title="Browse API">Browse API</a>
+            <a href="#rest-api" class="toc-h1 toc-link" data-title="REST API">REST API</a>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#access-token" class="toc-h2 toc-link" data-title="Access Token">Access Token</a>
+                    <a href="#authentication-authorize-application" class="toc-h2 toc-link" data-title="Authorize Application">Authorize Application</a>
+                  </li>
+                  <li>
+                    <a href="#authentication-register-fetch-user" class="toc-h2 toc-link" data-title="Register/Fetch User">Register/Fetch User</a>
                   </li>
               </ul>
           </li>
@@ -332,10 +339,10 @@
             <a href="#tracks" class="toc-h1 toc-link" data-title="Tracks">Tracks</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-track" class="toc-h2 toc-link" data-title="Create Track">Create Track</a>
+                    <a href="#tracks-create-track" class="toc-h2 toc-link" data-title="Create Track">Create Track</a>
                   </li>
                   <li>
-                    <a href="#get-track" class="toc-h2 toc-link" data-title="Get Track">Get Track</a>
+                    <a href="#tracks-get-track" class="toc-h2 toc-link" data-title="Get Track">Get Track</a>
                   </li>
               </ul>
           </li>
@@ -343,10 +350,10 @@
             <a href="#artwork" class="toc-h1 toc-link" data-title="Artwork">Artwork</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-artwork" class="toc-h2 toc-link" data-title="Create Artwork">Create Artwork</a>
+                    <a href="#artwork-create-artwork" class="toc-h2 toc-link" data-title="Create Artwork">Create Artwork</a>
                   </li>
                   <li>
-                    <a href="#get-artwork" class="toc-h2 toc-link" data-title="Get Artwork">Get Artwork</a>
+                    <a href="#artwork-get-artwork" class="toc-h2 toc-link" data-title="Get Artwork">Get Artwork</a>
                   </li>
               </ul>
           </li>
@@ -354,10 +361,10 @@
             <a href="#trailers" class="toc-h1 toc-link" data-title="Trailers">Trailers</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-trailers" class="toc-h2 toc-link" data-title="Create Trailers">Create Trailers</a>
+                    <a href="#trailers-create-trailers" class="toc-h2 toc-link" data-title="Create Trailers">Create Trailers</a>
                   </li>
                   <li>
-                    <a href="#get-trailers" class="toc-h2 toc-link" data-title="Get Trailers">Get Trailers</a>
+                    <a href="#trailers-get-trailers" class="toc-h2 toc-link" data-title="Get Trailers">Get Trailers</a>
                   </li>
               </ul>
           </li>
@@ -365,7 +372,7 @@
             <a href="#styles" class="toc-h1 toc-link" data-title="Styles">Styles</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-styles" class="toc-h2 toc-link" data-title="Get Styles">Get Styles</a>
+                    <a href="#styles-get-styles" class="toc-h2 toc-link" data-title="Get Styles">Get Styles</a>
                   </li>
               </ul>
           </li>
@@ -373,10 +380,10 @@
             <a href="#previews" class="toc-h1 toc-link" data-title="Previews">Previews</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-previews" class="toc-h2 toc-link" data-title="Create Previews">Create Previews</a>
+                    <a href="#previews-create-previews" class="toc-h2 toc-link" data-title="Create Previews">Create Previews</a>
                   </li>
                   <li>
-                    <a href="#get-previews" class="toc-h2 toc-link" data-title="Get Previews">Get Previews</a>
+                    <a href="#previews-get-previews" class="toc-h2 toc-link" data-title="Get Previews">Get Previews</a>
                   </li>
               </ul>
           </li>
@@ -384,22 +391,104 @@
             <a href="#final-videos" class="toc-h1 toc-link" data-title="Final Videos">Final Videos</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-final-video" class="toc-h2 toc-link" data-title="Create Final Video">Create Final Video</a>
+                    <a href="#final-videos-create-final-video" class="toc-h2 toc-link" data-title="Create Final Video">Create Final Video</a>
                   </li>
                   <li>
-                    <a href="#get-a-final-video" class="toc-h2 toc-link" data-title="Get A Final Video">Get A Final Video</a>
+                    <a href="#final-videos-get-a-final-video" class="toc-h2 toc-link" data-title="Get A Final Video">Get A Final Video</a>
                   </li>
                   <li>
-                    <a href="#get-all-final-videos" class="toc-h2 toc-link" data-title="Get All Final Videos">Get All Final Videos</a>
+                    <a href="#final-videos-get-all-final-videos" class="toc-h2 toc-link" data-title="Get All Final Videos">Get All Final Videos</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#orders-finalize-single-order" class="toc-h2 toc-link" data-title="Finalize Single Order">Finalize Single Order</a>
+                  </li>
+                  <li>
+                    <a href="#orders-finalize-multiple-orders" class="toc-h2 toc-link" data-title="Finalize Multiple Orders">Finalize Multiple Orders</a>
+                  </li>
+                  <li>
+                    <a href="#orders-get-order" class="toc-h2 toc-link" data-title="Get Order">Get Order</a>
+                  </li>
+                  <li>
+                    <a href="#orders-get-all-orders" class="toc-h2 toc-link" data-title="Get All Orders">Get All Orders</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#webhooks-webhook-endpoints" class="toc-h2 toc-link" data-title="Webhook Endpoints">Webhook Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#webhooks-webhook-events" class="toc-h2 toc-link" data-title="Webhook Events">Webhook Events</a>
                   </li>
               </ul>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
+          <li>
+            <a href="#javascript-api" class="toc-h1 toc-link" data-title="JavaScript API">JavaScript API</a>
+          </li>
+          <li>
+            <a href="#react" class="toc-h1 toc-link" data-title="React">React</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#react-installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
+                  </li>
+                  <li>
+                    <a href="#react-rotorvideosprovider" class="toc-h2 toc-link" data-title="RotorVideosProvider">RotorVideosProvider</a>
+                  </li>
+                  <li>
+                    <a href="#react-userotorvideos" class="toc-h2 toc-link" data-title="useRotorVideos">useRotorVideos</a>
+                  </li>
+                  <li>
+                    <a href="#react-rotorvideossmartbutton" class="toc-h2 toc-link" data-title="RotorVideosSmartButton">RotorVideosSmartButton</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#bundle" class="toc-h1 toc-link" data-title="Bundle">Bundle</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#bundle-installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
+                  </li>
+                  <li>
+                    <a href="#bundle-usage" class="toc-h2 toc-link" data-title="Usage">Usage</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#theming" class="toc-h1 toc-link" data-title="Theming">Theming</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#theming-default-theme" class="toc-h2 toc-link" data-title="Default theme">Default theme</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#localization" class="toc-h1 toc-link" data-title="Localization">Localization</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#localization-localization-resources" class="toc-h2 toc-link" data-title="Localization resources">Localization resources</a>
+                  </li>
+                  <li>
+                    <a href="#localization-language-detection" class="toc-h2 toc-link" data-title="Language detection">Language detection</a>
+                  </li>
+                  <li>
+                    <a href="#localization-adding-new-language" class="toc-h2 toc-link" data-title="Adding new language">Adding new language</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://rotorvideos.com'>Rotor Videos</a></li>
+            <li><a href='https://rotorvideos.com/partners'>Partner Dashboard</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -410,9 +499,11 @@
 <p>There are two parts to integrating with Rotor Videos:</p>
 
 <ol>
-<li><strong>Server-side Integration</strong> - Retrieve an individual user&#39;s OAuth access token using the Partner&#39;s credentials.</li>
+<li><strong>Server-side Integration</strong> - Server-to-server communication, such as User Registration, Finalize Order, etc.</li>
+<li><strong>Client-side Integration</strong> - The React/Javascript component, built by Rotor Videos, to consume the API and allow you
+to embed video creation flows into your artists&#39; dashboards.</li>
 </ol>
-<h2 id='server-side-integration'>Server-side Integration</h2>
+<h2 id='get-started-server-side-integration'>Server-side Integration</h2>
 <blockquote>
 <p><strong>An example Node app handling the server requests</strong></p>
 </blockquote>
@@ -431,30 +522,6 @@
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
-
-<span class="c1">// Create or Find User based on Partner's unique user id.</span>
-<span class="kd">function</span> <span class="nx">handleAuthorizeUserCallback</span><span class="p">(</span><span class="nx">body</span><span class="p">){</span>
-  <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">apiEndpoint</span><span class="p">}</span><span class="s2">/api/partner/v1/register`</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">userIDBody</span><span class="p">),</span>
-    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-      <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
-      <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">body</span><span class="p">.</span><span class="nx">token_type</span><span class="p">}</span><span class="s2"> </span><span class="p">${</span><span class="nx">body</span><span class="p">.</span><span class="nx">access_token</span><span class="p">}</span><span class="s2">`</span>
-    <span class="p">}</span>
-  <span class="p">})</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">){</span>
-      <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusText</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">})</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">jsonResponse</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jsonResponse</span><span class="p">);</span>
-  <span class="p">})</span>
-  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">));</span>
-<span class="p">}</span>
-
 
 <span class="c1">// Partner App Authentication</span>
 <span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">();</span>
@@ -481,21 +548,138 @@
 <span class="p">})</span>
 <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">));</span>
 
+<span class="c1">// Create or Find User based on Partner's unique user id.</span>
+<span class="kd">function</span> <span class="nx">handleAuthorizeUserCallback</span><span class="p">(</span><span class="nx">body</span><span class="p">){</span>
+  <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">apiEndpoint</span><span class="p">}</span><span class="s2">/api/partner/v1/register`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">userIDBody</span><span class="p">),</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+      <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">body</span><span class="p">.</span><span class="nx">token_type</span><span class="p">}</span><span class="s2"> </span><span class="p">${</span><span class="nx">body</span><span class="p">.</span><span class="nx">access_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusText</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">jsonResponse</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jsonResponse</span><span class="p">);</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">));</span>
+<span class="p">}</span>
+
 </code></pre></div>
-<p>All sessions using the Rotor API start by having the Partner use their OAuth client credentials to make a server-to-server request for a User level access token for use in Rotor React, thus associating the user ID from the Partner’s platform with a managed User object and Account on the Rotor platform.</p>
+<p>All sessions using the Rotor API start by having the Partner use their OAuth client credentials to make a
+server-to-server request for a User level access token for use in Rotor Client, thus associating the user ID from the
+Partner’s platform with a managed User object and Account on the Rotor platform.</p>
 
-<p>This user&#39;s OAuth Access Token is then used to initialize the Rotor React component and will be used for all subsequent Rotor API calls in the user&#39;s session, from the browser.</p>
-<h3 id='user-registration'>User Registration</h3>
-<p>The user registration/signin request is authorized with the Partner&#39;s access token, and the response will be an access token scoped to the User.</p>
+<p>This user&#39;s OAuth Access Token is then used to initialize the Rotor Client component and will be used for all subsequent
+Rotor API calls in the user&#39;s session, from the browser.</p>
+<h3 id='get-started-server-side-integration-user-registration'>User Registration</h3>
+<p>The user registration/signin request is authorized with the Partner&#39;s access token, and the response will be an access
+token scoped to the User.</p>
 
-<p>The first time the <code>register</code> endpoint is called, it will create the managed user on Rotor and then return an access token for that managed user. Subsequent calls to <code>register</code> will simply return an access token for the existing managed user.</p>
+<p>The first time the <code>register</code> endpoint is called, it will create the managed user on Rotor and then return an access
+token for that managed user. Subsequent calls to <code>register</code> will simply return an access token for the existing managed
+user.</p>
 
 <p>See the <a href='#authentication'>Authentication Section</a> for more details on the register endpoint.</p>
-<h3 id='access-token'>Access Token</h3>
-<p>In order to authorize requests, the component requires a valid OAuth Access Token for each user. The OAuth Access Token is obtained from the server-side integration (as mentioned above), which can be loaded upon session creation, or upon the loading of the page you wish to embed the component.</p>
-<h1 id='browse-api'>Browse API</h1><h1 id='authentication'>Authentication</h1><h2 id='access-token'>Access Token</h2>
+
+<p><img src="images/embeddable-user-registration-20a99498.png" title="User Registration Flow" alt="User Registration Flow" /></p>
+<h3 id='get-started-server-side-integration-access-token'>Access Token</h3>
+<p>In order to authorize requests, the Rotor Client requires a valid OAuth Access Token for each user. The OAuth Access
+Token is obtained from the server-side integration (as mentioned above), which can be loaded upon session creation, or
+upon the loading of the page you wish to embed the component.</p>
+<h3 id='get-started-server-side-integration-final-video-transaction-flow'>Final Video Transaction flow</h3>
+<p>In order to finalize a transaction, the Rotor Client will make a request to the Rotor API to create a new Order. The
+Order will be created with the User&#39;s access token, and the response will contain the Order UUID, which can be used to
+finalize the order.</p>
+
+<p>See the <a href='#orders-finalize-single-order'>Finalize Order</a> for more details on the finalize endpoint.</p>
+
+<p><img src="images/embeddable-integration-checkout-b3524cb6.png" title="Final Video Transaction flow" alt="Final Video Transaction flow" /></p>
+<h2 id='get-started-client-side-integration'>Client-side Integration</h2>
 <blockquote>
-<p><strong>To get an access token use the following:</strong></p>
+<p><strong>An example React app with Rotor Client</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span><span class="nx">RotorVideosProvider</span><span class="p">,</span> <span class="nx">RotorVideosSmartButton</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@rotorvideos/react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">authConfig</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">accessToken</span><span class="p">:</span> <span class="dl">'</span><span class="s1">user-access-token</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">clientId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-app-client-id</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">availableTracks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">RotorVideosProvider</span>
+      <span class="na">authConfig</span><span class="p">=</span><span class="si">{</span><span class="nx">authConfig</span><span class="si">}</span>
+      <span class="na">availableTracks</span><span class="p">=</span><span class="si">{</span><span class="nx">availableTracks</span><span class="si">}</span>
+    <span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">availableTracks</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">track</span> <span class="o">=&gt;</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nc">RotorVideosSmartButton</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">track</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span> <span class="na">providerReferenceId</span><span class="p">=</span><span class="si">{</span><span class="nx">track</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="p">/&gt;</span>
+      <span class="p">))</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nc">RotorVideosProvider</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div>
+<p>In order to make it as easy as possible to integrate Rotor Videos into your platform, we have componentized some of the
+tools you see on rotorvideos.com, into easy to embed javascript widgets. The components are built using React, but we
+also provide a native javascript bundle and interface.</p>
+
+<p>Through the embeddable, we ingest an artist&#39;s data, including Releases, Tracks, and accompanying assets. We use these in
+the background to feed the video creation process.</p>
+
+<p>See the <a href='#orders-finalize-single-order'>Finalize Order</a> for more details.</p>
+<h1 id='rest-api'>REST API</h1><h1 id='authentication'>Authentication</h1><h2 id='authentication-authorize-application'>Authorize Application</h2>
+<blockquote>
+<p><strong>Fetch the Application&#39;s Oauth Access Token:</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"https://api.rotorvideos.com/oauth/token"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Basic </span><span class="sb">`</span><span class="si">$(</span><span class="nb">echo</span> <span class="nt">-n</span> <span class="nv">$client_id</span>:<span class="nv">$client_secret</span> | <span class="nb">base64</span><span class="si">)</span><span class="sb">`</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"grant_type=client_credentials"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcdef"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>In order to make API requests, you must first authorize the application, using the Oauth Client ID and Client Secret provided.</p>
+
+<p>Your Application Oauth Access Token is retrieved, to be used to fetch the user&#39;s Oauth Access Token for all subsequent requests.</p>
+<h3 id='authentication-authorize-application-http-request'>HTTP Request</h3>
+<p><code>POST &quot;https://api.rotorvideos.com/oauth/token&quot;</code></p>
+<h3 id='authentication-authorize-application-data-attributes'>Data Attributes</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>grant_type</td>
+<td>Only &quot;client_credentials&quot; is valid for this request</td>
+</tr>
+</tbody></table>
+<h2 id='authentication-register-fetch-user'>Register/Fetch User</h2>
+<blockquote>
+<p><strong>Fetch the user&#39;s Oauth Access Token:</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"https://api.rotorvideos.com/api/partner/v1/register"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
@@ -504,7 +688,7 @@
     "data": {
       "type" : "user",
       "attributes": {
-        "user_uid": "123456"
+        "remote_user_id": "123456"
       }
     }
   }'</span>
@@ -521,8 +705,11 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Register a user for the Partner API; if they exist in our system, an access token is returned. If not, we generate a new account, then return an access token for them.</p>
-<h3 id='data-attributes'>Data Attributes</h3>
+<p>Register a user for the Partner API; if they exist in our system, an access token is returned. If not, we generate a new
+account, then return an access token for them.</p>
+<h3 id='authentication-register-fetch-user-http-request'>HTTP Request</h3>
+<p><code>POST &quot;https://api.rotorvideos.com/api/partner/v1/register&quot;</code></p>
+<h3 id='authentication-register-fetch-user-data-attributes'>Data Attributes</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -530,11 +717,11 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>user_uid</td>
+<td>remote_user_id</td>
 <td>A unique identifier (on the partner platform) for the user.</td>
 </tr>
 </tbody></table>
-<h1 id='tracks'>Tracks</h1><h2 id='create-track'>Create Track</h2>
+<h1 id='tracks'>Tracks</h1><h2 id='tracks-create-track'>Create Track</h2>
 <blockquote>
 <p><strong>To upload/create a track, use the following:</strong></p>
 </blockquote>
@@ -571,7 +758,9 @@ the get a track endpoint to identify when the track is ready to use.</p>
 <aside class="notice">
 The <code>url</code> will return as <code>null</code> here because this process is asynchronous. The <code>url</code> will be populated when the upload has finished.
 </aside>
-<h3 id='data-attributes'>Data Attributes</h3>
+<h3 id='tracks-create-track-http-request'>HTTP Request</h3>
+<p><code>POST &quot;https://api.rotorvideos.com/api/partner/v1/tracks&quot;</code></p>
+<h3 id='tracks-create-track-data-attributes'>Data Attributes</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -591,11 +780,11 @@ The <code>url</code> will return as <code>null</code> here because this process 
 <td>A URL that the track can be accessed from.</td>
 </tr>
 </tbody></table>
-<h2 id='get-track'>Get Track</h2>
+<h2 id='tracks-get-track'>Get Track</h2>
 <blockquote>
 <p><strong>To get a track use the following:</strong></p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/:id"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -611,11 +800,27 @@ The <code>url</code> will return as <code>null</code> here because this process 
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='artwork'>Artwork</h1><h2 id='create-artwork'>Create Artwork</h2>
+</span></code></pre></div>
+<p>This endpoint will return the track&#39;s details by id.</p>
+<h3 id='tracks-get-track-http-request'>HTTP Request</h3>
+<p><code>GET &quot;https://api.rotorvideos.com/api/partner/v1/tracks/:id&quot;</code></p>
+<h3 id='tracks-get-track-url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>A unique identifier for the track.</td>
+</tr>
+</tbody></table>
+<h1 id='artwork'>Artwork</h1><h2 id='artwork-create-artwork'>Create Artwork</h2>
 <blockquote>
 <p><strong>To upload/create artwork for a track, use the following:</strong></p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/artwork"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/:id/artwork"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
@@ -639,12 +844,15 @@ The <code>url</code> will return as <code>null</code> here because this process 
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This creates the artwork resource asynchronously. Use this endpoint in combination with the get a track endpoint to identify when the track is ready to use.</p>
+<p>This creates the artwork resource asynchronously. Use this endpoint in combination with the get a track endpoint to
+identify when the track is ready to use.</p>
 
 <aside class="notice">
 The <code>url</code> will return as <code>null</code> here because this process is asynchronous. The <code>url</code> will be populated when the upload has finished.
 </aside>
-<h3 id='data-attributes'>Data Attributes</h3>
+<h3 id='artwork-create-artwork-http-request'>HTTP Request</h3>
+<p><code>POST &quot;https://api.rotorvideos.com/api/partner/v1/tracks/:id/artwork&quot;</code></p>
+<h3 id='artwork-create-artwork-url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -655,16 +863,24 @@ The <code>url</code> will return as <code>null</code> here because this process 
 <td>id</td>
 <td>A unique identifier for the track.</td>
 </tr>
+</tbody></table>
+<h3 id='artwork-create-artwork-data-attributes'>Data Attributes</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>url</td>
 <td>A URL that the track can be accessed from.</td>
 </tr>
 </tbody></table>
-<h2 id='get-artwork'>Get Artwork</h2>
+<h2 id='artwork-get-artwork'>Get Artwork</h2>
 <blockquote>
 <p><strong>To get the artwork for a track, use the following:</strong></p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/artwork"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/:id/artwork"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -679,14 +895,29 @@ The <code>url</code> will return as <code>null</code> here because this process 
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='trailers'>Trailers</h1>
+</span></code></pre></div>
+<p>This retrieves the artwork for a track.</p>
+<h3 id='artwork-get-artwork-http-request'>HTTP Request</h3>
+<p><code>GET &quot;https://api.rotorvideos.com/api/partner/v1/tracks/:id/artwork&quot;</code></p>
+<h3 id='artwork-get-artwork-url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>A unique identifier for the track.</td>
+</tr>
+</tbody></table>
+<h1 id='trailers'>Trailers</h1>
 <p>Trailers are a short 5 second clip of your video to demonstrate each of the video style options.</p>
-<h2 id='create-trailers'>Create Trailers</h2>
+<h2 id='trailers-create-trailers'>Create Trailers</h2>
 <blockquote>
 <p><strong>To create trailers for a track, use the following:</strong></p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span>
-<span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/trailers"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/:id/trailers"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -725,16 +956,19 @@ The <code>url</code> will return as <code>null</code> here because this process 
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This creates the trailers asynchronously. Use this endpoint in combination with the get trailers endpoint to identify when the trailer videos are ready.</p>
+<p>This creates the trailers asynchronously. Use this endpoint in combination with the get trailers endpoint to identify
+when the trailer videos are ready.</p>
 
 <aside class="notice">
 The <code>video_url</code> will return as <code>null</code> here because this process is asynchronous. The <code>video_url</code> will be populated when the upload has finished.
 </aside>
-<h2 id='get-trailers'>Get Trailers</h2>
+<h3 id='trailers-create-trailers-http-request'>HTTP Request</h3>
+<p><code>POST &quot;https://api.rotorvideos.com/api/partner/v1/tracks/:id/trailers&quot;</code></p>
+<h2 id='trailers-get-trailers'>Get Trailers</h2>
 <blockquote>
 <p><strong>To get the trailers for a track, use the following:</strong></p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/trailers"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://rotorvideos.com/api/partner/v1/tracks/:id/trailers"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -772,9 +1006,13 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='styles'>Styles</h1>
+</span></code></pre></div>
+<p>This gets the trailers for a track. Use this endpoint to identify when the trailer videos are ready.</p>
+<h3 id='trailers-get-trailers-http-request'>HTTP Request</h3>
+<p><code>GET &quot;https://api.rotorvideos.com/api/partner/v1/tracks/:id/trailers&quot;</code></p>
+<h1 id='styles'>Styles</h1>
 <p>These ofter options to style your video based on a theme.</p>
-<h2 id='get-styles'>Get Styles</h2>
+<h2 id='styles-get-styles'>Get Styles</h2>
 <blockquote>
 <p><strong>To get the available styles, use the following:</strong></p>
 </blockquote>
@@ -845,14 +1083,15 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 </span></code></pre></div>
 <p>This returns all the available styles that you can choose to base your video
 on. You can see a short preview each via the <code>preview</code> attribute.</p>
+<h3 id='styles-get-styles-http-request'>HTTP Request</h3>
+<p><code>GET &quot;https://api.rotorvideos.com/api/partner/v1/styles&quot;</code></p>
 <h1 id='previews'>Previews</h1>
 <p>Previews are videos that are used to demonstrate the variants for a given style.</p>
-<h2 id='create-previews'>Create Previews</h2>
+<h2 id='previews-create-previews'>Create Previews</h2>
 <blockquote>
 <p><strong>To create preview videos of a given style, use the following:</strong></p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span>
-<span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/previews"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/:id/previews"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
@@ -909,12 +1148,27 @@ on. You can see a short preview each via the <code>preview</code> attribute.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This creates the previews asynchronously. Use this endpoint in combination with the get previews endpoint to identify when the preview videos are ready.</p>
+<p>This creates the previews asynchronously. Use this endpoint in combination with the get previews endpoint to identify
+when the preview videos are ready.</p>
 
 <aside class="notice">
 The <code>video_url</code> will return as <code>null</code> here because this process is asynchronous. The <code>video_url</code> will be populated when the upload has finished.
 </aside>
-<h3 id='data-attributes'>Data Attributes</h3>
+<h3 id='previews-create-previews-http-request'>HTTP Request</h3>
+<p><code>GET &quot;https://api.rotorvideos.com/api/partner/v1/tracks/:id/previews&quot;</code></p>
+<h3 id='previews-create-previews-url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>A unique identifier for the track.</td>
+</tr>
+</tbody></table>
+<h3 id='previews-create-previews-data-attributes'>Data Attributes</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -926,11 +1180,11 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 <td>A unique identifier for the style you want to preview.</td>
 </tr>
 </tbody></table>
-<h2 id='get-previews'>Get Previews</h2>
+<h2 id='previews-get-previews'>Get Previews</h2>
 <blockquote>
 <p><strong>To get the previews for a track use the following:</strong></p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/previews/11"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://rotorvideos.com/api/partner/v1/tracks/:track_id/previews/:style_id"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -981,14 +1235,31 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Return the available preview videos for a track with a given style.</p>
+<h3 id='previews-get-previews-http-request'>HTTP Request</h3>
+<p><code>GET &quot;https://rotorvideos.com/api/partner/v1/tracks/:track_id/previews/:style_id&quot;</code></p>
+<h3 id='previews-get-previews-url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>track_id</td>
+<td>A unique identifier for the track.</td>
+</tr>
+<tr>
+<td>style_id</td>
+<td>A unique identifier for the style.</td>
+</tr>
+</tbody></table>
 <h1 id='final-videos'>Final Videos</h1>
-<p>Render the final HD version of a video for a track. The <code>variant_id</code> will determin the aspect ratio.</p>
-<h2 id='create-final-video'>Create Final Video</h2>
+<p>Render the final HD version of a video for a track. The <code>variant_id</code> will determine the aspect ratio.</p>
+<h2 id='final-videos-create-final-video'>Create Final Video</h2>
 <blockquote>
 <p><strong>To create the final video for a track, use the following:</strong></p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span>
-<span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"https://api.rotorvideos.com/api/partner/v1/tracks/:id/videos"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
@@ -1024,12 +1295,15 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This creates the video asynchronously. Use this endpoint in combination with the get video endpoint to identify when the final video is ready.</p>
+<p>This creates the video asynchronously. Use this endpoint in combination with the get video endpoint to identify when the
+final video is ready.</p>
 
 <aside class="notice">
 The <code>video_url</code> will return as <code>null</code> here because this process is asynchronous. The <code>video_url</code> will be populated when the upload has finished.
 </aside>
-<h3 id='data-attributes'>Data Attributes</h3>
+<h3 id='final-videos-create-final-video-http-request'>HTTP Request</h3>
+<p><code>POST &quot;https://api.rotorvideos.com/api/partner/v1/tracks/:id/videos&quot;</code></p>
+<h3 id='final-videos-create-final-video-data-attributes'>Data Attributes</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1045,11 +1319,11 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 <td>A unique identifier for the variant you want to render.</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-final-video'>Get A Final Video</h2>
+<h2 id='final-videos-get-a-final-video'>Get A Final Video</h2>
 <blockquote>
 <p><strong>To get the renders for a variant use the following:</strong></p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos/31"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://rotorvideos.com/api/partner/v1/tracks/:id/videos/:variant_id"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -1072,18 +1346,35 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
           </span><span class="nl">"progress_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nl">"aspect_ratio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16x9"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="err">]</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Return a final video for a given variant id.</p>
-<h2 id='get-all-final-videos'>Get All Final Videos</h2>
+<h3 id='final-videos-get-a-final-video-http-request'>HTTP Request</h3>
+<p><code>GET &quot;https://rotorvideos.com/api/partner/v1/tracks/:id/videos/:variant_id&quot;</code></p>
+<h3 id='final-videos-get-a-final-video-url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>A unique identifier for the track.</td>
+</tr>
+<tr>
+<td>variant_id</td>
+<td>A unique identifier for the variant you want to render.</td>
+</tr>
+</tbody></table>
+<h2 id='final-videos-get-all-final-videos'>Get All Final Videos</h2>
 <blockquote>
 <p><strong>To get all the final HD videos for a track, use the following:</strong></p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://rotorvideos.com/api/partner/v1/tracks/unique-identifier/videos"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://rotorvideos.com/api/partner/v1/tracks/:id/videos"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
 </code></pre></div>
@@ -1123,6 +1414,274 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Return all rendered final videos.</p>
+<h3 id='final-videos-get-all-final-videos-http-request'>HTTP Request</h3>
+<p><code>GET &quot;https://rotorvideos.com/api/partner/v1/tracks/:id/videos&quot;</code></p>
+<h3 id='final-videos-get-all-final-videos-url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>A unique identifier for the track.</td>
+</tr>
+</tbody></table>
+<h1 id='orders'>Orders</h1>
+<p>In the Rotor Embeddable on your website, when the User wants to render (purchase) a final video, an Order is created on the Rotor API with a unique ID (UUID), in the <code>pending</code> state.</p>
+
+<p>You can transact a purchase for this Order UUID as needed, and when the user&#39;s Order is authorized/checked out on your website, a server-to-server request is required to initiate the render of the final video, and complete the Order.</p>
+<h2 id='orders-finalize-single-order'>Finalize Single Order</h2>
+<blockquote>
+<p><strong>Finalize a single Order:</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"https://api.rotorvideos.com/api/partner/v1/orders/:uuid/finalize"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;user access token&gt;"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Response:</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49951b56-96ca-4bea-8cdb-c6875b33ce72"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rite - Rotor Pretenders [CANVAS]"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"order_paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-26T12:17:47.576Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-26T12:18:17.215Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"total_credits"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"remote_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-user-12345"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"remote_track_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-track-12345"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"remote_release_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-release-12345"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"assets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"88066362-141b-11ee-a6aa-4e8eb07e0621"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"render"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"style_used"</span><span class="p">:</span><span class="w"> </span><span class="s2">"High Contrast canvas"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-26T12:18:16.246Z"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="s2">"2023-06-26T12:18:48.828Z"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"progress"</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"render_started_at"</span><span class="p">:</span><span class="s2">"2023-06-26T12:18:17.426Z"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"render_completed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"specification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"bitrate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"container"</span><span class="p">:</span><span class="s2">"mp4"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"frame_rate"</span><span class="p">:</span><span class="mf">30.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"output_width"</span><span class="p">:</span><span class="mi">1080</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"output_height"</span><span class="p">:</span><span class="mi">1920</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"duration"</span><span class="p">:</span><span class="mf">8.0</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='orders-finalize-single-order-http-request'>HTTP Request</h3>
+<p><code>POST &quot;https://api.rotorvideos.com/api/partner/v1/orders/:uuid/finalize&quot;</code></p>
+<h3 id='orders-finalize-single-order-url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>A unique identifier for the Order.</td>
+</tr>
+</tbody></table>
+<h2 id='orders-finalize-multiple-orders'>Finalize Multiple Orders</h2>
+<blockquote>
+<p><strong>Finalize multiple Orders:</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"https://api.rotorvideos.com/api/partner/v1/orders/finalize"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;user access token&gt;"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "data": {
+      "type": "orders",
+      "attributes":  {
+        "order_uuids": [
+          "49951b56-96ca-4bea-8cdb-c6875b33ce72",
+          "49951b56-96ca-4bea-8cdb-c6875b44df83"
+        ]
+      }
+    }
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Response:</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49951b56-96ca-4bea-8cdb-c6875b33ce72"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49951b56-96ca-4bea-8cdb-c6875b44df83"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="err">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre></div><h3 id='orders-finalize-multiple-orders-http-request'>HTTP Request</h3>
+<p><code>POST &quot;https://api.rotorvideos.com/api/partner/v1/orders/finalize&quot;</code></p>
+<h3 id='orders-finalize-multiple-orders-data-attributes'>Data Attributes</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order_uuids</td>
+<td>An array of unique identifiers for the Orders.</td>
+</tr>
+</tbody></table>
+<h2 id='orders-get-order'>Get Order</h2>
+<blockquote>
+<p><strong>GET an Order by UUID:</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XGET</span> <span class="s2">"https://api.rotorvideos.com/api/partner/v1/orders/:uuid"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;user access token&gt;"</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Response:</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49951b56-96ca-4bea-8cdb-c6875b33ce72"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>A single Order can be retrieved with the following request.</p>
+<h3 id='orders-get-order-http-request'>HTTP Request</h3>
+<p><code>GET &quot;https://api.rotorvideos.com/api/partner/v1/orders/:uuid&quot;</code></p>
+<h3 id='orders-get-order-url-parameters'>URL parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>A unique identifier for the Order.</td>
+</tr>
+</tbody></table>
+<h2 id='orders-get-all-orders'>Get All Orders</h2>
+<blockquote>
+<p><strong>GET all Orders:</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XGET</span> <span class="s2">"https://api.rotorvideos.com/api/partner/v1/orders"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;user access token&gt;"</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Response:</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49951b56-96ca-4bea-8cdb-c6875b33ce72"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49951b56-96ca-4bea-8cdb-c6875b33ab12"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>All Orders for a user can be retrieved with the following request.</p>
+<h3 id='orders-get-all-orders-http-request'>HTTP Request</h3>
+<p><code>GET &quot;https://api.rotorvideos.com/api/partner/v1/orders&quot;</code></p>
+<h1 id='webhooks'>Webhooks</h1>
+<p>The Rotor API will fire webhooks to registered endpoints, per application. For example, every time an order is placed in an embeddable, and finalized, a webhook will be sent to the application&#39;s registered endpoints, that are subscribed to that event.</p>
+<h2 id='webhooks-webhook-endpoints'>Webhook Endpoints</h2>
+<p>Rotor needs to know where to send events. You can register multiple webhooks with Rotor by emailing engineering@rotorvideos.com.</p>
+
+<p>You will need to provide the publicly accessible HTTPS URL to your webhook endpoint, and select the type of events you’re receiving in your endpoint.</p>
+<h2 id='webhooks-webhook-events'>Webhook Events</h2>
+<p>Rotor API will fire webhooks for the following events:</p>
+<h3 id='webhooks-webhook-events-event-order-finalized'>Event: <code>order.finalized</code></h3>
+<blockquote>
+<p><strong>An example webhook payload for <code>order.finalized</code></strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8997ae3c-1d9f-4421-9064-c2a8ab386fa0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order.finalized"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-02-13 13:09:42.654463"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49951b56-96ca-4bea-8cdb-c6875b33ce72"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"order"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rite - Rotor Pretenders [CANVAS]"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-26T12:17:47.576Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-26T12:18:17.215Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_credits"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remote_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-user-12345"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remote_track_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-track-12345"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remote_release_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-release-12345"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"assets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"88066362-141b-11ee-a6aa-4e8eb07e0621"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"render"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"style_used"</span><span class="p">:</span><span class="w"> </span><span class="s2">"High Contrast canvas"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-26T12:18:16.246Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="s2">"2023-06-26T12:18:48.828Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"progress"</span><span class="p">:</span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://rotorvideos-heroku-production-uploads.storage.googleapis.com/output/1.mp4?1687781928"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"render_started_at"</span><span class="p">:</span><span class="s2">"2023-06-26T12:18:17.426Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"render_completed_at"</span><span class="p">:</span><span class="s2">"2023-06-26T12:18:48.216Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"specification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"bitrate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"container"</span><span class="p">:</span><span class="s2">"mp4"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"frame_rate"</span><span class="p">:</span><span class="mf">30.0</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"output_width"</span><span class="p">:</span><span class="mi">1080</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"output_height"</span><span class="p">:</span><span class="mi">1920</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"duration"</span><span class="p">:</span><span class="mf">8.0</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>When the renders for the order have been completed and uploaded to the cloud, Rotor marks the order as complete, and triggers <code>order.finalized</code></p>
 <h1 id='errors'>Errors</h1>
 <p>The Rotor Partner API uses the following error codes:</p>
 
@@ -1173,6 +1732,941 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 <td>Service Unavailable</td>
 </tr>
 </tbody></table>
+<h1 id='javascript-api'>JavaScript API</h1><h1 id='react'>React</h1><h2 id='react-installation'>Installation</h2>
+<blockquote>
+<p><strong>Add NPM Registry token to your <code>.npmrc</code> file</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>@rotorvideos:registry<span class="o">=</span>https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken<span class="o">=</span>&lt;insert token here&gt;
+</code></pre></div>
+<blockquote>
+<p><strong>Install the package</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>npm <span class="nb">install</span> @rotorvideos/react
+<span class="c">## or </span>
+yarn add @rotorvideos/react
+</code></pre></div>
+<p>To install the package, you need to add the NPM Registry token to your <code>.npmrc</code> file. You can find the token your
+Partners Dashboard. And then you can install the package using <code>npm</code> or <code>yarn</code>.</p>
+<h2 id='react-rotorvideosprovider'>RotorVideosProvider</h2>
+<blockquote>
+<p><strong>Example</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">RotorVideosProvider</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@rotorvideos/react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">RotorVideosProvider</span>
+      <span class="na">authConfig</span><span class="p">=</span><span class="si">{</span><span class="p">{</span>
+        <span class="nx">accessToken</span><span class="p">,</span>
+        <span class="nx">clientId</span><span class="p">,</span>
+      <span class="p">}</span><span class="si">}</span>
+      <span class="na">theme</span><span class="p">=</span><span class="si">{</span><span class="nx">customTheme</span><span class="si">}</span>
+    <span class="p">&gt;</span>
+      ...
+    <span class="p">&lt;/</span><span class="nc">RotorVideosProvider</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Wrap your application with the <code>RotorVideosProvider</code> component to provide the necessary configuration for the Rotor
+Videos components.</p>
+<h3 id='react-rotorvideosprovider-parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authConfig</td>
+<td>AuthConfig</td>
+<td>The authentication configuration</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>availableTracks</td>
+<td>ExternalTrack[]</td>
+<td>The list of available Partner tracks for the user.</td>
+<td>No</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>children</td>
+<td>ReactNode</td>
+<td>The children components to be wrapped by the provider.</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>cartApi</td>
+<td>CartApi</td>
+<td>The cart API configuration</td>
+<td>No</td>
+<td>-</td>
+</tr>
+<tr>
+<td>creationFlows</td>
+<td>(motion,canvas)[]</td>
+<td>The list of available creation flows for the user.</td>
+<td>No</td>
+<td>[&#39;motion&#39;, &#39;canvas&#39;]</td>
+</tr>
+<tr>
+<td>showOrderPage</td>
+<td>boolean</td>
+<td>Show the order page after the user has added video to the cart</td>
+<td>No</td>
+<td>true</td>
+</tr>
+<tr>
+<td>showDuplicateAction</td>
+<td>boolean</td>
+<td>Show the duplicate action for the Video</td>
+<td>No</td>
+<td>true</td>
+</tr>
+<tr>
+<td>logLevel</td>
+<td>quiet,debug</td>
+<td>The console log level</td>
+<td>No</td>
+<td>quiet</td>
+</tr>
+<tr>
+<td>localisationResources</td>
+<td>LocalisationResources</td>
+<td>The localisation strings for the components. <a href="#localization">see more</a></td>
+<td>No</td>
+<td>-</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>AppTheme</td>
+<td>The theme overrides object <a href="#theming">see more</a></td>
+<td>No</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h3 id='react-rotorvideosprovider-authconfig'>AuthConfig</h3>
+<blockquote>
+<p><strong>Example of an AuthConfig</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"accessToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user-access-token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-app-client-id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The <code>authConfig</code> object contains the necessary information to authenticate the user with the Rotor Videos API.
+It is defined as follows:</p>
+
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accessToken</td>
+<td>string</td>
+<td>The access token for the user.</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>clientId</td>
+<td>string</td>
+<td>The client ID for the partner application.</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h3 id='react-rotorvideosprovider-externaltrack'>ExternalTrack</h3>
+<blockquote>
+<p><strong>Example of an ExternalTrack</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-track-1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-api"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"artistName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rotor Pretenders"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-release-1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rotor Pretenders Debut Album"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseArtworkUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/release-1-artwork.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trackName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Track 1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"artworkUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/artwork.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"audioUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/audio.mp3"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The <code>ExternalTrack</code> object represents a track available for the user to select. It is defined as follows:</p>
+
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>The unique identifier for the Partner&#39;s track.</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>artistName</td>
+<td>string</td>
+<td>The name of the artist.</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>trackName</td>
+<td>string</td>
+<td>The name of the track.</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>artworkUrl</td>
+<td>string</td>
+<td>The URL of the track&#39;s artwork.</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>audioUrl</td>
+<td>string</td>
+<td>The URL of the track&#39;s audio file.</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>providerName</td>
+<td>string</td>
+<td>The name of the track&#39;s provider.</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>releaseId</td>
+<td>string</td>
+<td>The unique identifier for the release.</td>
+<td>No</td>
+<td>null</td>
+</tr>
+<tr>
+<td>releaseName</td>
+<td>string</td>
+<td>The name of the release.</td>
+<td>No</td>
+<td>null</td>
+</tr>
+<tr>
+<td>releaseType</td>
+<td>album, compilation, single</td>
+<td>The type of the release.</td>
+<td>No</td>
+<td>null</td>
+</tr>
+<tr>
+<td>releaseArtworkUrl</td>
+<td>string</td>
+<td>The URL of the release&#39;s artwork.</td>
+<td>No</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<h3 id='react-rotorvideosprovider-cartapi'>CartApi</h3>
+<blockquote>
+<p><strong>Example of a CartApi</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">cartApi</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">addToCart</span><span class="p">:</span> <span class="p">(</span><span class="na">cartItem</span><span class="p">:</span> <span class="nx">CartItem</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="p">},</span>
+  <span class="na">removeFromCart</span><span class="p">:</span> <span class="p">(</span><span class="na">orderUuid</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="p">},</span>
+  <span class="na">openCart</span><span class="p">:</span> <span class="p">(</span><span class="na">cartItem</span><span class="p">:</span> <span class="nx">CartItem</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Example of a CartItem</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="p">{</span>
+  <span class="nl">orderUuid</span><span class="p">:</span> <span class="dl">'</span><span class="s1">cart-item-uuid</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nl">trackId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nl">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Track 1</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>cartApi</code> object contains the necessary functions to manage the cart. It is defined as follows:</p>
+
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>addToCart</td>
+<td>(cartItem: CartItem) =&gt; void</td>
+<td>The function to add an item to the cart.</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>removeFromCart</td>
+<td>(orderUuid: string) =&gt; void</td>
+<td>The function to remove an item from the cart.</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>openCart</td>
+<td>(cartItem: CartItem) =&gt; void</td>
+<td>The function to open the cart.</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h2 id='react-userotorvideos'>useRotorVideos</h2>
+<blockquote>
+<p><strong>Example</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useRotorVideos</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@rotorvideos/react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">open</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useRotorVideos</span><span class="p">();</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">open</span><span class="p">({</span> <span class="na">providerReferenceId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span> <span class="p">})</span><span class="si">}</span><span class="p">&gt;</span>
+        Create Video
+      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>useRotorVideos</code> hook provides access to the Rotor Videos context. It returns the following properties:</p>
+
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>open</td>
+<td>(options: OpenOptions?) =&gt; void</td>
+<td>The function to open the Rotor Videos modal.</td>
+</tr>
+<tr>
+<td>close</td>
+<td>() =&gt; void</td>
+<td>The function to close the Rotor Videos modal.</td>
+</tr>
+</tbody></table>
+<h3 id='react-userotorvideos-openoptions'>OpenOptions</h3>
+<blockquote>
+<p><strong>OpenOptions Example</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="p">{</span>
+  <span class="nl">providerReferenceId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>OpenOptions</code> object contains the necessary information to open the Rotor Videos modal. It is defined as follows:</p>
+
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>providerReferenceId</td>
+<td>string</td>
+<td>The unique identifier for the Partner&#39;s track</td>
+<td>No</td>
+<td>null</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Whenever the <code>providerReferenceId</code> is not provided, the Rotor Embeddable will open the Dashboard with all user created videos.
+This flow doesn't allow the user to create a new video, as there is no track reference to start the creation process.
+</aside>
+<h2 id='react-rotorvideossmartbutton'>RotorVideosSmartButton</h2>
+<blockquote>
+<p><strong>Example</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">RotorVideosProvider</span><span class="p">,</span> <span class="nx">RotorVideosSmartButton</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@rotorvideos/react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;</span><span class="nc">RotorVideosProvider</span> <span class="si">{</span><span class="p">...</span><span class="nx">options</span><span class="si">}</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nc">RotorVideosSmartButton</span> <span class="na">providerReferenceId</span><span class="p">=</span><span class="s">"partner-demo-track-1"</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;/</span><span class="nc">RotorVideosProvider</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Example button label states</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight markdown tab-markdown"><code><span class="p">-</span> <span class="sb">`Loading...`</span> when the track is being imported
+<span class="p">-</span> <span class="sb">`Failed to load!`</span> when the track failed to import
+<span class="p">-</span> <span class="sb">`Your Videos ({{count}})`</span> when the track already has videos
+<span class="p">-</span> <span class="sb">`Make Videos`</span> when the track is ready to create videos
+</code></pre></div>
+<p>The <code>RotorVideosSmartButton</code> component is a button that opens the Rotor Videos modal when clicked.</p>
+<h3 id='react-rotorvideossmartbutton-parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>providerReferenceId</td>
+<td>string</td>
+<td>The unique identifier for the Partner&#39;s track</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>as</td>
+<td>ElementType</td>
+<td>The element type of the button (HTML tag or React component)</td>
+<td>No</td>
+<td>&#39;button&#39;</td>
+</tr>
+</tbody></table>
+
+<p>The rest of the props are passed to the button element.</p>
+<h1 id='bundle'>Bundle</h1><h2 id='bundle-installation'>Installation</h2>
+<blockquote>
+<p><strong>Add the script to the page</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>App<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"rv-embeddable-1.0.0.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+      <span class="c1">// Use the Rotor Embeddable here</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div>
+<p>From the Partners Dashboard, you can download the JavaScript bundle. The bundle is a standalone JavaScript and contains the necessary functionality to
+integrate the Rotor Embeddable into your website without the need to use React. </p>
+
+<p>In fact, the bundle uses React version of the Rotor Embeddable, with slightly different interface. See the
+<a href="#react">React</a> section for more information.</p>
+<h2 id='bundle-usage'>Usage</h2>
+<blockquote>
+<p><strong>Example</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">commonConfig</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">authConfig</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">accessToken</span><span class="p">:</span> <span class="dl">'</span><span class="s1">your-access-token</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">clientId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">your-client-id</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">availableTracks</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">providerName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-api</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">artistName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Rotor Pretenders</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">releaseId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-release-1</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">releaseType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">single</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">releaseName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Rotor Pretenders Debut Album</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">releaseArtworkUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://example.com/partner-demo-1/release-1-artwork.jpg</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">trackName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Track 1</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">artworkUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://example.com/partner-demo-1/artwork.jpg</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">audioUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://example.com/partner-demo-1/audio.mp3</span><span class="dl">'</span>
+    <span class="p">},</span>
+  <span class="p">],</span>
+<span class="p">};</span>
+
+<span class="nx">RotorVideos</span><span class="p">.</span><span class="nx">open</span><span class="p">({</span>
+  <span class="p">...</span><span class="nx">commonConfig</span><span class="p">,</span>
+  <span class="na">providerReferenceId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>The bundle exposes a global object <code>RotorVideos</code> that you can use to interact with the embeddable. It has the following methods:</p>
+
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>open</td>
+<td>(options: GlobalOpenOptions) =&gt; void</td>
+<td>The function to open the Rotor Videos modal.</td>
+</tr>
+<tr>
+<td>close</td>
+<td>() =&gt; void</td>
+<td>The function to close the Rotor Videos modal.</td>
+</tr>
+<tr>
+<td>smartButton</td>
+<td>(element: Element, props: RotorVideosSmartButtonProps): void</td>
+<td>The function to create a theme for the Rotor Videos components.</td>
+</tr>
+</tbody></table>
+<h3 id='bundle-usage-rotorvideos-open'>RotorVideos.open</h3>
+<blockquote>
+<p><strong>GlobalOpenOptions Definition</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">type</span> <span class="nx">GlobalOpenOptions</span> <span class="o">=</span> <span class="nx">RotorVideosProviderOptions</span> <span class="o">&amp;</span> <span class="p">{</span> <span class="na">providerReferenceId</span><span class="p">:</span> <span class="kr">string</span> <span class="p">};</span>
+</code></pre></div>
+<p>The <code>RotorVideos.open</code> method opens the Rotor Embeddable with the given configuration.
+It accepts an object with the same properties as the React&#39;s <a href="#react-rotorvideosprovider">RotorVideosProvider</a>
+and an additional <code>providerReferenceId</code> property, to open the embeddable for a specific track.</p>
+<h3 id='bundle-usage-rotorvideos-close'>RotorVideos.close</h3>
+<p>The <code>RotorVideos.close</code> method closes the Rotor Embeddable.</p>
+<h3 id='bundle-usage-rotorsvideos-smartbutton'>RotorsVideos.smartButton</h3>
+<blockquote>
+<p><strong>Example</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="nx">RotorVideos</span><span class="p">.</span><span class="nx">smartButton</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">),</span> <span class="p">{</span>
+  <span class="na">providerReferenceId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">as</span><span class="p">:</span> <span class="dl">'</span><span class="s1">button</span><span class="dl">'</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>The <code>RotorVideos.smartButton</code> method creates a button in given DOM <code>element</code> that opens the Rotor Embeddable
+with the same properties as the React&#39;s <a href="#react-rotorvideossmartbutton">RotorVideosSmartButton</a>.</p>
+<h1 id='theming'>Theming</h1><h2 id='theming-default-theme'>Default theme</h2>
+<blockquote>
+<p><strong>Default Rotor Theme</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">defaultTheme</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">dimensions</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">appbarHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">8.4em</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">appbarHeightClips</span><span class="p">:</span> <span class="dl">'</span><span class="s1">8.4em</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">appHeaderHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">8.4em</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">appHeaderMobileHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">6.8em</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">mobileFixedFooterHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">8.4em</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">wizardLayout</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">actionsHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">9.4em</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">optionsWidth</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">md</span><span class="p">:</span> <span class="dl">'</span><span class="s1">36em</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">lg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">42em</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">xl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">48em</span><span class="dl">'</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">fontFamily</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">regular</span><span class="p">:</span> <span class="dl">'</span><span class="s1">neue-haas-grotesk-text, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">display</span><span class="p">:</span> <span class="dl">'</span><span class="s1">neue-haas-grotesk-display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">titling</span><span class="p">:</span> <span class="dl">'</span><span class="s1">titling-gothic-fb, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">titlingBold</span><span class="p">:</span> <span class="dl">'</span><span class="s1">titling-gothic-fb-wide, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">monospace</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">palette</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">grayscale</span><span class="p">:</span> <span class="p">{</span>
+      <span class="mi">0</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#ffffff</span><span class="dl">'</span><span class="p">,</span>
+      <span class="mi">10</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#e7e7e7</span><span class="dl">'</span><span class="p">,</span>
+      <span class="mi">20</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#d2d2d2</span><span class="dl">'</span><span class="p">,</span>
+      <span class="mi">30</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#bbbbbb</span><span class="dl">'</span><span class="p">,</span>
+      <span class="mi">40</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#a5a5a5</span><span class="dl">'</span><span class="p">,</span>
+      <span class="mi">50</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#8e8e8e</span><span class="dl">'</span><span class="p">,</span>
+      <span class="mi">60</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#787878</span><span class="dl">'</span><span class="p">,</span>
+      <span class="mi">70</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#616161</span><span class="dl">'</span><span class="p">,</span>
+      <span class="mi">80</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#4b4b4b</span><span class="dl">'</span><span class="p">,</span>
+      <span class="mi">90</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#343434</span><span class="dl">'</span><span class="p">,</span>
+      <span class="mi">100</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
+      <span class="mi">110</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#0f0f0f</span><span class="dl">'</span>
+    <span class="p">},</span>
+    <span class="na">text</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">default</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">inverse</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">white</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">black</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span>
+    <span class="p">},</span>
+    <span class="na">backgrounds</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">default</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">inverse</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">white</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">black</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span>
+    <span class="p">},</span>
+    <span class="na">brand</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">primary</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#00bad8</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">secondary</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#f15c99</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">hotpink</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#eb2782</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">facebook</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#3b5998</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">twitter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#5ea9dd</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">google</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#4285f4</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">youtube</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#e5272b</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">vimeo</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1eb6e9</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">spotify</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1db954</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">soundcloud</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#f50</span><span class="dl">'</span>
+    <span class="p">},</span>
+    <span class="na">utility</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">info</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#0192d0</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">error</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#da1e28</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">success</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#37cd7d</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">warning</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fef3cd</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">zIndex</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">floatingActionButton</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+    <span class="na">notification</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+    <span class="na">clipDrawerBackdrop</span><span class="p">:</span> <span class="mi">160</span><span class="p">,</span>
+    <span class="na">stickyHeader</span><span class="p">:</span> <span class="mi">160</span><span class="p">,</span>
+    <span class="na">clipDrawer</span><span class="p">:</span> <span class="mi">170</span><span class="p">,</span>
+    <span class="na">activeUploads</span><span class="p">:</span> <span class="mi">190</span><span class="p">,</span>
+    <span class="na">footer</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+    <span class="na">sidebar</span><span class="p">:</span> <span class="mi">550</span><span class="p">,</span>
+    <span class="na">popout</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+    <span class="na">header</span><span class="p">:</span> <span class="mi">700</span><span class="p">,</span>
+    <span class="na">modalOverlay</span><span class="p">:</span> <span class="mi">1050</span><span class="p">,</span>
+    <span class="na">modalContent</span><span class="p">:</span> <span class="mi">1060</span><span class="p">,</span>
+    <span class="na">popoverContent</span><span class="p">:</span> <span class="mi">1070</span><span class="p">,</span>
+    <span class="na">menuContent</span><span class="p">:</span> <span class="mi">1080</span><span class="p">,</span>
+    <span class="na">tooltip</span><span class="p">:</span> <span class="mi">1090</span><span class="p">,</span>
+    <span class="na">flashMessage</span><span class="p">:</span> <span class="mi">2000</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>theme</code> object provided to the <a href="#react-rotorvideosprovider">RotorVideosProvider</a>  contains the styling configuration for
+the Rotor Videos components. When it is not empty,
+the resulted theme is a combination of provided and default theme. The merging of the two themes uses deep merge, so you
+can override any part of the default theme.</p>
+<h1 id='localization'>Localization</h1><h2 id='localization-localization-resources'>Localization resources</h2>
+<blockquote>
+<p><strong>Definitions</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">type</span> <span class="nx">Language</span> <span class="o">=</span> <span class="kr">string</span><span class="p">;</span>
+<span class="kd">type</span> <span class="nx">Namespace</span> <span class="o">=</span> <span class="kr">string</span><span class="p">;</span>
+<span class="kd">type</span> <span class="nx">LocalisationResources</span> <span class="o">=</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="nx">Language</span><span class="p">,</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="nx">Namespace</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Default Localizations</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"en"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"general"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"retry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Try again"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Close"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"or"</span><span class="p">:</span><span class="w"> </span><span class="s2">"or"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"general_error_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something went wrong"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"general_error_message_with_refresh"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something went wrong. Please refresh the page."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"premium_clip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Premium Clip"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"premium_collection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Premium Collection"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"play"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Play"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"view"</span><span class="p">:</span><span class="w"> </span><span class="s2">"View"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"view_all"</span><span class="p">:</span><span class="w"> </span><span class="s2">"View all"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"back"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Back"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"done"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Done"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"new"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"clips"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clips"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"beta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beta"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"remove"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"use"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"images"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Images"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"go_back"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Go back"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"delete"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"video"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"progress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Video in progress"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{totalProgress}}% complete"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"draft"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Draft"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"card_actions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"menu_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"More"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"delete"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"duplicate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Duplicate"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"download_video"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{aspectRatio}} Video"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Videos"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"create_video_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create New Video"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"show_more_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Show more videos"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"processing_audio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing audio..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"download"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Download"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cart"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Added to cart ✅"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open cart"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"add"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add to cart"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"canvas_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canvas Video"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"album_motion_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Album Motion Video"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"create_video_dialog"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What do you want to create?"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"album_motion_video"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple Artwork"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"canvas_video"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spotify Canvas Video"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"delete_video_dialog"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"loading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deleting..."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Are you sure you want to delete this video?"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"duplicate_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Make another version"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"purchased_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You've purchased this video"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cart_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Canvas Video has been added to the cart"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"download_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Download video"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remove_from_cart_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove from cart"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order confirmation #{{outputId}}"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"smart_button"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"error_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed to load!"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"loading_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Loading..."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"videos_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Videos ({{count}})"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"make_videos_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Make Videos"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"album_motion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"asset_step"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"artwork_alt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Selected artwork"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"browse_uploads"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Browse your uploads"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"change_artwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Change Artwork"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"guideline_notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please read &lt;2&gt;apple’s guidelines&lt;/2&gt; to ensure your artwork is accepted"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"square_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1:1 Artwork"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"upload_info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Recommended Size 3840px x 3840px"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"upload_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Drop an image here"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"wizard_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Step 1: Add Artwork"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"upload_error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please upload a square image"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"style_step"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"wizard_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Step 2: Choose Style"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"canvas"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"applying_loading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applying..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"wizard_heading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create Your Canvas"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"looping_mode_step"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Choose Looping Mode"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Select hard or seamless video looping"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"preview_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Preview Canvas"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"customization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"edit_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edit snippet"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Select Snippet"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Position the crop and select a 3-8 second snippet of the video"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canvas videos are vertical and 3 to 8 seconds long"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"submit_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use Snippet"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"upload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"choose_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Select a video clip from your device"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"choose_clip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Choose a clip from our extensive library"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"drop_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Drop a video clip here"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"browse_library"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Browse our clip library"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"audio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"choose_file_tooltip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Click to add your audio"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"alert_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heads up: Your final Canvas video won't contain any audio"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"alert_details_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Find out why →"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"alert_confirm_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ok, got it"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remove"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove Audio"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"upload"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Upload"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"applying_style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applying {{style}} Style"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Choose a different clip or style and try again"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"track"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title_placeholder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Song Title"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"artist_name_placeholder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Artist Name"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"add_details"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add your track details"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"preview_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"video"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Video only"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"clips_step"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"list_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Select 3-8 seconds of your video clip to use in your canvas"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add Clip"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add your own content or use a clip from our library"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clip Added"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"style_step"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Choose Style"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Styles add visual effects to your video"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"clips_selector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"processing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uploading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uploading"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"delete_upload"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete this upload"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"create_video_modal_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add this clip to your music or canvas video"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"create_video_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Make a video with this clip"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"clip_details_collection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Part of the &lt;1&gt;{{name}}&lt;/1&gt; Collection"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Keywords"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"clip_details_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clip: {{uuid}} {{appTitle}}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"featured_clips"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Featured Clips"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"aria_list_of_clips"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List of clips"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collections"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Collections"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"moods"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moods"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"search_clips"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Search Clips"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"search_result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;strong&gt;{{count}}&lt;/strong&gt; result"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"search_result_other"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;strong&gt;{{count}}&lt;/strong&gt; results"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"search_result_with_term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;strong&gt;{{ count }}&lt;/strong&gt; result for </span><span class="se">\"</span><span class="s2">{{searchQuery}}</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"search_result_with_term_other"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;strong&gt;{{ count }}&lt;/strong&gt; results for </span><span class="se">\"</span><span class="s2">{{searchQuery}}</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"popular_keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Popular Keywords"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"show_more_clips"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Show more clips"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"library_menu_item"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Library"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uploads_menu_item"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uploaded Clips"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collection_exclusive_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Exclusive to {{scope}}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collection_details_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{collection}} Clips {{appTitle}}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collection_clips_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{count}} Clip"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collection_clips_count_other"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{count}} Clips"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collections_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Collections {{appTitle}}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"too_many_files_error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You're attempting to upload too many files simultaneously. The maximum is {{maxFiles}}."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"upload_clips_touch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tap here to upload files"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"upload_clips_desktop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Drop files here to upload"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"supported_extensions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We support {{supportedExtensions}}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"max_clips_alert"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You've reached the limit of clips ({{maxClips}}) that can be used with this style"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mood_details_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{mood}} Clips {{appTitle}}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"moods_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moods | Clips {{appTitle}}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"output_progress_header_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clip selected"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"output_progress_header_count_other"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clips selected"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"smart_select_clips_loading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finding clips…"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"smart_select_clips"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smart Select Clips"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"remove_all"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove all"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"similar_clips_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"More Like This"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"remove_clip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove this clip"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"added_clip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Added"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"adding_clip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adding"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tooltip_max_clips_limit_reached"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your selected video style allows you to use up to {{maxClips}} clips"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"use_clip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use this clip"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uploads_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uploads {{appTitle}}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"user_uploads"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Uploads"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"show_more_uploads"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Show more uploads"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filter_uploads_all"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All Uploads"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filter_uploads_all_short"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"ui"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"create_video_modal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"video_name_header"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Give your new {{videoTypeLabel}} Video a name"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"video_name_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Video name"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"video_name_placeholder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e.g. Your Track Name"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"creation_flow_header"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What do you want to create?"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"creation_flow"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"rotor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Music Video"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use our footage or upload clips to create your music video"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"artwork"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Art Track Video"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Just add your artwork for a video that vibes to the beat"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"canvas"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spotify Canvas Video"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A 3-8 second loop video for your track on Spotify"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"lyrics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lyric Video"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Promote your music with dynamic, professional lyric videos"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"motion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple Music Album Motion"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Put your Album Art in motion with our tool designed for Apple Music"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"delete_clip_modal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"error_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something went wrong, please try again later."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"error_back_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Go back"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"videos_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deleting this clip will remove it from videos you have created"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"videos_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"If your videos are still in progress we recommend that you complete and download your videos before deleting the clip."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"videos_back_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Never mind, go back"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"videos_confirm_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete clip anyway"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"affected_videos_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This clip is used in {{count}} video"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"affected_videos_count_other"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This clip is used in {{count}} videos"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Are you sure you want to delete this clip?"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"back_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No, go back"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirm_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yes, delete clip"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"error_alert"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please refresh the page and try again. If the problem persists contact support."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reload_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reload Page"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"file_uploader"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"permission_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Do you have permission to use this file?"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"permission_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We don't want you getting in trouble for using copyrighted material"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"permission_confirm_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yes I do"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"permission_cancel_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No I don't"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"drag_accept_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Those files look good. Go ahead and drop them."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"drag_reject_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some of the files will not be uploaded"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"image_uploader_dragging"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Drop this file to upload your image"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"maintenance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"fallback"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We are currently performing maintenance. We will be back shortly."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_acceptance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Due to unforeseen technical issues, we are currently unable to accept orders."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"closing_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thank you for your patience and understanding."</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"style_group_list"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"compact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Styles add visual effects to your video"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"user_active_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"user_history_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"History"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The <code>localisationResources</code> object provided to the <a href="#react-rotorvideosprovider">RotorVideosProvider</a> component is used to
+localize or override
+the text strings used in the Rotor Videos components.
+By providing this object, you can override the default localizations, as it uses deep merge to combine both objects.</p>
+<h2 id='localization-language-detection'>Language detection</h2>
+<blockquote>
+<p><strong>Language detection source</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight markdown tab-markdown"><code><span class="p">-</span> cookie (set cookie i18next=LANGUAGE)
+<span class="p">-</span> sessionStorage (set key i18nextLng=LANGUAGE)
+<span class="p">-</span> localStorage (set key i18nextLng=LANGUAGE)
+<span class="p">-</span> navigator (set browser language)
+<span class="p">-</span> querystring (append ?lng=LANGUAGE to URL)
+<span class="p">-</span> htmlTag (add html language tag &lt;html lang="LANGUAGE" ...)
+<span class="p">-</span> path (http://my.site.com/LANGUAGE/...)
+<span class="p">-</span> subdomain (http://LANGUAGE.site.com/...)
+
+</code></pre></div>
+<p>By default, the current language is automatically detected from the user&#39;s browser, but you can also set the language
+manually
+by following the instructions
+in <a href="https://github.com/i18next/i18next-browser-languageDetector">i18next-browser-languageDetector</a> plugin.</p>
+<h2 id='localization-adding-new-language'>Adding new language</h2>
+<blockquote>
+<p><strong>Example of a new language localization</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"es"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"general"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"retry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Intentar de nuevo"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cerrar"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>In order to add a new language, you need to provide a new top-level key, which is the language code, in
+the <code>localisationResources</code> object.</p>
 
       </div>
       <div class="dark-box">
