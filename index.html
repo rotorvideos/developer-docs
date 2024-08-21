@@ -469,6 +469,9 @@
                   <li>
                     <a href="#theming-default-theme" class="toc-h2 toc-link" data-title="Default theme">Default theme</a>
                   </li>
+                  <li>
+                    <a href="#theming-theme-components" class="toc-h2 toc-link" data-title="Theme Components">Theme Components</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -2261,7 +2264,7 @@ with the same properties as the React&#39;s <a href="#react-rotorvideossmartbutt
 <blockquote>
 <p><strong>Default Rotor Theme</strong></p>
 </blockquote>
-<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">defaultTheme</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
   <span class="na">dimensions</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">appbarHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">8.4em</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">appbarHeightClips</span><span class="p">:</span> <span class="dl">'</span><span class="s1">8.4em</span><span class="dl">'</span><span class="p">,</span>
@@ -2348,12 +2351,542 @@ with the same properties as the React&#39;s <a href="#react-rotorvideossmartbutt
     <span class="na">tooltip</span><span class="p">:</span> <span class="mi">1090</span><span class="p">,</span>
     <span class="na">flashMessage</span><span class="p">:</span> <span class="mi">2000</span>
   <span class="p">},</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">AudioPlayer</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">theme</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">primaryColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">backgroundColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">transparent</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">barColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">timeColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">rgba(255, 255, 255, 0.7)</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="na">Button</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">theme</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">borderRadius</span><span class="p">:</span> <span class="dl">'</span><span class="s1">100em</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">borderRadiusAlt</span><span class="p">:</span> <span class="dl">'</span><span class="s1">5px</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">fontFamily</span><span class="p">:</span>
+            <span class="dl">'</span><span class="s1">neue-haas-grotesk-display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">fontSize</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">xs</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1em</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">sm</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1.2em</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">md</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1.4em</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">lg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1.6em</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">xl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1.8em</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">xxl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">2em</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">xxxl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">2.2em</span><span class="dl">'</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="na">fontWeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">600</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">gap</span><span class="p">:</span> <span class="dl">'</span><span class="s1">0.8em</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">height</span><span class="p">:</span> <span class="dl">'</span><span class="s1">3em</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">heightTall</span><span class="p">:</span> <span class="dl">'</span><span class="s1">4.4em</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">lineHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">outline</span><span class="p">:</span> <span class="dl">'</span><span class="s1">0</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">outlineOffset</span><span class="p">:</span> <span class="dl">'</span><span class="s1">0</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">paddingInline</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1.6em</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">paddingInlineWide</span><span class="p">:</span> <span class="dl">'</span><span class="s1">3.2em</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">palette</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">labelInverse</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">primary</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#00bad8</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">primaryHover</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#00A1BF</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">primaryActive</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#00A1BF</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">primaryFocus</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#00A1BF</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">primaryFocusOutline</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#00A1BF</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">primaryHoverFocus</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#00A1BF</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">secondary</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#f15c99</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">secondaryHover</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#D84380</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">secondaryActive</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#D84380</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">secondaryFocus</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#D84380</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">secondaryFocusOutline</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#D84380</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">secondaryHoverFocus</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#D84380</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">tertiary</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">tertiaryBorder</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">tertiaryLabel</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">tertiaryLabelInverse</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">tertiaryHover</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">tertiaryActive</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">tertiaryFocus</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">tertiaryFocusOutline</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">tertiaryHoverFocus</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="na">transition</span><span class="p">:</span>
+            <span class="dl">'</span><span class="s1">background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="na">MenuItem</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">theme</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">rgba(255, 255, 255, 0.9)</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">activeBackgroundColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#000</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="na">RangeInput</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">theme</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">trackColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#28d3ea</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">trackBgColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#979797</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">trackHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">4px</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">thumbColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#bef2f9</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">thumbSize</span><span class="p">:</span> <span class="dl">'</span><span class="s1">12px</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="na">Slider</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">theme</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">navigationSize</span><span class="p">:</span> <span class="dl">'</span><span class="s1">3em</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">navigationColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">paginationSize</span><span class="p">:</span> <span class="dl">'</span><span class="s1">.8em</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">paginationColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>The <code>theme</code> object provided to the <a href="#react-rotorvideosprovider">RotorVideosProvider</a>  contains the styling configuration for
 the Rotor Videos components. When it is not empty,
 the resulted theme is a combination of provided and default theme. The merging of the two themes uses deep merge, so you
 can override any part of the default theme.</p>
+<h2 id='theming-theme-components'>Theme Components</h2>
+<blockquote>
+<p><strong>Theme Components Definition</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">type</span> <span class="nx">ThemeProps</span> <span class="o">=</span> <span class="p">{</span> <span class="na">theme</span><span class="p">:</span> <span class="nx">AppTheme</span><span class="p">;</span> <span class="p">};</span>
+<span class="kd">type</span> <span class="nx">ComponentStyle</span><span class="o">&lt;</span><span class="nx">ComponentProps</span> <span class="o">=</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;&gt;</span> <span class="o">=</span> <span class="nx">Interpolation</span><span class="o">&lt;</span><span class="nx">ThemeProps</span> <span class="o">&amp;</span> <span class="nx">ComponentProps</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="kd">type</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="nx">ThemeDataProps</span> <span class="o">=</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;&gt;</span> <span class="o">=</span> <span class="nx">ThemeDataProps</span> <span class="o">|</span> <span class="p">((</span><span class="nx">theme</span><span class="p">:</span> <span class="nx">AppTheme</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">ThemeDataProps</span><span class="p">);</span>
+
+<span class="kd">type</span> <span class="nx">GenericThemeComponents</span> <span class="o">=</span> <span class="nb">Record</span><span class="o">&lt;</span>
+  <span class="kr">string</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="nx">theme</span><span class="p">?:</span> <span class="nx">ComponentThemeData</span><span class="p">;</span>
+    <span class="nl">defaultProps</span><span class="p">?:</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="nl">styleOverrides</span><span class="p">?:</span> <span class="nb">Record</span><span class="o">&lt;</span>
+      <span class="kr">string</span><span class="p">,</span>
+      <span class="nx">ComponentStyle</span>
+    <span class="o">&gt;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Theme Components Examples</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code>
+<span class="kd">const</span> <span class="nx">theme</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">...,</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">StyleGroupTabs</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c1">// Component with custom props</span>
+        <span class="na">StyleGroupTabsItem</span><span class="p">:</span> <span class="p">({</span> <span class="nx">theme</span><span class="p">,</span> <span class="nx">active</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">active</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">{</span>
+              <span class="na">color</span><span class="p">:</span> <span class="nx">theme</span><span class="p">.</span><span class="nx">palette</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">inverse</span><span class="p">,</span>
+              <span class="dl">'</span><span class="s1">&amp;:after</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">backgroundColor</span><span class="p">:</span> <span class="nx">theme</span><span class="p">.</span><span class="nx">palette</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">inverse</span><span class="p">,</span>
+              <span class="p">},</span>
+            <span class="p">};</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="na">VideoCard</span><span class="p">:</span> <span class="p">{</span>
+      <span class="c1">// Theme as a function</span>
+      <span class="na">theme</span><span class="p">:</span> <span class="p">(</span><span class="nx">theme</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+        <span class="na">backgroundColor</span><span class="p">:</span> <span class="nx">theme</span><span class="p">.</span><span class="nx">palette</span><span class="p">.</span><span class="nx">backgrounds</span><span class="p">.</span><span class="nx">inverse</span><span class="p">,</span>
+        <span class="na">textColor</span><span class="p">:</span> <span class="nx">theme</span><span class="p">.</span><span class="nx">palette</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">inverse</span><span class="p">,</span>
+      <span class="p">}),</span>
+    <span class="p">},</span>
+    <span class="na">VideoCardDownloadButton</span><span class="p">:</span> <span class="p">{</span>
+      <span class="c1">// Override default props</span>
+      <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">primary</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="na">VideoPlayerControls</span><span class="p">:</span> <span class="p">{</span>
+      <span class="c1">// Override styles with theme</span>
+      <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">VideoPlayerControlsRoot</span><span class="p">:</span> <span class="p">({</span> <span class="nx">theme</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">({</span>
+          <span class="na">backgroundColor</span><span class="p">:</span> <span class="nx">theme</span><span class="p">.</span><span class="nx">palette</span><span class="p">.</span><span class="nx">backgrounds</span><span class="p">.</span><span class="nx">black</span><span class="p">,</span>
+        <span class="p">}),</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="na">WizardStep</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c1">// Override styles as an object</span>
+        <span class="na">WizardStepMeta</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">opacity</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="p">},</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div>
+<blockquote>
+<p><strong>Theme Components Properties</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">type</span> <span class="nx">ThemeComponents</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">ActionButton</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">AffectedVideos</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">showVideosList</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">AlbumMotionArtworkAsset</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">AlbumMotionArtworkAssetInfo</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">AlbumMotionArtworkButton</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">showIcon</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">AlbumMotionArtworkUploaderIdle</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">AlbumMotionArtworkUploaderInfo</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">AudioPlayer</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
+      <span class="na">primaryColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">backgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">barColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">timeColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">Button</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
+      <span class="na">borderRadius</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">borderRadiusAlt</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">fontFamily</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">fontSize</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">xs</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">sm</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">md</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">lg</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">xl</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">xxl</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">xxxl</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="na">fontWeight</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">gap</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">height</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">heightTall</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">lineHeight</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">outline</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">outlineOffset</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">paddingInline</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">paddingInlineWide</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">palette</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">label</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">labelInverse</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">primary</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">primaryHover</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">primaryActive</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">primaryFocus</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">primaryFocusOutline</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">primaryHoverFocus</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">secondary</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">secondaryHover</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">secondaryActive</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">secondaryFocus</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">secondaryFocusOutline</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">secondaryHoverFocus</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">tertiary</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">tertiaryBorder</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">tertiaryLabel</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">tertiaryLabelInverse</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">tertiaryHover</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">tertiaryActive</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">tertiaryFocus</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">tertiaryFocusOutline</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="na">tertiaryHoverFocus</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="na">transition</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">CanvasCartActionButton</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">CanvasWizardFooter</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">CanvasWizardFooterPreview</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">CarouselViewAllLink</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">CarouselViewAllLinkRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">ClipCustomizationEditButton</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">showIcon</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">ClipsLibraryPage</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">ClipsLibraryMobileSearchLink</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">ClipsSearchBox</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">ClipsSearchBoxInput</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">ClipsSelectorCloseButton</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">useIcon</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">ClipsTabs</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">ClipsTabsRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+      <span class="na">ClipsTabsLink</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">ClipsUploader</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">ClipsMobileButton</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">ClipsUploaderBrowseButton</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">showIcon</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">CompactWizardContainer</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">CompactWizardContainerRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">CreateVideoModal</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">CreateVideoModalRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+      <span class="na">CreateVideoOption</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+      <span class="na">CreateVideoOptionTitle</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+      <span class="na">CreateVideoOptionIconWrapper</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="o">&lt;</span><span class="p">{</span> <span class="na">creationFlow</span><span class="p">:</span> <span class="nx">CreationFlow</span> <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">CropAdjustmentFrame</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">alwaysEditing</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">CropDragHandle</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">CropDragHandleInner</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">DialogModal</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">mode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">light</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">dark</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">FileUploadCard</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">showHelp</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">FileUploadCardRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+      <span class="na">FileUploadCardIcon</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+      <span class="na">FileUploadCardDropzone</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">FileUploader</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">enabledLegalNotice</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">FileUploaderCard</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">FileUploaderCardRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">FileUploaderCardDragging</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">small</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">FileUploaderCopyright</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">FileUploaderCopyrightCancelButton</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">FileUploaderDragOverlay</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">FileUploaderDragOverlayRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">Flash</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">FlashContainer</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">FullscreenModal</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">FullscreenModalRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">Header</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">HeaderRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">MenuItem</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
+      <span class="na">color</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">activeBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="p">}</span><span class="o">&gt;</span>
+  <span class="p">},</span>
+  <span class="na">ModalContent</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">ModalContentRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">ModalHeader</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
+      <span class="na">backgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">textColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">borderColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">MoodCard</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">MoodCardRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="o">&lt;</span><span class="p">{</span> <span class="na">state</span><span class="p">:</span> <span class="dl">'</span><span class="s1">tab-item</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">list-item</span><span class="dl">'</span> <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">NewVideoCard</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">NewVideoCardRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">NextPageButton</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">NextPageButtonContent</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">OrderCanvasContent</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
+      <span class="na">backgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">textColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">borderColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">PreviewModal</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">PreviewModalCloseButton</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">RangeInput</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
+      <span class="na">trackColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">trackBgColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">trackHeight</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">thumbColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">thumbSize</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">RotorLoadingIcon</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">RotorLoadingIconStyleProps</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">SelectedClipCard</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">SelectedClipCardRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+      <span class="na">SelectedClipCardOverlay</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+      <span class="na">SelectedClipCardFooter</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">SelectedClipsList</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">SelectedClipsListRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+
+  <span class="na">Slider</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
+      <span class="na">navigationSize</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">navigationColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">paginationSize</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">paginationColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">StyleCard</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">StyleCardTitle</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+      <span class="na">StyleCardThumb</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">StyleGroupTabs</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">StyleGroupTabsItem</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="o">&lt;</span><span class="p">{</span> <span class="na">active</span><span class="p">:</span> <span class="nx">boolean</span> <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">ToggleClipSelectionButton</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
+      <span class="na">color</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">UploadsPage</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">UploadsPageContent</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">VideoCard</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
+      <span class="na">backgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+      <span class="na">textColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">VideoCardActions</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
+      <span class="na">variant</span><span class="p">:</span> <span class="nx">ButtonVariant</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">VideoCardCartActionButton</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
+      <span class="na">variant</span><span class="p">:</span> <span class="nx">ButtonVariant</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">VideoCardDownloadButton</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">VideoPlayerControls</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">VideoPlayerControlsRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">WizardAsset</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">WizardAssetTitle</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">WizardStep</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">WizardStepIcon</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="o">&lt;</span><span class="p">{</span> <span class="na">expanded</span><span class="p">:</span> <span class="nx">boolean</span> <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="na">WizardStepTitle</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+      <span class="na">WizardStepToggleTitle</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="o">&lt;</span><span class="p">{</span> <span class="na">expanded</span><span class="p">:</span> <span class="nx">boolean</span> <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="na">WizardStepMeta</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>components</code> property of the theme object is a record of components that can be styled. Each component can have the following properties:</p>
+
+<ul>
+<li><code>theme</code>: This property is used to define the theme-specific styles for the component. If it&#39;s a function, it can use the current theme to compute the styles.</li>
+<li><code>defaultProps</code>: This property is used to define and override the default props for the component.</li>
+<li><code>styleOverrides</code>: This property is used to define and override the styles for the children styled components.</li>
+</ul>
 <h1 id='localization'>Localization</h1><h2 id='localization-localization-resources'>Localization resources</h2>
 <blockquote>
 <p><strong>Definitions</strong></p>
