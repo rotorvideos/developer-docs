@@ -2,6 +2,16 @@
 
 ## Installation
 
+> **Add NPM Registry token to your `.npmrc` file**
+
+```shell
+@rotorvideos:registry=https://us-npm.pkg.dev/rotor-lf-client/rotor-lf-npm/
+//us-npm.pkg.dev/rotor-lf-client/rotor-lf-npm/:_password="<insert token here>"
+//us-npm.pkg.dev/rotor-lf-client/rotor-lf-npm/:username=_json_key_base64
+//us-npm.pkg.dev/rotor-lf-client/rotor-lf-npm/:email=not.valid@email.com
+//us-npm.pkg.dev/rotor-lf-client/rotor-lf-npm/:always-auth=true
+``` 
+
 > **Install the package**
 
 ```shell
@@ -10,7 +20,7 @@ npm install @rotorvideos/react
 yarn add @rotorvideos/react
 ```
 
-To install the package, you need to add the NPM Registry configuration to your `.npmrc` file. You can find the config in your
+To install the package, you need to add the NPM Registry token to your `.npmrc` file. You can find the token in your
 Partners Dashboard. And then you can install the package using `npm` or `yarn`.
 
 ## RotorVideosProvider
