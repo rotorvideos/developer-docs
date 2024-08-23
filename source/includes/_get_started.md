@@ -154,5 +154,5 @@ also provide a native javascript bundle and interface.
 Through the embeddable, we ingest an artist's data, including Releases, Tracks, and accompanying assets. We use these in
 the background to feed the video creation process.
 
-See the <a href='#orders-finalize-single-order'>Finalize Order</a> for more details.
+See the <a href='#javascript-api'>JavaScript API</a> for more details.
 
