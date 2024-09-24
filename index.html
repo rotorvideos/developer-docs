@@ -663,9 +663,9 @@ the background to feed the video creation process.</p>
   </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>In order to make API requests, you must first authorize the application, using the Oauth Client ID and Client Secret provided.</p>
+<p>In order to make API requests, you must first authorize your application, using the Oauth Client ID and Client Secret provided by Rotor to your organization.</p>
 
-<p>Your Application Oauth Access Token is retrieved, to be used to fetch the user&#39;s Oauth Access Token for all subsequent requests.</p>
+<p>This request returns your Partner Access Token which can be used to generate a User Access Token for subsequent requests.</p>
 <h3 id='authentication-authorize-application-http-request'>HTTP Request</h3>
 <p><code>POST &quot;https://api.rotorvideos.com/oauth/token&quot;</code></p>
 <h3 id='authentication-authorize-application-data-attributes'>Data Attributes</h3>
@@ -682,7 +682,7 @@ the background to feed the video creation process.</p>
 </tbody></table>
 <h2 id='authentication-register-fetch-user'>Register/Fetch User</h2>
 <blockquote>
-<p><strong>Fetch the user&#39;s Oauth Access Token:</strong></p>
+<p><strong>Fetch the User&#39;s Oauth Access Token:</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-XPOST</span> <span class="s2">"https://api.rotorvideos.com/api/partner/v1/register"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;insert token here&gt;"</span> <span class="se">\</span>
@@ -708,8 +708,26 @@ the background to feed the video creation process.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<blockquote>
+<p><strong>Providing optional attributes, in this case additonal Partner API credentials</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"access_token"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"optional_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"api_key_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;identifier&gt;"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"secret_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;secret&gt;"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>Register a user for the Partner API; if they exist in our system, an access token is returned. If not, we generate a new
 account, then return an access token for them.</p>
+
+<p>Depending on the scope of the integration agreed with Rotor, you may need to pass additional optional attributes. These additional attributes will be stored with the Rotor user and may be used for <em>eg</em> reciprocal API access</p>
 <h3 id='authentication-register-fetch-user-http-request'>HTTP Request</h3>
 <p><code>POST &quot;https://api.rotorvideos.com/api/partner/v1/register&quot;</code></p>
 <h3 id='authentication-register-fetch-user-data-attributes'>Data Attributes</h3>
@@ -722,6 +740,10 @@ account, then return an access token for them.</p>
 <tr>
 <td>remote_user_id</td>
 <td>A unique identifier (on the partner platform) for the user.</td>
+</tr>
+<tr>
+<td>optional_attributes</td>
+<td>(<em>Optional</em>) For some Partner integrations, additional information may need to be provided. These can be provided nested within this attribute. Unrecognised optional attributes will be ignored.</td>
 </tr>
 </tbody></table>
 <h1 id='tracks'>Tracks</h1><h2 id='tracks-create-track'>Create Track</h2>
