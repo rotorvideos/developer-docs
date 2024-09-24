@@ -22,9 +22,9 @@ curl -XPOST "https://api.rotorvideos.com/oauth/token" \
 }
 ```
 
-In order to make API requests, you must first authorize the application, using the Oauth Client ID and Client Secret provided.
+In order to make API requests, you must first authorize your application, using the Oauth Client ID and Client Secret provided by Rotor to your organization.
 
-Your Application Oauth Access Token is retrieved, to be used to fetch the user's Oauth Access Token for all subsequent requests.
+This request returns your Partner Access Token which can be used to generate a User Access Token for subsequent requests.
 
 ### HTTP Request
 
@@ -38,7 +38,7 @@ Your Application Oauth Access Token is retrieved, to be used to fetch the user's
 
 ## Register/Fetch User
 
-> **Fetch the user's Oauth Access Token:**
+> **Fetch the User's Oauth Access Token:**
 
 ```shell
 curl -XPOST "https://api.rotorvideos.com/api/partner/v1/register" \
