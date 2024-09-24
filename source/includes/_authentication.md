@@ -67,8 +67,27 @@ curl -XPOST "https://api.rotorvideos.com/api/partner/v1/register" \
 }
 ```
 
+> **Providing optional attributes, in this case additonal Partner API credentials**
+
+```json
+{
+  "data": {
+    "type" : "access_token",
+    "attributes": {
+      "access_token": "1234567890",
+      "optional_attributes": {
+          "api_key_id": "<identifier>",
+          "secret_key": "<secret>"
+      }
+    }
+  }
+}
+```
+
 Register a user for the Partner API; if they exist in our system, an access token is returned. If not, we generate a new
 account, then return an access token for them.
+
+Depending on the scope of the integration agreed with Rotor, you may need to pass additional optional attributes. These additional attributes will be stored with the Rotor user and may be used for _eg_ reciprocal API access
 
 ### HTTP Request
 
@@ -76,6 +95,7 @@ account, then return an access token for them.
 
 ### Data Attributes
 
-| Parameter      | Description                                                 |
-|----------------|-------------------------------------------------------------|
-| remote_user_id | A unique identifier (on the partner platform) for the user. |
+| Parameter           | Description
+|---------------------|-------------------------------------------------------------|
+| remote_user_id      | A unique identifier (on the partner platform) for the user.
+| optional_attributes | (_Optional_) For some Partner integrations, additional information may need to be provided. These can be provided nested within this attribute. Unrecognised optional attributes will be ignored.
