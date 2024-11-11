@@ -21,7 +21,7 @@ yarn add @rotorvideos/react
 ```
 
 To install the package, you need to add the NPM Registry token to your `.npmrc` file. You can find the token in your
-Partners Dashboard. And then you can install the package using `npm` or `yarn`.
+Partners Dashboard (Engineering -> JavaScript Integration). And then you can install the package using `npm` or `yarn`.
 
 ## RotorVideosProvider
 

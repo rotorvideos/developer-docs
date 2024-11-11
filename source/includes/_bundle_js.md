@@ -18,8 +18,13 @@
 </html>
 ```
 
-From the Partners Dashboard, you can download the JavaScript bundle. The bundle is a standalone JavaScript and contains the necessary functionality to
-integrate the Rotor Embeddable into your website without the need to use React. 
+In order to download the JavaScript bundle, follow the steps below:
+
+1. Follow the steps in the [React](#react) section to get the necessary credentials, obtain NPM Auth Token and create 
+a `.npmrc` file.
+2. In an empty folder run `npm init -y` to create a new `package.json` file.
+3. Run `npm pack  @rotorvideos/web && tar -xzf *.tgz` to download the JavaScript bundle.
+4. In the `package/dist` folder, you will find the `rv-embeddable-1.0.0.js` file.
 
 In fact, the bundle uses React version of the Rotor Embeddable, with slightly different interface. See the
 [React](#react) section for more information.
