@@ -126,7 +126,7 @@ const App = () => {
     clientId: 'partner-app-client-id',
   }
 
-  const availableTracks = [
+  const mediaAssets = [
     {
       id: 'partner-demo-track-1',
       ...
@@ -136,10 +136,10 @@ const App = () => {
   return (
     <RotorVideosProvider
       authConfig={authConfig}
-      availableTracks={availableTracks}
+      mediaAssets={mediaAssets}
     >
-      {availableTracks.map(track => (
-        <RotorVideosSmartButton key={track.id} providerReferenceId={track.id}/>
+      {mediaAssets.map(mediaAsset => (
+        <RotorVideosSmartButton key={mediaAsset.id} providerReferenceId={mediaAsset.id}/>
       ))}
     </RotorVideosProvider>
   );

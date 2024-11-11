@@ -39,7 +39,7 @@ const commonConfig = {
     accessToken: 'your-access-token',
     clientId: 'your-client-id',
   },
-  availableTracks: [
+  mediaAssets: [
     {
       id: 'partner-demo-track-1',
       providerName: 'partner-demo-api',
