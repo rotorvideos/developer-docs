@@ -53,7 +53,8 @@ Videos components.
 | Prop Name             | Type                  | Description                                                            | Required | Default              |
 |-----------------------|-----------------------|------------------------------------------------------------------------|----------|----------------------|
 | authConfig            | AuthConfig            | The authentication configuration                                       | Yes      | -                    |
-| availableTracks       | ExternalTrack[]       | The list of available Partner tracks for the user.                     | No       | []                   |
+| mediaAssets           | MediaAsset[]          | The list of available Partner assets for the user.                     | No       | []                   |
+| availableTracks       | MediaAsset[]          | Deprecated, please use `mediaAssets` instead                           | No       | []                   |
 | children              | ReactNode             | The children components to be wrapped by the provider.                 | Yes      | -                    |
 | cartApi               | CartApi               | The cart API configuration                                             | No       | -                    |
 | creationFlows         | (motion,canvas)[]     | The list of available creation flows for the user.                     | No       | ['motion', 'canvas'] |
@@ -62,6 +63,7 @@ Videos components.
 | logLevel              | quiet,debug           | The console log level                                                  | No       | quiet                |
 | localisationResources | LocalisationResources | The localisation strings for the components. [see more](#localization) | No       | -                    |
 | theme                 | AppTheme              | The theme overrides object [see more](#theming)                        | No       | -                    |
+| variant               | default,lite          | The variant of the embeddable                                          | No       | default              |
 
 ### AuthConfig
 
@@ -82,9 +84,9 @@ It is defined as follows:
 | accessToken | string | The access token for the user.             | Yes      | -       |
 | clientId    | string | The client ID for the partner application. | Yes      | -       |
 
-### ExternalTrack
+### MediaAsset
 
-> **Example of an ExternalTrack**
+> **Example of a MediaAsset**
 
 ```json
 {
@@ -101,16 +103,16 @@ It is defined as follows:
 }
 ```
 
-The `ExternalTrack` object represents a track available for the user to select. It is defined as follows:
+The `MediaAsset` object represents an asset available for the user to select. It is defined as follows:
 
 | Prop Name         | Type                       | Description                                    | Required | Default |
 |-------------------|----------------------------|------------------------------------------------|----------|---------|
 | id                | string                     | The unique identifier for the Partner's track. | Yes      | -       |
-| artistName        | string                     | The name of the artist.                        | Yes      | -       |
+| artistName        | string                     | The name of the track's artist.                | Yes      | -       |
 | trackName         | string                     | The name of the track.                         | Yes      | -       |
 | artworkUrl        | string                     | The URL of the track's artwork.                | Yes      | -       |
 | audioUrl          | string                     | The URL of the track's audio file.             | Yes      | -       |
-| providerName      | string                     | The name of the track's provider.              | Yes      | -       |
+| providerName      | string                     | The name of the media asset provider.          | Yes      | -       |
 | releaseId         | string                     | The unique identifier for the release.         | No       | null    |
 | releaseName       | string                     | The name of the release.                       | No       | null    |
 | releaseType       | album, compilation, single | The type of the release.                       | No       | null    |
@@ -138,6 +140,7 @@ const cartApi = {
   orderUuid: 'cart-item-uuid';
   trackId: 'partner-demo-track-1';
   title: 'Track 1';
+  creationFlow: 'canvas';
 }
 ```
 
@@ -188,9 +191,10 @@ The `useRotorVideos` hook provides access to the Rotor Videos context. It return
 
 The `OpenOptions` object contains the necessary information to open the Rotor Videos modal. It is defined as follows:
 
-| Prop Name           | Type   | Description                                   | Required | Default |
-|---------------------|--------|-----------------------------------------------|----------|---------|
-| providerReferenceId | string | The unique identifier for the Partner's track | No       | null    |
+| Prop Name           | Type          | Description                                                                  | Required | Default |
+|---------------------|---------------|------------------------------------------------------------------------------|----------|---------|
+| providerReferenceId | string        | The unique identifier for the Partner's track                                | No       | null    |
+| creationFlow        | canvas,motion | The creation flow to open the modal with. Requires the `providerReferenceId` | No       | null    |
 
 <aside class="notice">
 Whenever the <code>providerReferenceId</code> is not provided, the Rotor Embeddable will open the Dashboard with all user created videos.
