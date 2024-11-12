@@ -1775,7 +1775,7 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 yarn add @rotorvideos/react
 </code></pre></div>
 <p>To install the package, you need to add the NPM Registry token to your <code>.npmrc</code> file. You can find the token in your
-Partners Dashboard. And then you can install the package using <code>npm</code> or <code>yarn</code>.</p>
+Partners Dashboard (Engineering -&gt; JavaScript Integration). And then you can install the package using <code>npm</code> or <code>yarn</code>.</p>
 <h2 id='react-rotorvideosprovider'>RotorVideosProvider</h2>
 <blockquote>
 <p><strong>Example</strong></p>
@@ -2203,8 +2203,15 @@ This flow doesn't allow the user to create a new video, as there is no track ref
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div>
-<p>From the Partners Dashboard, you can download the JavaScript bundle. The bundle is a standalone JavaScript and contains the necessary functionality to
-integrate the Rotor Embeddable into your website without the need to use React. </p>
+<p>In order to download the JavaScript bundle, follow the steps below:</p>
+
+<ol>
+<li>Follow the steps in the <a href="#react">React</a> section to get the necessary credentials, obtain NPM Auth Token and create 
+a <code>.npmrc</code> file.</li>
+<li>In an empty folder run <code>npm init -y</code> to create a new <code>package.json</code> file.</li>
+<li>Run <code>npm pack  @rotorvideos/web &amp;&amp; tar -xzf *.tgz</code> to download the JavaScript bundle.</li>
+<li>In the <code>package/dist</code> folder, you will find the <code>rv-embeddable-1.0.0.js</code> file.</li>
+</ol>
 
 <p>In fact, the bundle uses React version of the Rotor Embeddable, with slightly different interface. See the
 <a href="#react">React</a> section for more information.</p>
