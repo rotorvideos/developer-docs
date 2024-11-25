@@ -48,7 +48,27 @@ curl -XPOST "https://api.rotorvideos.com/api/partner/v1/register" \
     "data": {
       "type" : "user",
       "attributes": {
-        "remote_user_id": "123456"
+        "remote_user_id": "123456",
+      }
+    }
+  }'
+```
+
+> **Providing optional attributes, in this case additional Partner API credentials:**
+
+```shell
+curl -XPOST "https://api.rotorvideos.com/api/partner/v1/register" \
+  -H "Authorization: Bearer <insert token here>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "data": {
+      "type" : "user",
+      "attributes": {
+        "remote_user_id": "123456",
+        "optional_attributes": {
+          "api_url": "<identifier>",
+          "api_secret_key": "<secret>",
+        },
       }
     }
   }'
@@ -62,23 +82,6 @@ curl -XPOST "https://api.rotorvideos.com/api/partner/v1/register" \
     "type" : "access_token",
     "attributes": {
       "access_token": "1234567890"
-    }
-  }
-}
-```
-
-> **Providing optional attributes, in this case additonal Partner API credentials**
-
-```json
-{
-  "data": {
-    "type" : "access_token",
-    "attributes": {
-      "access_token": "1234567890",
-      "optional_attributes": {
-          "api_key_id": "<identifier>",
-          "secret_key": "<secret>"
-      }
     }
   }
 }
