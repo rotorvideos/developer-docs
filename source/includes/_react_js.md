@@ -86,7 +86,7 @@ It is defined as follows:
 
 ### MediaAsset
 
-> **Example of a MediaAsset**
+> **Example of a MediaAsset for a Track with Release**
 
 ```json
 {
@@ -103,15 +103,27 @@ It is defined as follows:
 }
 ```
 
+> **Example of a MediaAsset for a Release**
+
+```json
+{
+  "providerName": "partner-demo-api",
+  "releaseId": "partner-demo-release-1",
+  "releaseType": "single",
+  "releaseName": "Rotor Pretenders Debut Album",
+  "releaseArtworkUrl": "https://example.com/partner-demo-1/release-1-artwork.jpg"
+}
+```
+
 The `MediaAsset` object represents an asset available for the user to select. It is defined as follows:
 
 | Prop Name         | Type                       | Description                                    | Required | Default |
 |-------------------|----------------------------|------------------------------------------------|----------|---------|
-| id                | string                     | The unique identifier for the Partner's track. | Yes      | -       |
-| artistName        | string                     | The name of the track's artist.                | Yes      | -       |
-| trackName         | string                     | The name of the track.                         | Yes      | -       |
-| artworkUrl        | string                     | The URL of the track's artwork.                | Yes      | -       |
-| audioUrl          | string                     | The URL of the track's audio file.             | Yes      | -       |
+| id                | string                     | The unique identifier for the Partner's track. | No       | -       |
+| artistName        | string                     | The name of the track's artist.                | No       | -       |
+| trackName         | string                     | The name of the track.                         | No       | -       |
+| artworkUrl        | string                     | The URL of the track's artwork.                | No       | -       |
+| audioUrl          | string                     | The URL of the track's audio file.             | No       | -       |
 | providerName      | string                     | The name of the media asset provider.          | Yes      | -       |
 | releaseId         | string                     | The unique identifier for the release.         | No       | null    |
 | releaseName       | string                     | The name of the release.                       | No       | null    |
