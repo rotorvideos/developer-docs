@@ -50,21 +50,20 @@ Videos components.
 
 ### Parameters
 
-| Prop Name             | Type                  | Description                                                            | Required | Default              |
-|-----------------------|-----------------------|------------------------------------------------------------------------|----------|----------------------|
-| authConfig            | AuthConfig            | The authentication configuration                                       | Yes      | -                    |
-| mediaAssets           | MediaAsset[]          | The list of available Partner assets for the user.                     | No       | []                   |
-| availableTracks       | MediaAsset[]          | Deprecated, please use `mediaAssets` instead                           | No       | []                   |
-| children              | ReactNode             | The children components to be wrapped by the provider.                 | Yes      | -                    |
-| cartApi               | CartApi               | The cart API configuration                                             | No       | -                    |
-| creationFlows         | (motion,canvas)[]     | The list of available creation flows for the user.                     | No       | ['motion', 'canvas'] |
-| showOrderPage         | boolean               | Show the order page after the user has added video to the cart         | No       | true                 |                                             
-| showDuplicateAction   | boolean               | Show the duplicate action for the Video                                | No       | true                 |
-| logLevel              | quiet,debug           | The console log level                                                  | No       | quiet                |
-| localisationResources | LocalisationResources | The localisation strings for the components. [see more](#localization) | No       | -                    |
-| theme                 | AppTheme              | The theme overrides object [see more](#theming)                        | No       | -                    |
-| variant               | default,lite          | The variant of the embeddable                                          | No       | default              |
-
+| Prop Name             | Type                  | Description                                                                                  | Required | Default              |
+|-----------------------|-----------------------|----------------------------------------------------------------------------------------------|----------|----------------------|
+| authConfig            | AuthConfig            | The authentication configuration                                                             | Yes      | -                    |
+| mediaAssets           | MediaAsset[]          | The list of available Partner assets for the user.                                           | No       | []                   |
+| availableTracks       | MediaAsset[]          | Deprecated, please use `mediaAssets` instead                                                 | No       | []                   |
+| children              | ReactNode             | The children components to be wrapped by the provider.                                       | Yes      | -                    |
+| cartApi               | CartApi               | The cart API configuration                                                                   | No       | -                    |
+| creationFlows         | (motion,canvas)[]     | The list of available creation flows for the user.                                           | No       | ['motion', 'canvas'] |
+| showOrderPage         | boolean               | Show the order page after the user has added video to the cart                               | No       | true                 |                                             
+| showDuplicateAction   | boolean               | Show the duplicate action for the Video                                                      | No       | true                 |
+| logLevel              | quiet,debug           | The console log level                                                                        | No       | quiet                |
+| theme                 | AppTheme              | The theme overrides object [see more](#theming)                                              | No       | -                    |
+| variant               | default,lite          | The variant of the embeddable                                                                | No       | default              |
+| enableCashPayment     | boolean               | Enables direct Stripe payment. Mutually exclusive with `cartApi` and `enableInvoicePayment`. | No       | false                |
 ### AuthConfig
 
 > **Example of an AuthConfig**
@@ -248,3 +247,55 @@ The `RotorVideosSmartButton` component is a button that opens the Rotor Videos m
 | as                  | ElementType | The element type of the button (HTML tag or React component) | No       | 'button' |
 
 The rest of the props are passed to the button element.
+
+## Cash Payment
+
+When cash payment is enabled, all purchases are charged directly.
+
+### Enabling Cash Payment
+
+> **Enable cash payment by passing `enableCashPayment` to `RotorVideosProvider`**
+
+```jsx
+import { RotorVideosProvider, RotorVideosSmartButton } from '@rotorvideos/react';
+
+// NOTE: Take implementation as an example. Please be responsible in handling your credentials for your app.
+const App = () => {
+  const authConfig = {
+    accessToken: 'user-access-token',
+    clientId: 'partner-app-client-id',
+  };
+
+  // SAMPLE DATA
+  const mediaAssets = [
+    {
+      id: 'partner-demo-track-1',
+      providerName: 'partner-demo-api',
+      trackName: 'Track 1',
+      artistName: 'Artist Name',
+      audioUrl: 'https://example.com/audio.mp3',
+      artworkUrl: 'https://example.com/artwork.jpg',
+    }
+  ];
+
+  return (
+    <RotorVideosProvider
+      authConfig={authConfig}
+      mediaAssets={mediaAssets}
+      enableCashPayment={true} // This prop needs to be present and true to enable cash payment
+    >
+      {mediaAssets.map((asset) => (
+        <RotorVideosSmartButton key={asset.id} providerReferenceId={asset.id} />
+      ))}
+    </RotorVideosProvider>
+  );
+};
+```
+
+Pass `enableCashPayment={true}` to `RotorVideosProvider`. This is mutually exclusive with `cartApi` and `enableInvoicePayment` — only one payment mode should be active at a time.
+
+#### Parameters
+
+| Prop Name         | Type    | Description                                                                              | Required | Default |
+|-------------------|---------|------------------------------------------------------------------------------------------|----------|---------|
+| enableCashPayment | boolean | Enables direct Stripe payment. Mutually exclusive with `cartApi` and `enableInvoicePayment`. | No   | false   |
