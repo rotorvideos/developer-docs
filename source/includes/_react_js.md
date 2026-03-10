@@ -50,20 +50,20 @@ Videos components.
 
 ### Parameters
 
-| Prop Name             | Type                  | Description                                                                                  | Required | Default              |
-|-----------------------|-----------------------|----------------------------------------------------------------------------------------------|----------|----------------------|
-| authConfig            | AuthConfig            | The authentication configuration                                                             | Yes      | -                    |
-| mediaAssets           | MediaAsset[]          | The list of available Partner assets for the user.                                           | No       | []                   |
-| availableTracks       | MediaAsset[]          | Deprecated, please use `mediaAssets` instead                                                 | No       | []                   |
-| children              | ReactNode             | The children components to be wrapped by the provider.                                       | Yes      | -                    |
-| cartApi               | CartApi               | The cart API configuration                                                                   | No       | -                    |
-| creationFlows         | (motion,canvas)[]     | The list of available creation flows for the user.                                           | No       | ['motion', 'canvas'] |
-| showOrderPage         | boolean               | Show the order page after the user has added video to the cart                               | No       | true                 |                                             
-| showDuplicateAction   | boolean               | Show the duplicate action for the Video                                                      | No       | true                 |
-| logLevel              | quiet,debug           | The console log level                                                                        | No       | quiet                |
-| theme                 | AppTheme              | The theme overrides object [see more](#theming)                                              | No       | -                    |
-| variant               | default,lite          | The variant of the embeddable                                                                | No       | default              |
-| enableCashPayment     | boolean               | Enables direct Stripe payment. Mutually exclusive with `cartApi` and `enableInvoicePayment`. | No       | false                |
+| Prop Name             | Type                  | Description                                                                                  | Required | Default                                                                                |
+|-----------------------|-----------------------|----------------------------------------------------------------------------------------------|----------|----------------------------------------------------------------------------------------|
+| authConfig            | AuthConfig            | The authentication configuration                                                             | Yes      | -                                                                                      |
+| mediaAssets           | MediaAsset[]          | The list of available Partner assets for the user.                                           | No       | []                                                                                     |
+| availableTracks       | MediaAsset[]          | Deprecated, please use `mediaAssets` instead                                                 | No       | []                                                                                     |
+| children              | ReactNode             | The children components to be wrapped by the provider.                                       | Yes      | -                                                                                      |
+| cartApi               | CartApi               | The cart API configuration                                                                   | No       | -                                                                                      |
+| creationFlows         | (motion,canvas)[]     | The list of available creation flows for the user.                                           | No       | [CreationFlow.canvas, CreationFlow.lyrics, CreationFlow.motion, CreationFlow.artwork]  |
+| showOrderPage         | boolean               | Show the order page after the user has added video to the cart                               | No       | true                                                                                   |                                             
+| showDuplicateAction   | boolean               | Show the duplicate action for the Video                                                      | No       | true                                                                                   |
+| logLevel              | quiet,debug           | The console log level                                                                        | No       | quiet                                                                                  |
+| theme                 | AppTheme              | The theme overrides object [see more](#theming)                                              | No       | -                                                                                      |
+| variant               | default,lite          | The variant of the embeddable                                                                | No       | default                                                                                |
+| enableCashPayment     | boolean               | Enables direct Stripe payment. Mutually exclusive with `cartApi` and `enableInvoicePayment`. | No       | false                                                                                  |
 ### AuthConfig
 
 > **Example of an AuthConfig**
