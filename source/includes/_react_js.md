@@ -163,6 +163,106 @@ The `cartApi` object contains the necessary functions to manage the cart. It is 
 | removeFromCart | (orderUuid: string) => void  | The function to remove an item from the cart. | Yes      | -       |
 | openCart       | (cartItem: CartItem) => void | The function to open the cart.                | Yes      | -       |
 
+Each creation flow in the RotorVideosProvider can be configured with a checkout process, allowing users to add, remove, or view items in a shopping cart. To enable this functionality, you simply pass the `cartApi` prop to the provider with your custom cart handler functions.
+
+#### 1. Implement Cart Handler Functions
+
+First, create the cart functions you want to use for adding, removing, and opening the cart.
+These can be your own functions, or those provided by your app's state management.
+
+```js
+import { useAppConfig } from '../AppConfig';
+
+const {
+    state: { partnerUserId, creationFlowVariant },
+    api: { setIsCartOpen },
+  } = useAppConfig();
+
+  const { data: config, isLoading: isLoadingConfig } = useConfig();
+
+  const addToCart = useAddCartItem();
+  const removeFromCart = useRemoveCartItem();
+  const openCart = useCallback(
+    (_cartItem: CartItem) => {
+      setIsCartOpen(true);
+    },
+    [setIsCartOpen]
+  );
+```
+
+#### 2. Bundle the cart functions with useMemo
+
+Use React's `useMemo` to bundle your cart functions into a single API object:
+
+```js
+import { useMemo } from 'react';
+
+const cartApi = useMemo(
+  () => ({
+    addToCart,
+    removeFromCart,
+    openCart,
+  }),
+  [addToCart, removeFromCart, openCart]
+);
+```
+
+#### 3. Pass the cartApi to the provider
+
+Simply pass the `cartApi` object as a prop to the `RotorVideosProvider`.
+This enables cart actions within all your active creation flows.
+
+```js
+<RotorVideosProvider
+  {...rotorVideosConfig}
+  mediaAssets={compactReleases}
+  theme={releasesDemoTheme}
+  cartApi={cartApi}
+  creationFlows={[CreationFlow.motion, CreationFlow.canvas]}
+  variant={CreationFlowVariant.lite}
+  showDuplicateAction={false}
+>
+  {/* Your app content */}
+</RotorVideosProvider>
+```
+
+### Creation Flows
+
+There are various media types your users can create: **Apple Music Album Motion**, **Spotify Canvas Video**, **Lyric Video**, and **Artwork Video**. By default, all creation flows are available to users. However, you can customize which flows appear by configuring the `creationFlows` prop in the `RotorVideosProvider` when integrating our toolkit into your React app.
+
+#### How Creation Flows Work
+
+- **Creation flows** control which media types will be available for your users to create.
+- By **customizing the `creationFlows` prop**, you choose exactly which flows are available.
+- **Creation flow variants** control the appearance and behavior of each creation flow.
+- **Empty array (`[]`)**: All flows are enabled (default behavior).
+- **Specific entries**: Only the flows listed will be enabled.
+
+#### Available Creation Flows
+
+- `CreationFlow.canvas` — Spotify Canvas video
+- `CreationFlow.motion` — Apple Music Album Motion
+- `CreationFlow.artwork` — Artwork video
+- `CreationFlow.lyrics` — Lyric video
+
+Here's how to use the `creationFlows` prop when integrating the provider into your React app:
+
+>**Example of how to specify the creationFlows available**
+
+```jsx
+<RotorVideosProvider
+  {...rotorVideosConfig}
+  mediaAssets={compactReleases}
+  theme={releasesDemoTheme}
+  cartApi={cartApi}
+  creationFlows={[CreationFlow.motion, CreationFlow.canvas]}
+  variant={CreationFlowVariant.lite}
+  showDuplicateAction={false}
+>
+  {/* Your app content */}
+</RotorVideosProvider>
+```
+
 ## useRotorVideos
 
 > **Example**
