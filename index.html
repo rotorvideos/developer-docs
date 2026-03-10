@@ -2101,7 +2101,89 @@ It is defined as follows:</p>
 <td>-</td>
 </tr>
 </tbody></table>
-<h2 id='react-userotorvideos'>useRotorVideos</h2>
+
+<p>Each creation flow in the RotorVideosProvider can be configured with a checkout process, allowing users to add, remove, or view items in a shopping cart. To enable this functionality, you simply pass the <code>cartApi</code> prop to the provider with your custom cart handler functions.</p>
+<h4 id='react-rotorvideosprovider-cartapi-1-implement-cart-handler-functions'>1. Implement Cart Handler Functions</h4>
+<p>First, create the cart functions you want to use for adding, removing, and opening the cart.
+These can be your own functions, or those provided by your app&#39;s state management.</p>
+<div class="highlight"><pre class="highlight javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useAppConfig</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../AppConfig</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="p">{</span>
+    <span class="na">state</span><span class="p">:</span> <span class="p">{</span> <span class="nx">partnerUserId</span><span class="p">,</span> <span class="nx">creationFlowVariant</span> <span class="p">},</span>
+    <span class="na">api</span><span class="p">:</span> <span class="p">{</span> <span class="nx">setIsCartOpen</span> <span class="p">},</span>
+  <span class="p">}</span> <span class="o">=</span> <span class="nx">useAppConfig</span><span class="p">();</span>
+
+  <span class="kd">const</span> <span class="p">{</span> <span class="na">data</span><span class="p">:</span> <span class="nx">config</span><span class="p">,</span> <span class="na">isLoading</span><span class="p">:</span> <span class="nx">isLoadingConfig</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useConfig</span><span class="p">();</span>
+
+  <span class="kd">const</span> <span class="nx">addToCart</span> <span class="o">=</span> <span class="nx">useAddCartItem</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">removeFromCart</span> <span class="o">=</span> <span class="nx">useRemoveCartItem</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">openCart</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span>
+    <span class="p">(</span><span class="nx">_cartItem</span><span class="p">:</span> <span class="nx">CartItem</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">setIsCartOpen</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="p">[</span><span class="nx">setIsCartOpen</span><span class="p">]</span>
+  <span class="p">);</span>
+</code></pre></div><h4 id='react-rotorvideosprovider-cartapi-2-bundle-the-cart-functions-with-usememo'>2. Bundle the cart functions with useMemo</h4>
+<p>Use React&#39;s <code>useMemo</code> to bundle your cart functions into a single API object:</p>
+<div class="highlight"><pre class="highlight javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useMemo</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">cartApi</span> <span class="o">=</span> <span class="nx">useMemo</span><span class="p">(</span>
+  <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">({</span>
+    <span class="nx">addToCart</span><span class="p">,</span>
+    <span class="nx">removeFromCart</span><span class="p">,</span>
+    <span class="nx">openCart</span><span class="p">,</span>
+  <span class="p">}),</span>
+  <span class="p">[</span><span class="nx">addToCart</span><span class="p">,</span> <span class="nx">removeFromCart</span><span class="p">,</span> <span class="nx">openCart</span><span class="p">]</span>
+<span class="p">);</span>
+</code></pre></div><h4 id='react-rotorvideosprovider-cartapi-3-pass-the-cartapi-to-the-provider'>3. Pass the cartApi to the provider</h4>
+<p>Simply pass the <code>cartApi</code> object as a prop to the <code>RotorVideosProvider</code>.
+This enables cart actions within all your active creation flows.</p>
+<div class="highlight"><pre class="highlight javascript"><code><span class="o">&lt;</span><span class="nx">RotorVideosProvider</span>
+  <span class="p">{...</span><span class="nx">rotorVideosConfig</span><span class="p">}</span>
+  <span class="nx">mediaAssets</span><span class="o">=</span><span class="p">{</span><span class="nx">compactReleases</span><span class="p">}</span>
+  <span class="nx">theme</span><span class="o">=</span><span class="p">{</span><span class="nx">releasesDemoTheme</span><span class="p">}</span>
+  <span class="nx">cartApi</span><span class="o">=</span><span class="p">{</span><span class="nx">cartApi</span><span class="p">}</span>
+  <span class="nx">creationFlows</span><span class="o">=</span><span class="p">{[</span><span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">motion</span><span class="p">,</span> <span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">canvas</span><span class="p">]}</span>
+  <span class="nx">variant</span><span class="o">=</span><span class="p">{</span><span class="nx">CreationFlowVariant</span><span class="p">.</span><span class="nx">lite</span><span class="p">}</span>
+  <span class="nx">showDuplicateAction</span><span class="o">=</span><span class="p">{</span><span class="kc">false</span><span class="p">}</span>
+<span class="o">&gt;</span>
+  <span class="p">{</span><span class="cm">/* Your app content */</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/RotorVideosProvider</span><span class="err">&gt;
+</span></code></pre></div><h3 id='react-rotorvideosprovider-creation-flows'>Creation Flows</h3>
+<p>There are various media types your users can create: <strong>Apple Music Album Motion</strong>, <strong>Spotify Canvas Video</strong>, <strong>Lyric Video</strong>, and <strong>Artwork Video</strong>. By default, all creation flows are available to users. However, you can customize which flows appear by configuring the <code>creationFlows</code> prop in the <code>RotorVideosProvider</code> when integrating our toolkit into your React app.</p>
+<h4 id='react-rotorvideosprovider-creation-flows-how-creation-flows-work'>How Creation Flows Work</h4>
+<ul>
+<li><strong>Creation flows</strong> control which media types will be available for your users to create.</li>
+<li>By <strong>customizing the <code>creationFlows</code> prop</strong>, you choose exactly which flows are available.</li>
+<li><strong>Creation flow variants</strong> control the appearance and behavior of each creation flow.</li>
+<li><strong>Empty array (<code>[]</code>)</strong>: All flows are enabled (default behavior).</li>
+<li><strong>Specific entries</strong>: Only the flows listed will be enabled.</li>
+</ul>
+<h4 id='react-rotorvideosprovider-creation-flows-available-creation-flows'>Available Creation Flows</h4>
+<ul>
+<li><code>CreationFlow.canvas</code> — Spotify Canvas video</li>
+<li><code>CreationFlow.motion</code> — Apple Music Album Motion</li>
+<li><code>CreationFlow.artwork</code> — Artwork video</li>
+<li><code>CreationFlow.lyrics</code> — Lyric video</li>
+</ul>
+
+<p>Here&#39;s how to use the <code>creationFlows</code> prop when integrating the provider into your React app:</p>
+
+<blockquote>
+<p><strong>Example of how to specify the creationFlows available</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nc">RotorVideosProvider</span>
+  <span class="si">{</span><span class="p">...</span><span class="nx">rotorVideosConfig</span><span class="si">}</span>
+  <span class="na">mediaAssets</span><span class="p">=</span><span class="si">{</span><span class="nx">compactReleases</span><span class="si">}</span>
+  <span class="na">theme</span><span class="p">=</span><span class="si">{</span><span class="nx">releasesDemoTheme</span><span class="si">}</span>
+  <span class="na">cartApi</span><span class="p">=</span><span class="si">{</span><span class="nx">cartApi</span><span class="si">}</span>
+  <span class="na">creationFlows</span><span class="p">=</span><span class="si">{</span><span class="p">[</span><span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">motion</span><span class="p">,</span> <span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">canvas</span><span class="p">]</span><span class="si">}</span>
+  <span class="na">variant</span><span class="p">=</span><span class="si">{</span><span class="nx">CreationFlowVariant</span><span class="p">.</span><span class="nx">lite</span><span class="si">}</span>
+  <span class="na">showDuplicateAction</span><span class="p">=</span><span class="si">{</span><span class="kc">false</span><span class="si">}</span>
+<span class="p">&gt;</span>
+  <span class="si">{</span><span class="cm">/* Your app content */</span><span class="si">}</span>
+<span class="p">&lt;/</span><span class="nc">RotorVideosProvider</span><span class="p">&gt;</span>
+</code></pre></div><h2 id='react-userotorvideos'>useRotorVideos</h2>
 <blockquote>
 <p><strong>Example</strong></p>
 </blockquote>
