@@ -450,6 +450,9 @@
                   <li>
                     <a href="#react-rotorvideossmartbutton" class="toc-h2 toc-link" data-title="RotorVideosSmartButton">RotorVideosSmartButton</a>
                   </li>
+                  <li>
+                    <a href="#react-cash-payment" class="toc-h2 toc-link" data-title="Cash Payment">Cash Payment</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1875,13 +1878,6 @@ Videos components.</p>
 <td>quiet</td>
 </tr>
 <tr>
-<td>localisationResources</td>
-<td>LocalisationResources</td>
-<td>The localisation strings for the components. <a href="#localization">see more</a></td>
-<td>No</td>
-<td>-</td>
-</tr>
-<tr>
 <td>theme</td>
 <td>AppTheme</td>
 <td>The theme overrides object <a href="#theming">see more</a></td>
@@ -1894,6 +1890,13 @@ Videos components.</p>
 <td>The variant of the embeddable</td>
 <td>No</td>
 <td>default</td>
+</tr>
+<tr>
+<td>enableCashPayment</td>
+<td>boolean</td>
+<td>Enables direct Stripe payment. Mutually exclusive with <code>cartApi</code> and <code>enableInvoicePayment</code>.</td>
+<td>No</td>
+<td>false</td>
 </tr>
 </tbody></table>
 <h3 id='react-rotorvideosprovider-authconfig'>AuthConfig</h3>
@@ -2223,6 +2226,65 @@ This flow doesn't allow the user to create a new video, as there is no track ref
 </tbody></table>
 
 <p>The rest of the props are passed to the button element.</p>
+<h2 id='react-cash-payment'>Cash Payment</h2>
+<p>When cash payment is enabled, all purchases are charged directly.</p>
+<h3 id='react-cash-payment-enabling-cash-payment'>Enabling Cash Payment</h3>
+<blockquote>
+<p><strong>Enable cash payment by passing <code>enableCashPayment</code> to <code>RotorVideosProvider</code></strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">RotorVideosProvider</span><span class="p">,</span> <span class="nx">RotorVideosSmartButton</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@rotorvideos/react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// NOTE: Take implementation as an example. Please be responsible in handling your credentials for your app.</span>
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">authConfig</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">accessToken</span><span class="p">:</span> <span class="dl">'</span><span class="s1">user-access-token</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">clientId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-app-client-id</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">};</span>
+
+  <span class="c1">// SAMPLE DATA</span>
+  <span class="kd">const</span> <span class="nx">mediaAssets</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">providerName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-api</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">trackName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Track 1</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">artistName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Artist Name</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">audioUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://example.com/audio.mp3</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">artworkUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://example.com/artwork.jpg</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">];</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">RotorVideosProvider</span>
+      <span class="na">authConfig</span><span class="p">=</span><span class="si">{</span><span class="nx">authConfig</span><span class="si">}</span>
+      <span class="na">mediaAssets</span><span class="p">=</span><span class="si">{</span><span class="nx">mediaAssets</span><span class="si">}</span>
+      <span class="na">enableCashPayment</span><span class="p">=</span><span class="si">{</span><span class="kc">true</span><span class="si">}</span> <span class="c1">// This prop needs to be present and true to enable cash payment</span>
+    <span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">mediaAssets</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">asset</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nc">RotorVideosSmartButton</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">asset</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span> <span class="na">providerReferenceId</span><span class="p">=</span><span class="si">{</span><span class="nx">asset</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span> <span class="p">/&gt;</span>
+      <span class="p">))</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nc">RotorVideosProvider</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Pass <code>enableCashPayment={true}</code> to <code>RotorVideosProvider</code>. This is mutually exclusive with <code>cartApi</code> and <code>enableInvoicePayment</code> — only one payment mode should be active at a time.</p>
+<h4 id='react-cash-payment-enabling-cash-payment-parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>enableCashPayment</td>
+<td>boolean</td>
+<td>Enables direct Stripe payment. Mutually exclusive with <code>cartApi</code> and <code>enableInvoicePayment</code>.</td>
+<td>No</td>
+<td>false</td>
+</tr>
+</tbody></table>
 <h1 id='bundle'>Bundle</h1><h2 id='bundle-installation'>Installation</h2>
 <blockquote>
 <p><strong>Add the script to the page</strong></p>
