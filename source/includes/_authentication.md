@@ -49,10 +49,13 @@ curl -XPOST "https://api.rotorvideos.com/api/partner/v1/register" \
       "type" : "user",
       "attributes": {
         "remote_user_id": "123456",
+        "remote_email": "user@domain.com"
       }
     }
   }'
 ```
+
+"remote_email" may be omitted.
 
 > **Providing optional attributes, in this case additional Partner API credentials:**
 
