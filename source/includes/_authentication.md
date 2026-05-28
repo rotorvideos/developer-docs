@@ -55,8 +55,6 @@ curl -XPOST "https://api.rotorvideos.com/api/partner/v1/register" \
   }'
 ```
 
-"remote_email" may be omitted.
-
 > **Providing optional attributes, in this case additional Partner API credentials:**
 
 ```shell
@@ -104,4 +102,5 @@ Depending on the scope of the integration agreed with Rotor, you may need to pas
 | Parameter           | Description
 |---------------------|-------------------------------------------------------------|
 | remote_user_id      | A unique identifier (on the partner platform) for the user.
+| remote_email        | An optional email for the user.
 | optional_attributes | (_Optional_) For some Partner integrations, additional information may need to be provided. These can be provided nested within this attribute. Unrecognised optional attributes will be ignored.
