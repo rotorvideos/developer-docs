@@ -450,9 +450,6 @@
                   <li>
                     <a href="#react-rotorvideossmartbutton" class="toc-h2 toc-link" data-title="RotorVideosSmartButton">RotorVideosSmartButton</a>
                   </li>
-                  <li>
-                    <a href="#react-cash-payment" class="toc-h2 toc-link" data-title="Cash Payment">Cash Payment</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -1786,7 +1783,7 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 yarn add @rotorvideos/react
 </code></pre></div>
 <p>To install the package, you need to add the NPM Registry token to your <code>.npmrc</code> file. You can find the token in your
-Partners Dashboard (Engineering -&gt; JavaScript Integration). And then you can install the package using <code>npm</code> or <code>yarn</code>.</p>
+Partner Dashboard (Engineering -&gt; JavaScript Integration). And then you can install the package using <code>npm</code> or <code>yarn</code>.</p>
 <h2 id='react-rotorvideosprovider'>RotorVideosProvider</h2>
 <blockquote>
 <p><strong>Example</strong></p>
@@ -1848,25 +1845,11 @@ Videos components.</p>
 <td>-</td>
 </tr>
 <tr>
-<td>cartApi</td>
-<td>CartApi</td>
-<td>The cart API configuration</td>
-<td>No</td>
-<td>-</td>
-</tr>
-<tr>
 <td>creationFlows</td>
 <td>(motion,canvas)[]</td>
 <td>The list of available creation flows for the user.</td>
 <td>No</td>
 <td>[CreationFlow.canvas, CreationFlow.lyrics, CreationFlow.motion, CreationFlow.artwork]</td>
-</tr>
-<tr>
-<td>showOrderPage</td>
-<td>boolean</td>
-<td>Show the order page after the user has added video to the cart</td>
-<td>No</td>
-<td>true</td>
 </tr>
 <tr>
 <td>showDuplicateAction</td>
@@ -1895,13 +1878,6 @@ Videos components.</p>
 <td>The variant of the embeddable</td>
 <td>No</td>
 <td>default</td>
-</tr>
-<tr>
-<td>enableCashPayment</td>
-<td>boolean</td>
-<td>Enables direct Stripe payment. Mutually exclusive with <code>cartApi</code> and <code>enableInvoicePayment</code>.</td>
-<td>No</td>
-<td>false</td>
 </tr>
 </tbody></table>
 <h3 id='react-rotorvideosprovider-authconfig'>AuthConfig</h3>
@@ -2050,111 +2026,7 @@ It is defined as follows:</p>
 <td>null</td>
 </tr>
 </tbody></table>
-<h3 id='react-rotorvideosprovider-cartapi'>CartApi</h3>
-<blockquote>
-<p><strong>Example of a CartApi</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">cartApi</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">addToCart</span><span class="p">:</span> <span class="p">(</span><span class="na">cartItem</span><span class="p">:</span> <span class="nx">CartItem</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="p">},</span>
-  <span class="na">removeFromCart</span><span class="p">:</span> <span class="p">(</span><span class="na">orderUuid</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="p">},</span>
-  <span class="na">openCart</span><span class="p">:</span> <span class="p">(</span><span class="na">cartItem</span><span class="p">:</span> <span class="nx">CartItem</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<p><strong>Example of a CartItem</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="p">{</span>
-  <span class="nl">orderUuid</span><span class="p">:</span> <span class="dl">'</span><span class="s1">cart-item-uuid</span><span class="dl">'</span><span class="p">;</span>
-  <span class="nl">trackId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span><span class="p">;</span>
-  <span class="nl">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Track 1</span><span class="dl">'</span><span class="p">;</span>
-  <span class="nl">creationFlow</span><span class="p">:</span> <span class="dl">'</span><span class="s1">canvas</span><span class="dl">'</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>The <code>cartApi</code> object contains the necessary functions to manage the cart. It is defined as follows:</p>
-
-<table><thead>
-<tr>
-<th>Prop Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-<th>Default</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>addToCart</td>
-<td>(cartItem: CartItem) =&gt; void</td>
-<td>The function to add an item to the cart.</td>
-<td>Yes</td>
-<td>-</td>
-</tr>
-<tr>
-<td>removeFromCart</td>
-<td>(orderUuid: string) =&gt; void</td>
-<td>The function to remove an item from the cart.</td>
-<td>Yes</td>
-<td>-</td>
-</tr>
-<tr>
-<td>openCart</td>
-<td>(cartItem: CartItem) =&gt; void</td>
-<td>The function to open the cart.</td>
-<td>Yes</td>
-<td>-</td>
-</tr>
-</tbody></table>
-
-<p>Each creation flow in the RotorVideosProvider can be configured with a checkout process, allowing users to add, remove, or view items in a shopping cart. To enable this functionality, you simply pass the <code>cartApi</code> prop to the provider with your custom cart handler functions.</p>
-<h4 id='react-rotorvideosprovider-cartapi-1-implement-cart-handler-functions'>1. Implement Cart Handler Functions</h4>
-<p>First, create the cart functions you want to use for adding, removing, and opening the cart.
-These can be your own functions, or those provided by your app&#39;s state management.</p>
-<div class="highlight"><pre class="highlight javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useAppConfig</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../AppConfig</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="p">{</span>
-    <span class="na">state</span><span class="p">:</span> <span class="p">{</span> <span class="nx">partnerUserId</span><span class="p">,</span> <span class="nx">creationFlowVariant</span> <span class="p">},</span>
-    <span class="na">api</span><span class="p">:</span> <span class="p">{</span> <span class="nx">setIsCartOpen</span> <span class="p">},</span>
-  <span class="p">}</span> <span class="o">=</span> <span class="nx">useAppConfig</span><span class="p">();</span>
-
-  <span class="kd">const</span> <span class="p">{</span> <span class="na">data</span><span class="p">:</span> <span class="nx">config</span><span class="p">,</span> <span class="na">isLoading</span><span class="p">:</span> <span class="nx">isLoadingConfig</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useConfig</span><span class="p">();</span>
-
-  <span class="kd">const</span> <span class="nx">addToCart</span> <span class="o">=</span> <span class="nx">useAddCartItem</span><span class="p">();</span>
-  <span class="kd">const</span> <span class="nx">removeFromCart</span> <span class="o">=</span> <span class="nx">useRemoveCartItem</span><span class="p">();</span>
-  <span class="kd">const</span> <span class="nx">openCart</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span>
-    <span class="p">(</span><span class="nx">_cartItem</span><span class="p">:</span> <span class="nx">CartItem</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">setIsCartOpen</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-    <span class="p">},</span>
-    <span class="p">[</span><span class="nx">setIsCartOpen</span><span class="p">]</span>
-  <span class="p">);</span>
-</code></pre></div><h4 id='react-rotorvideosprovider-cartapi-2-bundle-the-cart-functions-with-usememo'>2. Bundle the cart functions with useMemo</h4>
-<p>Use React&#39;s <code>useMemo</code> to bundle your cart functions into a single API object:</p>
-<div class="highlight"><pre class="highlight javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useMemo</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">cartApi</span> <span class="o">=</span> <span class="nx">useMemo</span><span class="p">(</span>
-  <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">({</span>
-    <span class="nx">addToCart</span><span class="p">,</span>
-    <span class="nx">removeFromCart</span><span class="p">,</span>
-    <span class="nx">openCart</span><span class="p">,</span>
-  <span class="p">}),</span>
-  <span class="p">[</span><span class="nx">addToCart</span><span class="p">,</span> <span class="nx">removeFromCart</span><span class="p">,</span> <span class="nx">openCart</span><span class="p">]</span>
-<span class="p">);</span>
-</code></pre></div><h4 id='react-rotorvideosprovider-cartapi-3-pass-the-cartapi-to-the-provider'>3. Pass the cartApi to the provider</h4>
-<p>Simply pass the <code>cartApi</code> object as a prop to the <code>RotorVideosProvider</code>.
-This enables cart actions within all your active creation flows.</p>
-<div class="highlight"><pre class="highlight javascript"><code><span class="o">&lt;</span><span class="nx">RotorVideosProvider</span>
-  <span class="p">{...</span><span class="nx">rotorVideosConfig</span><span class="p">}</span>
-  <span class="nx">mediaAssets</span><span class="o">=</span><span class="p">{</span><span class="nx">compactReleases</span><span class="p">}</span>
-  <span class="nx">theme</span><span class="o">=</span><span class="p">{</span><span class="nx">releasesDemoTheme</span><span class="p">}</span>
-  <span class="nx">cartApi</span><span class="o">=</span><span class="p">{</span><span class="nx">cartApi</span><span class="p">}</span>
-  <span class="nx">creationFlows</span><span class="o">=</span><span class="p">{[</span><span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">motion</span><span class="p">,</span> <span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">canvas</span><span class="p">]}</span>
-  <span class="nx">variant</span><span class="o">=</span><span class="p">{</span><span class="nx">CreationFlowVariant</span><span class="p">.</span><span class="nx">lite</span><span class="p">}</span>
-  <span class="nx">showDuplicateAction</span><span class="o">=</span><span class="p">{</span><span class="kc">false</span><span class="p">}</span>
-<span class="o">&gt;</span>
-  <span class="p">{</span><span class="cm">/* Your app content */</span><span class="p">}</span>
-<span class="o">&lt;</span><span class="sr">/RotorVideosProvider</span><span class="err">&gt;
-</span></code></pre></div><h3 id='react-rotorvideosprovider-creation-flows'>Creation Flows</h3>
+<h3 id='react-rotorvideosprovider-creation-flows'>Creation Flows</h3>
 <p>There are various media types your users can create: <strong>Apple Music Album Motion</strong>, <strong>Spotify Canvas Video</strong>, <strong>Lyric Video</strong>, and <strong>Artwork Video</strong>. By default, all creation flows are available to users. However, you can customize which flows appear by configuring the <code>creationFlows</code> prop in the <code>RotorVideosProvider</code> when integrating our toolkit into your React app.</p>
 <h4 id='react-rotorvideosprovider-creation-flows-how-creation-flows-work'>How Creation Flows Work</h4>
 <ul>
@@ -2181,7 +2053,6 @@ This enables cart actions within all your active creation flows.</p>
   <span class="si">{</span><span class="p">...</span><span class="nx">rotorVideosConfig</span><span class="si">}</span>
   <span class="na">mediaAssets</span><span class="p">=</span><span class="si">{</span><span class="nx">compactReleases</span><span class="si">}</span>
   <span class="na">theme</span><span class="p">=</span><span class="si">{</span><span class="nx">releasesDemoTheme</span><span class="si">}</span>
-  <span class="na">cartApi</span><span class="p">=</span><span class="si">{</span><span class="nx">cartApi</span><span class="si">}</span>
   <span class="na">creationFlows</span><span class="p">=</span><span class="si">{</span><span class="p">[</span><span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">motion</span><span class="p">,</span> <span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">canvas</span><span class="p">]</span><span class="si">}</span>
   <span class="na">variant</span><span class="p">=</span><span class="si">{</span><span class="nx">CreationFlowVariant</span><span class="p">.</span><span class="nx">lite</span><span class="si">}</span>
   <span class="na">showDuplicateAction</span><span class="p">=</span><span class="si">{</span><span class="kc">false</span><span class="si">}</span>
@@ -2262,7 +2133,7 @@ This enables cart actions within all your active creation flows.</p>
 </tbody></table>
 
 <aside class="notice">
-Whenever the <code>providerReferenceId</code> is not provided, the Rotor Embeddable will open the Dashboard with all user created videos.
+Whenever the <code>providerReferenceId</code> is not provided, the Rotor Embeddable will open the Dashboard with all user-created videos.
 This flow doesn't allow the user to create a new video, as there is no track reference to start the creation process.
 </aside>
 <h2 id='react-rotorvideossmartbutton'>RotorVideosSmartButton</h2>
@@ -2313,12 +2184,6 @@ This flow doesn't allow the user to create a new video, as there is no track ref
 </tbody></table>
 
 <p>The rest of the props are passed to the button element.</p>
-<h2 id='react-cash-payment'>Cash Payment</h2>
-<p>When cash payment is enabled, all purchases are charged directly.</p>
-<h3 id='react-cash-payment-enabling-cash-payment'>Enabling Cash Payment</h3>
-<blockquote>
-<p><strong>Enable cash payment by passing <code>enableCashPayment</code> to <code>RotorVideosProvider</code></strong></p>
-</blockquote>
 <div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">RotorVideosProvider</span><span class="p">,</span> <span class="nx">RotorVideosSmartButton</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@rotorvideos/react</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="c1">// NOTE: Take implementation as an example. Please be responsible in handling your credentials for your app.</span>
@@ -2344,7 +2209,6 @@ This flow doesn't allow the user to create a new video, as there is no track ref
     <span class="p">&lt;</span><span class="nc">RotorVideosProvider</span>
       <span class="na">authConfig</span><span class="p">=</span><span class="si">{</span><span class="nx">authConfig</span><span class="si">}</span>
       <span class="na">mediaAssets</span><span class="p">=</span><span class="si">{</span><span class="nx">mediaAssets</span><span class="si">}</span>
-      <span class="na">enableCashPayment</span><span class="p">=</span><span class="si">{</span><span class="kc">true</span><span class="si">}</span> <span class="c1">// This prop needs to be present and true to enable cash payment</span>
     <span class="p">&gt;</span>
       <span class="si">{</span><span class="nx">mediaAssets</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">asset</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
         <span class="p">&lt;</span><span class="nc">RotorVideosSmartButton</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">asset</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span> <span class="na">providerReferenceId</span><span class="p">=</span><span class="si">{</span><span class="nx">asset</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span> <span class="p">/&gt;</span>
@@ -2352,27 +2216,7 @@ This flow doesn't allow the user to create a new video, as there is no track ref
     <span class="p">&lt;/</span><span class="nc">RotorVideosProvider</span><span class="p">&gt;</span>
   <span class="p">);</span>
 <span class="p">};</span>
-</code></pre></div>
-<p>Pass <code>enableCashPayment={true}</code> to <code>RotorVideosProvider</code>. This is mutually exclusive with <code>cartApi</code> and <code>enableInvoicePayment</code> — only one payment mode should be active at a time.</p>
-<h4 id='react-cash-payment-enabling-cash-payment-parameters'>Parameters</h4>
-<table><thead>
-<tr>
-<th>Prop Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-<th>Default</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>enableCashPayment</td>
-<td>boolean</td>
-<td>Enables direct Stripe payment. Mutually exclusive with <code>cartApi</code> and <code>enableInvoicePayment</code>.</td>
-<td>No</td>
-<td>false</td>
-</tr>
-</tbody></table>
-<h1 id='bundle'>Bundle</h1><h2 id='bundle-installation'>Installation</h2>
+</code></pre></div><h1 id='bundle'>Bundle</h1><h2 id='bundle-installation'>Installation</h2>
 <blockquote>
 <p><strong>Add the script to the page</strong></p>
 </blockquote>
