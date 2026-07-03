@@ -21,7 +21,7 @@ yarn add @rotorvideos/react
 ```
 
 To install the package, you need to add the NPM Registry token to your `.npmrc` file. You can find the token in your
-Partners Dashboard (Engineering -> JavaScript Integration). And then you can install the package using `npm` or `yarn`.
+Partner Dashboard (Engineering -> JavaScript Integration). And then you can install the package using `npm` or `yarn`.
 
 ## RotorVideosProvider
 
@@ -56,14 +56,11 @@ Videos components.
 | mediaAssets           | MediaAsset[]          | The list of available Partner assets for the user.                                           | No       | []                                                                                     |
 | availableTracks       | MediaAsset[]          | Deprecated, please use `mediaAssets` instead                                                 | No       | []                                                                                     |
 | children              | ReactNode             | The children components to be wrapped by the provider.                                       | Yes      | -                                                                                      |
-| cartApi               | CartApi               | The cart API configuration                                                                   | No       | -                                                                                      |
 | creationFlows         | (motion,canvas)[]     | The list of available creation flows for the user.                                           | No       | [CreationFlow.canvas, CreationFlow.lyrics, CreationFlow.motion, CreationFlow.artwork]  |
-| showOrderPage         | boolean               | Show the order page after the user has added video to the cart                               | No       | true                                                                                   |                                             
 | showDuplicateAction   | boolean               | Show the duplicate action for the Video                                                      | No       | true                                                                                   |
 | logLevel              | quiet,debug           | The console log level                                                                        | No       | quiet                                                                                  |
 | theme                 | AppTheme              | The theme overrides object [see more](#theming)                                              | No       | -                                                                                      |
 | variant               | default,lite          | The variant of the embeddable                                                                | No       | default                                                                                |
-| enableCashPayment     | boolean               | Enables direct Stripe payment. Mutually exclusive with `cartApi` and `enableInvoicePayment`. | No       | false                                                                                  |
 ### AuthConfig
 
 > **Example of an AuthConfig**
@@ -129,103 +126,6 @@ The `MediaAsset` object represents an asset available for the user to select. It
 | releaseType       | album, compilation, single | The type of the release.                       | No       | null    |
 | releaseArtworkUrl | string                     | The URL of the release's artwork.              | No       | null    |
 
-### CartApi
-
-> **Example of a CartApi**
-
-```typescript
-const cartApi = {
-  addToCart: (cartItem: CartItem) => {
-  },
-  removeFromCart: (orderUuid: string) => {
-  },
-  openCart: (cartItem: CartItem) => {
-  }
-}
-```
-
-> **Example of a CartItem**
-
-```typescript
-{
-  orderUuid: 'cart-item-uuid';
-  trackId: 'partner-demo-track-1';
-  title: 'Track 1';
-  creationFlow: 'canvas';
-}
-```
-
-The `cartApi` object contains the necessary functions to manage the cart. It is defined as follows:
-
-| Prop Name      | Type                         | Description                                   | Required | Default |
-|----------------|------------------------------|-----------------------------------------------|----------|---------|
-| addToCart      | (cartItem: CartItem) => void | The function to add an item to the cart.      | Yes      | -       |
-| removeFromCart | (orderUuid: string) => void  | The function to remove an item from the cart. | Yes      | -       |
-| openCart       | (cartItem: CartItem) => void | The function to open the cart.                | Yes      | -       |
-
-Each creation flow in the RotorVideosProvider can be configured with a checkout process, allowing users to add, remove, or view items in a shopping cart. To enable this functionality, you simply pass the `cartApi` prop to the provider with your custom cart handler functions.
-
-#### 1. Implement Cart Handler Functions
-
-First, create the cart functions you want to use for adding, removing, and opening the cart.
-These can be your own functions, or those provided by your app's state management.
-
-```js
-import { useAppConfig } from '../AppConfig';
-
-const {
-    state: { partnerUserId, creationFlowVariant },
-    api: { setIsCartOpen },
-  } = useAppConfig();
-
-  const { data: config, isLoading: isLoadingConfig } = useConfig();
-
-  const addToCart = useAddCartItem();
-  const removeFromCart = useRemoveCartItem();
-  const openCart = useCallback(
-    (_cartItem: CartItem) => {
-      setIsCartOpen(true);
-    },
-    [setIsCartOpen]
-  );
-```
-
-#### 2. Bundle the cart functions with useMemo
-
-Use React's `useMemo` to bundle your cart functions into a single API object:
-
-```js
-import { useMemo } from 'react';
-
-const cartApi = useMemo(
-  () => ({
-    addToCart,
-    removeFromCart,
-    openCart,
-  }),
-  [addToCart, removeFromCart, openCart]
-);
-```
-
-#### 3. Pass the cartApi to the provider
-
-Simply pass the `cartApi` object as a prop to the `RotorVideosProvider`.
-This enables cart actions within all your active creation flows.
-
-```js
-<RotorVideosProvider
-  {...rotorVideosConfig}
-  mediaAssets={compactReleases}
-  theme={releasesDemoTheme}
-  cartApi={cartApi}
-  creationFlows={[CreationFlow.motion, CreationFlow.canvas]}
-  variant={CreationFlowVariant.lite}
-  showDuplicateAction={false}
->
-  {/* Your app content */}
-</RotorVideosProvider>
-```
-
 ### Creation Flows
 
 There are various media types your users can create: **Apple Music Album Motion**, **Spotify Canvas Video**, **Lyric Video**, and **Artwork Video**. By default, all creation flows are available to users. However, you can customize which flows appear by configuring the `creationFlows` prop in the `RotorVideosProvider` when integrating our toolkit into your React app.
@@ -254,7 +154,6 @@ Here's how to use the `creationFlows` prop when integrating the provider into yo
   {...rotorVideosConfig}
   mediaAssets={compactReleases}
   theme={releasesDemoTheme}
-  cartApi={cartApi}
   creationFlows={[CreationFlow.motion, CreationFlow.canvas]}
   variant={CreationFlowVariant.lite}
   showDuplicateAction={false}
@@ -308,7 +207,7 @@ The `OpenOptions` object contains the necessary information to open the Rotor Vi
 | creationFlow        | canvas,motion | The creation flow to open the modal with. Requires the `providerReferenceId` | No       | null    |
 
 <aside class="notice">
-Whenever the <code>providerReferenceId</code> is not provided, the Rotor Embeddable will open the Dashboard with all user created videos.
+Whenever the <code>providerReferenceId</code> is not provided, the Rotor Embeddable will open the Dashboard with all user-created videos.
 This flow doesn't allow the user to create a new video, as there is no track reference to start the creation process.
 </aside>
 
@@ -348,14 +247,6 @@ The `RotorVideosSmartButton` component is a button that opens the Rotor Videos m
 
 The rest of the props are passed to the button element.
 
-## Cash Payment
-
-When cash payment is enabled, all purchases are charged directly.
-
-### Enabling Cash Payment
-
-> **Enable cash payment by passing `enableCashPayment` to `RotorVideosProvider`**
-
 ```jsx
 import { RotorVideosProvider, RotorVideosSmartButton } from '@rotorvideos/react';
 
@@ -382,7 +273,6 @@ const App = () => {
     <RotorVideosProvider
       authConfig={authConfig}
       mediaAssets={mediaAssets}
-      enableCashPayment={true} // This prop needs to be present and true to enable cash payment
     >
       {mediaAssets.map((asset) => (
         <RotorVideosSmartButton key={asset.id} providerReferenceId={asset.id} />
@@ -391,11 +281,3 @@ const App = () => {
   );
 };
 ```
-
-Pass `enableCashPayment={true}` to `RotorVideosProvider`. This is mutually exclusive with `cartApi` and `enableInvoicePayment` — only one payment mode should be active at a time.
-
-#### Parameters
-
-| Prop Name         | Type    | Description                                                                              | Required | Default |
-|-------------------|---------|------------------------------------------------------------------------------------------|----------|---------|
-| enableCashPayment | boolean | Enables direct Stripe payment. Mutually exclusive with `cartApi` and `enableInvoicePayment`. | No   | false   |
