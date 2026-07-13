@@ -60,7 +60,6 @@ Videos components.
 | showDuplicateAction   | boolean               | Show the duplicate action for the Video                                                      | No       | true                                                                                   |
 | logLevel              | quiet,debug           | The console log level                                                                        | No       | quiet                                                                                  |
 | theme                 | AppTheme              | The theme overrides object [see more](#theming)                                              | No       | -                                                                                      |
-| variant               | default,lite          | The variant of the embeddable                                                                | No       | default                                                                                |
 ### AuthConfig
 
 > **Example of an AuthConfig**
@@ -134,7 +133,6 @@ There are various media types your users can create: **Apple Music Album Motion*
 
 - **Creation flows** control which media types will be available for your users to create.
 - By **customizing the `creationFlows` prop**, you choose exactly which flows are available.
-- **Creation flow variants** control the appearance and behavior of each creation flow.
 - **Empty array (`[]`)**: All flows are enabled (default behavior).
 - **Specific entries**: Only the flows listed will be enabled.
 
@@ -155,7 +153,6 @@ Here's how to use the `creationFlows` prop when integrating the provider into yo
   mediaAssets={compactReleases}
   theme={releasesDemoTheme}
   creationFlows={[CreationFlow.motion, CreationFlow.canvas]}
-  variant={CreationFlowVariant.lite}
   showDuplicateAction={false}
 >
   {/* Your app content */}
