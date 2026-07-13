@@ -1872,13 +1872,6 @@ Videos components.</p>
 <td>No</td>
 <td>-</td>
 </tr>
-<tr>
-<td>variant</td>
-<td>default,lite</td>
-<td>The variant of the embeddable</td>
-<td>No</td>
-<td>default</td>
-</tr>
 </tbody></table>
 <h3 id='react-rotorvideosprovider-authconfig'>AuthConfig</h3>
 <blockquote>
@@ -2032,7 +2025,6 @@ It is defined as follows:</p>
 <ul>
 <li><strong>Creation flows</strong> control which media types will be available for your users to create.</li>
 <li>By <strong>customizing the <code>creationFlows</code> prop</strong>, you choose exactly which flows are available.</li>
-<li><strong>Creation flow variants</strong> control the appearance and behavior of each creation flow.</li>
 <li><strong>Empty array (<code>[]</code>)</strong>: All flows are enabled (default behavior).</li>
 <li><strong>Specific entries</strong>: Only the flows listed will be enabled.</li>
 </ul>
@@ -2054,7 +2046,6 @@ It is defined as follows:</p>
   <span class="na">mediaAssets</span><span class="p">=</span><span class="si">{</span><span class="nx">compactReleases</span><span class="si">}</span>
   <span class="na">theme</span><span class="p">=</span><span class="si">{</span><span class="nx">releasesDemoTheme</span><span class="si">}</span>
   <span class="na">creationFlows</span><span class="p">=</span><span class="si">{</span><span class="p">[</span><span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">motion</span><span class="p">,</span> <span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">canvas</span><span class="p">]</span><span class="si">}</span>
-  <span class="na">variant</span><span class="p">=</span><span class="si">{</span><span class="nx">CreationFlowVariant</span><span class="p">.</span><span class="nx">lite</span><span class="si">}</span>
   <span class="na">showDuplicateAction</span><span class="p">=</span><span class="si">{</span><span class="kc">false</span><span class="si">}</span>
 <span class="p">&gt;</span>
   <span class="si">{</span><span class="cm">/* Your app content */</span><span class="si">}</span>
