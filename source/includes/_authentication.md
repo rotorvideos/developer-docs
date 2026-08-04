@@ -102,5 +102,5 @@ Depending on the scope of the integration agreed with Rotor, you may need to pas
 | Parameter           | Description
 |---------------------|-------------------------------------------------------------|
 | remote_user_id      | A unique identifier (on the partner platform) for the user.
-| remote_email        | An optional email for the user.
+| remote_email        | An email for the user.
 | optional_attributes | (_Optional_) For some Partner integrations, additional information may need to be provided. These can be provided nested within this attribute. Unrecognised optional attributes will be ignored.
