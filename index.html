@@ -644,7 +644,41 @@ also provide a native javascript bundle and interface.</p>
 the background to feed the video creation process.</p>
 
 <p>See the <a href='#javascript-api'>JavaScript API</a> for more details.</p>
-<h1 id='rest-api'>REST API</h1><h1 id='authentication'>Authentication</h1><h2 id='authentication-authorize-application'>Authorize Application</h2>
+<h1 id='rest-api'>REST API</h1><h1 id='authentication'>Authentication</h1>
+<p>The Partner API uses two tokens. Your Partner Access Token authorizes your application; a User Access Token authorizes
+requests made on behalf of one of your users. Both expire, and neither is issued with an OAuth refresh token, so renewing
+one always means repeating the request that produced it.</p>
+
+<table><thead>
+<tr>
+<th>Token</th>
+<th>Obtained from</th>
+<th>Valid for</th>
+<th>To renew</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Partner Access Token</td>
+<td><code>POST /oauth/token</code></td>
+<td>2 hours</td>
+<td>Repeat the request with your Client ID and Client Secret</td>
+</tr>
+<tr>
+<td>User Access Token</td>
+<td><code>POST /api/partner/v1/register</code></td>
+<td>72 hours</td>
+<td>Repeat the request with the same <code>remote_user_id</code></td>
+</tr>
+</tbody></table>
+
+<p>A request made with an expired token is rejected with a <code>401 Unauthorized</code>. Treat a <code>401</code> as a signal to fetch a new
+token and retry the request, rather than as a permanent failure.</p>
+
+<aside class="warning">
+Do not store a token indefinitely, and do not hard-code the lifetimes above. Renew from the <code>expires_in</code> value
+returned with each token, so that your integration keeps working if the lifetimes change.
+</aside>
+<h2 id='authentication-authorize-application'>Authorize Application</h2>
 <blockquote>
 <p><strong>Fetch the Application&#39;s Oauth Access Token:</strong></p>
 </blockquote>
@@ -658,14 +692,18 @@ the background to feed the video creation process.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcdef"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
   </span><span class="nl">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your application's scopes&gt;"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>In order to make API requests, you must first authorize your application, using the Oauth Client ID and Client Secret provided by Rotor to your organization.</p>
 
 <p>This request returns your Partner Access Token which can be used to generate a User Access Token for subsequent requests.</p>
+
+<p><code>expires_in</code> is the number of seconds the token remains valid for, counted from <code>created_at</code>. Make this request again to
+obtain a new one.</p>
 <h3 id='authentication-authorize-application-http-request'>HTTP Request</h3>
 <p><code>POST &quot;https://api.rotorvideos.com/oauth/token&quot;</code></p>
 <h3 id='authentication-authorize-application-data-attributes'>Data Attributes</h3>
@@ -723,13 +761,22 @@ the background to feed the video creation process.</p>
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"access_token"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="w">
+      </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">259200</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Register a user for the Partner API; if they exist in our system, an access token is returned. If not, we generate a new
 account, then return an access token for them.</p>
+
+<p><code>expires_in</code> is the number of seconds the token remains valid for, counted from the moment it was issued. Make this
+request again with the same <code>remote_user_id</code> to obtain a new one.</p>
+
+<aside class="notice">
+Re-registering an existing user is safe and does not create a duplicate account: <code>register</code> matches on
+<code>remote_user_id</code> and returns a fresh <code>access_token</code> for the user you already have.
+</aside>
 
 <p>Depending on the scope of the integration agreed with Rotor, you may need to pass additional optional attributes. These additional attributes will be stored with the Rotor user and may be used for <em>eg</em> reciprocal API access</p>
 <h3 id='authentication-register-fetch-user-http-request'>HTTP Request</h3>
