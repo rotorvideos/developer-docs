@@ -3,8 +3,8 @@
 There are two parts to integrating with Rotor Videos:
 
 1. **Server-side Integration** - Server-to-server communication, such as User Registration, Finalize Order, etc.
-2. **Client-side Integration** - The React/Javascript component, built by Rotor Videos, to consume the API and allow you
-   to embed video creation flows into your artists' dashboards.
+2. **Client-side Integration** - The embeddable video creator, built by Rotor Videos, which consumes the API and allows
+   you to offer video creation flows from your artists' dashboards.
 
 ## Server-side Integration
 
@@ -103,6 +103,10 @@ In order to authorize requests, the Rotor Client requires a valid OAuth Access T
 Token is obtained from the server-side integration (as mentioned above), which can be loaded upon session creation, or
 upon the loading of the page you wish to embed the component.
 
+User Access Tokens expire, so rather than handing the client a fixed token, give it a `getToken` callback that fetches
+the current one from your own backend. The client calls it again whenever it needs a fresh token, and your `getToken`
+function never leaves your page.
+
 ### Final Video Transaction flow
 
 In order to finalize a transaction, the Rotor Client will make a request to the Rotor API to create a new Order. The
@@ -115,44 +119,41 @@ See the <a href='#orders-finalize-single-order'>Finalize Order</a> for more deta
 
 ## Client-side Integration
 
-> **An example React app with Rotor Client**
+> **An example page embedding the video creator**
 
-```jsx
-import {RotorVideosProvider, RotorVideosSmartButton} from '@rotorvideos/react';
+```javascript
+import { RotorVideosClient } from '@rotorvideos/iframe';
 
-const App = () => {
-  const authConfig = {
-    accessToken: 'user-access-token',
+const client = new RotorVideosClient();
+
+client.init({
+  authConfig: {
     clientId: 'partner-app-client-id',
-  }
-
-  const mediaAssets = [
+    // Returns the User Access Token your server obtained above.
+    getToken: fetchTokenFromMyBackend,
+  },
+  mediaAssets: [
     {
       id: 'partner-demo-track-1',
       ...
     }
-  ]
+  ],
+});
 
-  return (
-    <RotorVideosProvider
-      authConfig={authConfig}
-      mediaAssets={mediaAssets}
-    >
-      {mediaAssets.map(mediaAsset => (
-        <RotorVideosSmartButton key={mediaAsset.id} providerReferenceId={mediaAsset.id}/>
-      ))}
-    </RotorVideosProvider>
-  );
-}
-
+// From your own "Make Videos" button:
+client.open({ providerReferenceId: 'partner-demo-track-1' });
 ```
 
-In order to make it as easy as possible to integrate Rotor Videos into your platform, we have componentized some of the
-tools you see on rotorvideos.com, into easy to embed javascript widgets. The components are built using React, but we
-also provide a native javascript bundle and interface.
+In order to make it as easy as possible to integrate Rotor Videos into your platform, we have packaged the tools you see
+on rotorvideos.com so that you can embed them into your own pages.
 
 Through the embeddable, we ingest an artist's data, including Releases, Tracks, and accompanying assets. We use these in
 the background to feed the video creation process.
+
+The recommended integration is the <a href='#iframe'>Iframe</a> embed shown here: it works on any page, needs no
+registry credentials, and updates itself. We also provide <a href='#react'>React</a> components and a
+<a href='#bundle'>JavaScript bundle</a>, for integrations where the video creator needs to run inside your own
+application.
 
 See the <a href='#javascript-api'>JavaScript API</a> for more details.
 

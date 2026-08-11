@@ -1,5 +1,11 @@
 # Bundle
 
+<aside class="notice">
+For new integrations we recommend the <a href="#iframe">Iframe</a> embed, which
+also works on any page and needs no registry credentials. Use this bundle when
+the video creator needs to run inside your own application.
+</aside>
+
 ## Installation
 
 > **Add the script to the page**
