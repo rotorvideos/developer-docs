@@ -436,6 +436,32 @@
             <a href="#javascript-api" class="toc-h1 toc-link" data-title="JavaScript API">JavaScript API</a>
           </li>
           <li>
+            <a href="#iframe" class="toc-h1 toc-link" data-title="Iframe">Iframe</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#iframe-installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
+                  </li>
+                  <li>
+                    <a href="#iframe-quick-start" class="toc-h2 toc-link" data-title="Quick start">Quick start</a>
+                  </li>
+                  <li>
+                    <a href="#iframe-rotorvideosclient" class="toc-h2 toc-link" data-title="RotorVideosClient">RotorVideosClient</a>
+                  </li>
+                  <li>
+                    <a href="#iframe-authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#iframe-creation-flows" class="toc-h2 toc-link" data-title="Creation Flows">Creation Flows</a>
+                  </li>
+                  <li>
+                    <a href="#iframe-going-live" class="toc-h2 toc-link" data-title="Going live">Going live</a>
+                  </li>
+                  <li>
+                    <a href="#iframe-differences-from-the-react-and-bundle-libraries" class="toc-h2 toc-link" data-title="Differences from the React and Bundle libraries">Differences from the React and Bundle libraries</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#react" class="toc-h1 toc-link" data-title="React">React</a>
               <ul class="toc-list-h2">
                   <li>
@@ -503,8 +529,8 @@
 
 <ol>
 <li><strong>Server-side Integration</strong> - Server-to-server communication, such as User Registration, Finalize Order, etc.</li>
-<li><strong>Client-side Integration</strong> - The React/Javascript component, built by Rotor Videos, to consume the API and allow you
-to embed video creation flows into your artists&#39; dashboards.</li>
+<li><strong>Client-side Integration</strong> - The embeddable video creator, built by Rotor Videos, which consumes the API and allows
+you to offer video creation flows from your artists&#39; dashboards.</li>
 </ol>
 <h2 id='get-started-server-side-integration'>Server-side Integration</h2>
 <blockquote>
@@ -596,6 +622,10 @@ user.</p>
 <p>In order to authorize requests, the Rotor Client requires a valid OAuth Access Token for each user. The OAuth Access
 Token is obtained from the server-side integration (as mentioned above), which can be loaded upon session creation, or
 upon the loading of the page you wish to embed the component.</p>
+
+<p>User Access Tokens expire, so rather than handing the client a fixed token, give it a <code>getToken</code> callback that fetches
+the current one from your own backend. The client calls it again whenever it needs a fresh token, and your <code>getToken</code>
+function never leaves your page.</p>
 <h3 id='get-started-server-side-integration-final-video-transaction-flow'>Final Video Transaction flow</h3>
 <p>In order to finalize a transaction, the Rotor Client will make a request to the Rotor API to create a new Order. The
 Order will be created with the User&#39;s access token, and the response will contain the Order UUID, which can be used to
@@ -606,42 +636,39 @@ finalize the order.</p>
 <p><img src="images/embeddable-integration-checkout-b3524cb6.png" title="Final Video Transaction flow" alt="Final Video Transaction flow" /></p>
 <h2 id='get-started-client-side-integration'>Client-side Integration</h2>
 <blockquote>
-<p><strong>An example React app with Rotor Client</strong></p>
+<p><strong>An example page embedding the video creator</strong></p>
 </blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span><span class="nx">RotorVideosProvider</span><span class="p">,</span> <span class="nx">RotorVideosSmartButton</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@rotorvideos/react</span><span class="dl">'</span><span class="p">;</span>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">RotorVideosClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@rotorvideos/iframe</span><span class="dl">'</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">authConfig</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">accessToken</span><span class="p">:</span> <span class="dl">'</span><span class="s1">user-access-token</span><span class="dl">'</span><span class="p">,</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RotorVideosClient</span><span class="p">();</span>
+
+<span class="nx">client</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+  <span class="na">authConfig</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">clientId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-app-client-id</span><span class="dl">'</span><span class="p">,</span>
-  <span class="p">}</span>
-
-  <span class="kd">const</span> <span class="nx">mediaAssets</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1">// Returns the User Access Token your server obtained above.</span>
+    <span class="na">getToken</span><span class="p">:</span> <span class="nx">fetchTokenFromMyBackend</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">mediaAssets</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span><span class="p">,</span>
       <span class="p">...</span>
     <span class="p">}</span>
-  <span class="p">]</span>
+  <span class="p">],</span>
+<span class="p">});</span>
 
-  <span class="k">return</span> <span class="p">(</span>
-    <span class="p">&lt;</span><span class="nc">RotorVideosProvider</span>
-      <span class="na">authConfig</span><span class="p">=</span><span class="si">{</span><span class="nx">authConfig</span><span class="si">}</span>
-      <span class="na">mediaAssets</span><span class="p">=</span><span class="si">{</span><span class="nx">mediaAssets</span><span class="si">}</span>
-    <span class="p">&gt;</span>
-      <span class="si">{</span><span class="nx">mediaAssets</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">mediaAsset</span> <span class="o">=&gt;</span> <span class="p">(</span>
-        <span class="p">&lt;</span><span class="nc">RotorVideosSmartButton</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">mediaAsset</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span> <span class="na">providerReferenceId</span><span class="p">=</span><span class="si">{</span><span class="nx">mediaAsset</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="p">/&gt;</span>
-      <span class="p">))</span><span class="si">}</span>
-    <span class="p">&lt;/</span><span class="nc">RotorVideosProvider</span><span class="p">&gt;</span>
-  <span class="p">);</span>
-<span class="p">}</span>
-
+<span class="c1">// From your own "Make Videos" button:</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">({</span> <span class="na">providerReferenceId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span> <span class="p">});</span>
 </code></pre></div>
-<p>In order to make it as easy as possible to integrate Rotor Videos into your platform, we have componentized some of the
-tools you see on rotorvideos.com, into easy to embed javascript widgets. The components are built using React, but we
-also provide a native javascript bundle and interface.</p>
+<p>In order to make it as easy as possible to integrate Rotor Videos into your platform, we have packaged the tools you see
+on rotorvideos.com so that you can embed them into your own pages.</p>
 
 <p>Through the embeddable, we ingest an artist&#39;s data, including Releases, Tracks, and accompanying assets. We use these in
 the background to feed the video creation process.</p>
+
+<p>The recommended integration is the <a href='#iframe'>Iframe</a> embed shown here: it works on any page, needs no
+registry credentials, and updates itself. We also provide <a href='#react'>React</a> components and a
+<a href='#bundle'>JavaScript bundle</a>, for integrations where the video creator needs to run inside your own
+application.</p>
 
 <p>See the <a href='#javascript-api'>JavaScript API</a> for more details.</p>
 <h1 id='rest-api'>REST API</h1><h1 id='authentication'>Authentication</h1>
@@ -1812,7 +1839,506 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 <td>Service Unavailable</td>
 </tr>
 </tbody></table>
-<h1 id='javascript-api'>JavaScript API</h1><h1 id='react'>React</h1><h2 id='react-installation'>Installation</h2>
+<h1 id='javascript-api'>JavaScript API</h1>
+<p>Alongside the REST API, we provide client-side libraries that embed the Rotor
+video creator into your own pages, so your users never leave your platform to
+make a video.</p>
+
+<p>There are three ways to integrate. All of them use the same
+<a href="#get-started">server-side integration</a> and the same User Access Tokens.</p>
+
+<table><thead>
+<tr>
+<th>Integration</th>
+<th>Use it when</th>
+<th>How you get it</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#iframe">Iframe</a></td>
+<td><strong>Recommended for new integrations.</strong> Any site, with or without React.</td>
+<td>Public npm package, or a script tag. No credentials needed.</td>
+</tr>
+<tr>
+<td><a href="#react">React</a></td>
+<td>The creator needs to run inside your own React application.</td>
+<td>Private npm registry, using a token from your Partner Dashboard.</td>
+</tr>
+<tr>
+<td><a href="#bundle">Bundle</a></td>
+<td>The same, on a page that isn&#39;t a React application.</td>
+<td>Private npm registry, using a token from your Partner Dashboard.</td>
+</tr>
+</tbody></table>
+
+<p>The <a href="#iframe">Iframe</a> embed loads the video creator from Rotor, so you get new
+features and fixes without upgrading anything, and there is no application code
+to pull into your build. The <a href="#react">React</a> and <a href="#bundle">Bundle</a> libraries run
+the creator inside your own application, which means pinning a version of our
+application and its dependencies alongside yours.</p>
+
+<aside class="notice">
+The React and Bundle libraries remain fully supported. If you are already using
+one of them, there is nothing you need to do.
+</aside>
+<h1 id='iframe'>Iframe</h1>
+<p>The iframe embed is the recommended way to add Rotor video creation to your site.</p>
+
+<p>You install a small loader on your page. When you open it, the loader mounts the
+Rotor video creator in a full-screen <code>&lt;iframe&gt;</code> served from Rotor. Because the
+creator itself is served by us rather than bundled into your application, new
+features and fixes reach your integration as soon as we ship them — there is no
+library version to upgrade to stay current.</p>
+<h2 id='iframe-installation'>Installation</h2>
+<blockquote>
+<p><strong>Install the package</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>npm <span class="nb">install</span> @rotorvideos/iframe
+<span class="c">## or</span>
+yarn add @rotorvideos/iframe
+</code></pre></div>
+<blockquote>
+<p><strong>Or add the script to the page</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code><span class="c">&lt;!-- Replace 1.0.2 with the release you want to pin to --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/@rotorvideos/iframe@1.0.2/dist/rv-embeddable-iframe.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
+<p><code>@rotorvideos/iframe</code> is published publicly to the npm registry, so it needs no
+registry credentials and no <code>.npmrc</code> entry.</p>
+
+<p>The package has no dependencies, and it does not require React — you can use it
+from any page, framework or not.</p>
+
+<p>If you would rather not add a build step, load the script-tag bundle instead. It
+exposes a ready-to-use client as the global <code>RotorVideos</code>, and is otherwise
+identical to the package.</p>
+
+<aside class="notice">
+Pinning a version pins the loader only. The video creator is served from the
+iframe and stays up to date regardless of the version you pin, so upgrades are
+rarely urgent.
+</aside>
+<h2 id='iframe-quick-start'>Quick start</h2>
+<blockquote>
+<p><strong>A complete integration using the script-tag bundle</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight html tab-html"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Artist Dashboard<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/@rotorvideos/iframe@1.0.2/dist/rv-embeddable-iframe.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"create-video"</span><span class="nt">&gt;</span>Make Videos<span class="nt">&lt;/button&gt;</span>
+
+    <span class="nt">&lt;script&gt;</span>
+      <span class="c1">// Your own endpoint, returning the User Access Token your server obtained</span>
+      <span class="c1">// from POST /api/partner/v1/register for the signed-in user.</span>
+      <span class="k">async</span> <span class="kd">function</span> <span class="nx">getToken</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/my-app/rotor-token</span><span class="dl">'</span><span class="p">);</span>
+        <span class="kd">const</span> <span class="p">{</span> <span class="nx">accessToken</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nx">accessToken</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="nx">RotorVideos</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+        <span class="na">authConfig</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">clientId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-app-client-id</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">getToken</span><span class="p">:</span> <span class="nx">getToken</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="na">mediaAssets</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">providerName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-api</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">artistName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Rotor Pretenders</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">trackName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Track 1</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">artworkUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://example.com/partner-demo-1/artwork.jpg</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">audioUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://example.com/partner-demo-1/audio.mp3</span><span class="dl">'</span><span class="p">,</span>
+          <span class="p">},</span>
+        <span class="p">],</span>
+      <span class="p">});</span>
+
+      <span class="nb">document</span>
+        <span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">create-video</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">RotorVideos</span><span class="p">.</span><span class="nx">open</span><span class="p">({</span> <span class="na">providerReferenceId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span> <span class="p">});</span>
+        <span class="p">});</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div>
+<blockquote>
+<p><strong>The same integration using the package</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">RotorVideosClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@rotorvideos/iframe</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RotorVideosClient</span><span class="p">();</span>
+
+<span class="nx">client</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+  <span class="na">authConfig</span><span class="p">:</span> <span class="p">{</span> <span class="nx">clientId</span><span class="p">,</span> <span class="nx">getToken</span> <span class="p">},</span>
+  <span class="nx">mediaAssets</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">({</span> <span class="na">providerReferenceId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span> <span class="p">});</span>
+</code></pre></div>
+<p>There are two calls to make: <code>init</code> once, with the configuration that stays the
+same for your integration, and <code>open</code> each time a user wants to create a video.</p>
+<h2 id='iframe-rotorvideosclient'>RotorVideosClient</h2>
+<blockquote>
+<p><strong>Creating a client</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">RotorVideosClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@rotorvideos/iframe</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RotorVideosClient</span><span class="p">();</span>
+</code></pre></div>
+<p>The client owns the embed for your page. Create one and reuse it — the script-tag
+bundle creates one for you and assigns it to <code>window.RotorVideos</code>.</p>
+
+<table><thead>
+<tr>
+<th>Method</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>init</td>
+<td>(config: RotorVideosConfig) =&gt; void</td>
+<td>Supply the configuration used for every launch.</td>
+</tr>
+<tr>
+<td>open</td>
+<td>(options?: OpenOptions, handlers?: Handlers) =&gt; boolean</td>
+<td>Open the video creator.</td>
+</tr>
+<tr>
+<td>close</td>
+<td>(reason?: string) =&gt; void</td>
+<td>Close the video creator.</td>
+</tr>
+</tbody></table>
+<h3 id='iframe-rotorvideosclient-init'>init</h3>
+<blockquote>
+<p><strong>Example</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">client</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+  <span class="na">authConfig</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">clientId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-app-client-id</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">getToken</span><span class="p">:</span> <span class="nx">getToken</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">mediaAssets</span><span class="p">:</span> <span class="nx">mediaAssets</span><span class="p">,</span>
+  <span class="na">availableFlows</span><span class="p">:</span> <span class="p">[</span><span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">lyrics</span><span class="p">,</span> <span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">artwork</span><span class="p">],</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><code>init</code> takes the <code>RotorVideosConfig</code> that applies to every launch. Call it before
+the first <code>open</code>.</p>
+
+<p>You can call <code>init</code> again at any time to replace the configuration — for
+instance, after the signed-in user changes, or once a user&#39;s assets have loaded.
+A call to <code>init</code> does not affect an embed that is already open; the new
+configuration applies to the next <code>open</code>.</p>
+<h4 id='iframe-rotorvideosclient-init-rotorvideosconfig'>RotorVideosConfig</h4>
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authConfig</td>
+<td>AuthConfig</td>
+<td>The authentication configuration <a href="#iframe-authentication">see more</a></td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>mediaAssets</td>
+<td>MediaAsset[]</td>
+<td>The list of available Partner assets for the user <a href="#react-rotorvideosprovider-mediaasset">see more</a></td>
+<td>No</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>availableFlows</td>
+<td>CreationFlow[]</td>
+<td>The creation flows available to the user <a href="#iframe-creation-flows">see more</a></td>
+<td>No</td>
+<td>All flows</td>
+</tr>
+<tr>
+<td>showDuplicateAction</td>
+<td>boolean</td>
+<td>Show the duplicate action for a video</td>
+<td>No</td>
+<td>true</td>
+</tr>
+<tr>
+<td>enableUnlinkedMode</td>
+<td>boolean</td>
+<td>Allow users to start a video without selecting one of your assets first</td>
+<td>No</td>
+<td>false</td>
+</tr>
+<tr>
+<td>enableExternalCreate</td>
+<td>boolean</td>
+<td>Close the embed instead of starting creation, so your own page can handle the &quot;create&quot; action</td>
+<td>No</td>
+<td>false</td>
+</tr>
+</tbody></table>
+
+<p>The <code>MediaAsset</code> shape is the same as for the React library — see
+<a href="#react-rotorvideosprovider-mediaasset">MediaAsset</a>.</p>
+<h3 id='iframe-rotorvideosclient-open'>open</h3>
+<blockquote>
+<p><strong>Example</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">client</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span>
+  <span class="p">{</span> <span class="na">providerReferenceId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">onReady</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">the creator is visible</span><span class="dl">'</span><span class="p">),</span>
+    <span class="na">onClose</span><span class="p">:</span> <span class="p">(</span><span class="nx">reason</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">closed</span><span class="dl">'</span><span class="p">,</span> <span class="nx">reason</span><span class="p">),</span>
+    <span class="na">onError</span><span class="p">:</span> <span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">message</span><span class="p">),</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><code>open</code> mounts the video creator over your page. Both arguments are optional.</p>
+
+<p>It returns <code>true</code> when the embed was opened, and <code>false</code> when an embed is
+already open. A call that returns <code>false</code> does nothing at all — the visible
+session keeps the options and handlers it was opened with.</p>
+
+<aside class="notice">
+Whenever the <code>providerReferenceId</code> is not provided, the embed opens the
+Dashboard with all of the user's videos. Unless <code>enableUnlinkedMode</code> is
+set, this flow doesn't allow the user to create a new video, as there is no
+asset reference to start the creation process from.
+</aside>
+<h4 id='iframe-rotorvideosclient-open-openoptions'>OpenOptions</h4>
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>providerReferenceId</td>
+<td>string</td>
+<td>The unique identifier for the Partner&#39;s track</td>
+<td>No</td>
+<td>-</td>
+</tr>
+<tr>
+<td>initialFlow</td>
+<td>CreationFlow</td>
+<td>The creation flow to open with. Requires the <code>providerReferenceId</code></td>
+<td>No</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h4 id='iframe-rotorvideosclient-open-handlers'>Handlers</h4>
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>onReady</td>
+<td>() =&gt; void</td>
+<td>The creator has loaded and is visible.</td>
+</tr>
+<tr>
+<td>onClose</td>
+<td>(reason?: string) =&gt; void</td>
+<td>The embed has closed. See the reasons below.</td>
+</tr>
+<tr>
+<td>onError</td>
+<td>(message: string) =&gt; void</td>
+<td>The embed failed to load or reported an error. The user is shown the same message.</td>
+</tr>
+</tbody></table>
+
+<p>Handlers apply to a single <code>open</code> call and are discarded when the embed closes,
+so pass them again on the next launch.</p>
+
+<p><code>onClose</code> receives a <code>reason</code> describing why the embed closed:</p>
+
+<table><thead>
+<tr>
+<th>Reason</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>undefined</code></td>
+<td>The user finished or dismissed the embed normally.</td>
+</tr>
+<tr>
+<td><code>&#39;dismissed&#39;</code></td>
+<td>The user pressed Escape.</td>
+</tr>
+<tr>
+<td><code>&#39;error&#39;</code></td>
+<td>The user dismissed the error message shown after a load failure.</td>
+</tr>
+<tr>
+<td><code>&#39;external create&#39;</code></td>
+<td>The user asked to create a video while <code>enableExternalCreate</code> is set, so your page should take over.</td>
+</tr>
+</tbody></table>
+<h3 id='iframe-rotorvideosclient-close'>close</h3>
+<blockquote>
+<p><strong>Example</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">client</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+</code></pre></div>
+<p><code>close</code> closes the embed from your page — for example, if the user signs out
+while the creator is open. It is a no-op when nothing is open.</p>
+
+<p>The user can already close the embed themselves, and doing so calls your
+<code>onClose</code> handler, so most integrations never need to call <code>close</code> directly.</p>
+<h2 id='iframe-authentication'>Authentication</h2>
+<blockquote>
+<p><strong>Example of an AuthConfig</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="nl">clientId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-app-client-id</span><span class="dl">'</span><span class="p">,</span>
+  <span class="nx">getToken</span><span class="p">:</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/my-app/rotor-token</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">accessToken</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">accessToken</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>authConfig</code> object identifies your integration and supplies User Access
+Tokens on demand.</p>
+
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientId</td>
+<td>string</td>
+<td>The client ID for the partner application.</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>getToken</td>
+<td>() =&gt; string &#124; Promise&lt;string&gt;</td>
+<td>Returns a User Access Token for the signed-in user.</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+</tbody></table>
+
+<p><code>getToken</code> is called whenever the embed needs a token, including when the
+previous one has expired. Return the current token for the signed-in user each
+time it is called — do not cache one indefinitely on the assumption it will
+remain valid. See <a href="#authentication">Authentication</a> for how your server obtains
+a User Access Token, and how long it lasts.</p>
+
+<p>Your <code>getToken</code> function stays on your page. It is never sent to Rotor: the
+embed asks for a token when it needs one, and only the resulting token string is
+handed over.</p>
+
+<aside class="warning">
+Fetch tokens from your own backend, as in the example above. Do not put your
+Client Secret on the page, and do not call <code>POST /oauth/token</code> from
+the browser — those credentials authorize your whole application, not a single
+user.
+</aside>
+<h2 id='iframe-creation-flows'>Creation Flows</h2>
+<blockquote>
+<p><strong>Example of how to specify the flows available</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">CreationFlow</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@rotorvideos/iframe</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">client</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+  <span class="na">authConfig</span><span class="p">:</span> <span class="nx">authConfig</span><span class="p">,</span>
+  <span class="na">mediaAssets</span><span class="p">:</span> <span class="nx">mediaAssets</span><span class="p">,</span>
+  <span class="na">availableFlows</span><span class="p">:</span> <span class="p">[</span><span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">lyrics</span><span class="p">,</span> <span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">artwork</span><span class="p">],</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>There are several kinds of video your users can create. By default they can
+create all of them; set <code>availableFlows</code> to offer a subset.</p>
+
+<ul>
+<li><code>CreationFlow.canvas</code> — Spotify Canvas video</li>
+<li><code>CreationFlow.motion</code> — Apple Music Album Motion</li>
+<li><code>CreationFlow.artwork</code> — Artwork video</li>
+<li><code>CreationFlow.lyrics</code> — Lyric video</li>
+</ul>
+
+<p>The <code>CreationFlow</code> values are plain strings, so the script-tag bundle can use
+them directly — <code>availableFlows: [&#39;lyrics&#39;, &#39;artwork&#39;]</code> is equivalent to the
+example above.</p>
+<h2 id='iframe-going-live'>Going live</h2>
+<p>Two things must be in place before the embed will load on your production site.</p>
+<h3 id='iframe-going-live-register-your-origins'>Register your origins</h3>
+<p>Because the embed runs framed on your page, we restrict which origins are
+allowed to frame each production integration.</p>
+
+<p>Send Rotor the exact origins your integration will be served from — scheme,
+host, and port, for example <code>https://app.example.com</code> — and we will register
+them against your Client ID.</p>
+
+<aside class="warning">
+Registration fails closed: until your origins are registered, a production
+Client ID will refuse to load and your <code>onError</code> handler will fire.
+Sandbox integrations can be framed from any origin, so you can build and test
+against your sandbox credentials before your production origins are registered.
+</aside>
+<h3 id='iframe-going-live-content-security-policy'>Content Security Policy</h3>
+<blockquote>
+<p><strong>The one directive to add</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>Content-Security-Policy: frame-src https://embed.rotorvideos.com;
+</code></pre></div>
+<p>Everything the creator loads — our application, our API, the payment SDK — runs
+inside the iframe on Rotor&#39;s origin and is governed by Rotor&#39;s own Content
+Security Policy, not yours. So if your page sends a <code>Content-Security-Policy</code>
+header, you only need to allow the embed host as a frame source.</p>
+
+<p>Add <code>child-src</code> alongside <code>frame-src</code> if you support browsers that predate
+CSP Level 3.</p>
+
+<p>The loader adds no inline <code>&lt;script&gt;</code> and no inline <code>&lt;style&gt;</code> to your page, so it
+does not require <code>&#39;unsafe-inline&#39;</code> or <code>&#39;unsafe-eval&#39;</code>.</p>
+<h2 id='iframe-differences-from-the-react-and-bundle-libraries'>Differences from the React and Bundle libraries</h2>
+<p>If you are moving from <code>@rotorvideos/react</code> or <code>@rotorvideos/web</code>, note that:</p>
+
+<ul>
+<li>Configuration is split. What was one set of props is now the <code>init</code>
+configuration (stable, per-integration) and the <code>open</code> options (per-launch).</li>
+<li><code>availableFlows</code> replaces <code>creationFlows</code>, and <code>initialFlow</code> replaces
+<code>creationFlow</code>.</li>
+<li>Authentication is always a <code>getToken</code> callback. There is no static
+<code>accessToken</code> option, because the embed refreshes tokens on its own.</li>
+<li>There is no smart button. Render your own button and call <code>open</code> from it.</li>
+</ul>
+<h1 id='react'>React</h1>
+<aside class="notice">
+For new integrations we recommend the <a href="#iframe">Iframe</a> embed, which
+needs no registry credentials and keeps itself up to date. Use the React library
+when the video creator needs to run inside your own React application.
+</aside>
+<h2 id='react-installation'>Installation</h2>
 <blockquote>
 <p><strong>Add NPM Registry token to your <code>.npmrc</code> file</strong></p>
 </blockquote>
@@ -1922,7 +2448,23 @@ Videos components.</p>
 </tbody></table>
 <h3 id='react-rotorvideosprovider-authconfig'>AuthConfig</h3>
 <blockquote>
-<p><strong>Example of an AuthConfig</strong></p>
+<p><strong>Supplying a token on demand (recommended)</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nc">RotorVideosProvider</span>
+  <span class="na">authConfig</span><span class="p">=</span><span class="si">{</span><span class="p">{</span>
+    <span class="na">clientId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-app-client-id</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">getToken</span><span class="p">:</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/my-app/rotor-token</span><span class="dl">'</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="p">{</span> <span class="nx">accessToken</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+      <span class="k">return</span> <span class="nx">accessToken</span><span class="p">;</span>
+    <span class="p">},</span>
+  <span class="p">}</span><span class="si">}</span>
+<span class="p">&gt;</span>
+  ...
+<span class="p">&lt;/</span><span class="nc">RotorVideosProvider</span><span class="p">&gt;</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Supplying a fixed token</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"accessToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user-access-token"</span><span class="p">,</span><span class="w">
@@ -1930,7 +2472,11 @@ Videos components.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>The <code>authConfig</code> object contains the necessary information to authenticate the user with the Rotor Videos API.
-It is defined as follows:</p>
+It takes one of two forms.</p>
+
+<p>Prefer the <code>getToken</code> form. User Access Tokens expire, and <code>getToken</code> is called
+again whenever a fresh one is needed, so your integration keeps working through
+an expiry without you having to re-render the provider.</p>
 
 <table><thead>
 <tr>
@@ -1942,20 +2488,33 @@ It is defined as follows:</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>accessToken</td>
-<td>string</td>
-<td>The access token for the user.</td>
-<td>Yes</td>
-<td>-</td>
-</tr>
-<tr>
 <td>clientId</td>
 <td>string</td>
 <td>The client ID for the partner application.</td>
 <td>Yes</td>
 <td>-</td>
 </tr>
+<tr>
+<td>getToken</td>
+<td>() =&gt; Promise&lt;string&gt;</td>
+<td>Returns a User Access Token for the user. Called again whenever one is needed.</td>
+<td>Yes, unless <code>accessToken</code> is given</td>
+<td>-</td>
+</tr>
+<tr>
+<td>accessToken</td>
+<td>string</td>
+<td>A fixed access token for the user. Not refreshed — use <code>getToken</code> instead.</td>
+<td>Yes, unless <code>getToken</code> is given</td>
+<td>-</td>
+</tr>
 </tbody></table>
+
+<aside class="notice">
+Provide either <code>getToken</code> or <code>accessToken</code>, not both. If
+<code>getToken</code> is present it is used, and <code>accessToken</code> is
+ignored.
+</aside>
 <h3 id='react-rotorvideosprovider-mediaasset'>MediaAsset</h3>
 <blockquote>
 <p><strong>Example of a MediaAsset for a Track with Release</strong></p>
@@ -2254,7 +2813,13 @@ This flow doesn't allow the user to create a new video, as there is no track ref
     <span class="p">&lt;/</span><span class="nc">RotorVideosProvider</span><span class="p">&gt;</span>
   <span class="p">);</span>
 <span class="p">};</span>
-</code></pre></div><h1 id='bundle'>Bundle</h1><h2 id='bundle-installation'>Installation</h2>
+</code></pre></div><h1 id='bundle'>Bundle</h1>
+<aside class="notice">
+For new integrations we recommend the <a href="#iframe">Iframe</a> embed, which
+also works on any page and needs no registry credentials. Use this bundle when
+the video creator needs to run inside your own application.
+</aside>
+<h2 id='bundle-installation'>Installation</h2>
 <blockquote>
 <p><strong>Add the script to the page</strong></p>
 </blockquote>
