@@ -19,6 +19,7 @@ includes:
   - webhooks
   - errors
   - js_reference
+  - iframe_js
   - react_js
   - bundle_js
   - theming

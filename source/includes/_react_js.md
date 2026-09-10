@@ -1,5 +1,11 @@
 # React
 
+<aside class="notice">
+For new integrations we recommend the <a href="#iframe">Iframe</a> embed, which
+needs no registry credentials and keeps itself up to date. Use the React library
+when the video creator needs to run inside your own React application.
+</aside>
+
 ## Installation
 
 > **Add NPM Registry token to your `.npmrc` file**
@@ -62,7 +68,24 @@ Videos components.
 | theme                 | AppTheme              | The theme overrides object [see more](#theming)                                              | No       | -                                                                                      |
 ### AuthConfig
 
-> **Example of an AuthConfig**
+> **Supplying a token on demand (recommended)**
+
+```jsx
+<RotorVideosProvider
+  authConfig={{
+    clientId: 'partner-app-client-id',
+    getToken: async () => {
+      const response = await fetch('/my-app/rotor-token');
+      const { accessToken } = await response.json();
+      return accessToken;
+    },
+  }}
+>
+  ...
+</RotorVideosProvider>
+```
+
+> **Supplying a fixed token**
 
 ```json
 {
@@ -72,12 +95,23 @@ Videos components.
 ```
 
 The `authConfig` object contains the necessary information to authenticate the user with the Rotor Videos API.
-It is defined as follows:
+It takes one of two forms.
 
-| Prop Name   | Type   | Description                                | Required | Default |
-|-------------|--------|--------------------------------------------|----------|---------|
-| accessToken | string | The access token for the user.             | Yes      | -       |
-| clientId    | string | The client ID for the partner application. | Yes      | -       |
+Prefer the `getToken` form. User Access Tokens expire, and `getToken` is called
+again whenever a fresh one is needed, so your integration keeps working through
+an expiry without you having to re-render the provider.
+
+| Prop Name   | Type                    | Description                                                                | Required | Default |
+|-------------|-------------------------|----------------------------------------------------------------------------|----------|---------|
+| clientId    | string                  | The client ID for the partner application.                                 | Yes      | -       |
+| getToken    | () => Promise\<string\> | Returns a User Access Token for the user. Called again whenever one is needed. | Yes, unless `accessToken` is given | - |
+| accessToken | string                  | A fixed access token for the user. Not refreshed — use `getToken` instead. | Yes, unless `getToken` is given    | - |
+
+<aside class="notice">
+Provide either <code>getToken</code> or <code>accessToken</code>, not both. If
+<code>getToken</code> is present it is used, and <code>accessToken</code> is
+ignored.
+</aside>
 
 ### MediaAsset
 
