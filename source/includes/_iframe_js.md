@@ -197,7 +197,7 @@ asset reference to start the creation process from.
 
 | Prop Name           | Type         | Description                                                                    | Required | Default |
 |---------------------|--------------|--------------------------------------------------------------------------------|----------|---------|
-| providerReferenceId | string       | The unique identifier for the Partner's track                                  | No       | -       |
+| providerReferenceId | string       | The identifier of the asset to open. Must match a `MediaAsset` `id` or `releaseId` | No       | -       |
 | initialFlow         | CreationFlow | The creation flow to open with. Requires the `providerReferenceId`             | No       | -       |
 
 #### Handlers
