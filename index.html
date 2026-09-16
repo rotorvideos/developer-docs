@@ -2130,7 +2130,7 @@ asset reference to start the creation process from.
 <tr>
 <td>providerReferenceId</td>
 <td>string</td>
-<td>The unique identifier for the Partner&#39;s track</td>
+<td>The identifier of the asset to open. Must match a <code>MediaAsset</code> <code>id</code> or <code>releaseId</code></td>
 <td>No</td>
 <td>-</td>
 </tr>
@@ -2517,114 +2517,178 @@ ignored.
 </aside>
 <h3 id='react-rotorvideosprovider-mediaasset'>MediaAsset</h3>
 <blockquote>
-<p><strong>Example of a MediaAsset for a Track with Release</strong></p>
+<p><strong>Example of a track asset</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-track-1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-api"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trackName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rite"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"artistName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rotor Pretenders"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"releaseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-release-1"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"releaseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"releaseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rotor Pretenders Debut Album"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"releaseArtworkUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/release-1-artwork.jpg"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"trackName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Track 1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"audioUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/audio.mp3"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"artworkUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/artwork.jpg"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"audioUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/audio.mp3"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p><strong>Example of a MediaAsset for a Release</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-api"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"releaseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-release-1"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"releaseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"releaseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rotor Pretenders Debut Album"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some Are Lovin'"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"album"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"releaseArtworkUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/release-1-artwork.jpg"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>The <code>MediaAsset</code> object represents an asset available for the user to select. It is defined as follows:</p>
+<blockquote>
+<p><strong>Example of a release asset</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-api"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-release-2"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rotor Pretenders Debut"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseArtworkUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/release-2-artwork.jpg"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>A <code>MediaAsset</code> represents an asset available for the user to select. There are
+two shapes, and the fields you send decide which one you get:</p>
 
+<ul>
+<li>A <strong>track asset</strong> has an <code>id</code>. It imports the track&#39;s audio and artwork, and
+may also carry the details of the release it belongs to.</li>
+<li>A <strong>release asset</strong> has no <code>id</code> and a <code>releaseId</code>. It imports the release only.</li>
+</ul>
+
+<aside class="warning">
+The <code>providerReferenceId</code> you open the embeddable with must exactly
+match an asset's <code>id</code> (track asset) or <code>releaseId</code> (release
+asset).
+</aside>
+
+<p>A track asset and a release asset may carry the same <code>releaseId</code>. Releases are
+matched on <code>providerName</code> and <code>releaseId</code>, so both assets resolve to the same
+release rather than creating a duplicate.</p>
+<h4 id='react-rotorvideosprovider-mediaasset-track-asset'>Track asset</h4>
 <table><thead>
 <tr>
 <th>Prop Name</th>
 <th>Type</th>
 <th>Description</th>
 <th>Required</th>
-<th>Default</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>string</td>
-<td>The unique identifier for the Partner&#39;s track.</td>
-<td>No</td>
-<td>-</td>
-</tr>
-<tr>
-<td>artistName</td>
-<td>string</td>
-<td>The name of the track&#39;s artist.</td>
-<td>No</td>
-<td>-</td>
-</tr>
-<tr>
-<td>trackName</td>
-<td>string</td>
-<td>The name of the track.</td>
-<td>No</td>
-<td>-</td>
-</tr>
-<tr>
-<td>artworkUrl</td>
-<td>string</td>
-<td>The URL of the track&#39;s artwork.</td>
-<td>No</td>
-<td>-</td>
-</tr>
-<tr>
-<td>audioUrl</td>
-<td>string</td>
-<td>The URL of the track&#39;s audio file.</td>
-<td>No</td>
-<td>-</td>
+<td>Your unique identifier for the track. Open the embeddable with this value.</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>providerName</td>
 <td>string</td>
 <td>The name of the media asset provider.</td>
 <td>Yes</td>
-<td>-</td>
+</tr>
+<tr>
+<td>trackName</td>
+<td>string</td>
+<td>The name of the track.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>artistName</td>
+<td>string</td>
+<td>The name of the track&#39;s artist.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>audioUrl</td>
+<td>string</td>
+<td>The URL of the track&#39;s audio file.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>artworkUrl</td>
+<td>string</td>
+<td>The URL of the track&#39;s artwork.</td>
+<td>No</td>
 </tr>
 <tr>
 <td>releaseId</td>
 <td>string</td>
-<td>The unique identifier for the release.</td>
+<td>Your unique identifier for the release. Supplying it also imports the release.</td>
 <td>No</td>
-<td>null</td>
 </tr>
 <tr>
 <td>releaseName</td>
 <td>string</td>
 <td>The name of the release.</td>
 <td>No</td>
-<td>null</td>
 </tr>
 <tr>
 <td>releaseType</td>
-<td>album, compilation, single</td>
+<td>album, compilation, ep, single</td>
 <td>The type of the release.</td>
 <td>No</td>
-<td>null</td>
 </tr>
 <tr>
 <td>releaseArtworkUrl</td>
 <td>string</td>
 <td>The URL of the release&#39;s artwork.</td>
 <td>No</td>
-<td>null</td>
 </tr>
 </tbody></table>
+<h4 id='react-rotorvideosprovider-mediaasset-release-asset'>Release asset</h4>
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>providerName</td>
+<td>string</td>
+<td>The name of the media asset provider.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>releaseId</td>
+<td>string</td>
+<td>Your unique identifier for the release. Open the embeddable with this value.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>releaseName</td>
+<td>string</td>
+<td>The name of the release.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>releaseType</td>
+<td>album, compilation, ep, single</td>
+<td>The type of the release.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>releaseArtworkUrl</td>
+<td>string</td>
+<td>The URL of the release&#39;s artwork.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>artistName</td>
+<td>string</td>
+<td>The name of the release&#39;s artist.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h4 id='react-rotorvideosprovider-mediaasset-media-requirements'>Media requirements</h4>
+<p>Assets are imported server side, so every URL you supply has to be fetchable
+without authentication — we send a <code>HEAD</code> request before downloading the file.
+Pre-signed URLs are fine, but they must stay valid until the import finishes,
+not just for as long as your page is open.</p>
+
+<ul>
+<li><strong>Audio format</strong> — WAV, MP3, M4A, AAC, OGG, FLAC or AIFF</li>
+<li><strong>Audio length</strong> — under 10 minutes</li>
+<li><strong>Audio size</strong> — 300 MB or less</li>
+<li><strong>Artwork format</strong> — JPEG, PNG, GIF or TIFF</li>
+</ul>
 <h3 id='react-rotorvideosprovider-creation-flows'>Creation Flows</h3>
 <p>There are various media types your users can create: <strong>Apple Music Album Motion</strong>, <strong>Spotify Canvas Video</strong>, <strong>Lyric Video</strong>, and <strong>Artwork Video</strong>. By default, all creation flows are available to users. However, you can customize which flows appear by configuring the <code>creationFlows</code> prop in the <code>RotorVideosProvider</code> when integrating our toolkit into your React app.</p>
 <h4 id='react-rotorvideosprovider-creation-flows-how-creation-flows-work'>How Creation Flows Work</h4>
@@ -2716,7 +2780,7 @@ ignored.
 <tr>
 <td>providerReferenceId</td>
 <td>string</td>
-<td>The unique identifier for the Partner&#39;s track</td>
+<td>The identifier of the asset to open. Must match a <code>MediaAsset</code> <code>id</code> or <code>releaseId</code></td>
 <td>No</td>
 <td>null</td>
 </tr>
@@ -2767,7 +2831,7 @@ This flow doesn't allow the user to create a new video, as there is no track ref
 <tr>
 <td>providerReferenceId</td>
 <td>string</td>
-<td>The unique identifier for the Partner&#39;s track</td>
+<td>The identifier of the asset to open. Must match a <code>MediaAsset</code> <code>id</code> or <code>releaseId</code></td>
 <td>Yes</td>
 <td>-</td>
 </tr>
