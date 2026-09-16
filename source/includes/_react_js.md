@@ -115,49 +115,89 @@ ignored.
 
 ### MediaAsset
 
-> **Example of a MediaAsset for a Track with Release**
+> **Example of a track asset**
 
 ```json
 {
   "id": "partner-demo-track-1",
   "providerName": "partner-demo-api",
+  "trackName": "Rite",
   "artistName": "Rotor Pretenders",
-  "releaseId": "partner-demo-release-1",
-  "releaseType": "single",
-  "releaseName": "Rotor Pretenders Debut Album",
-  "releaseArtworkUrl": "https://example.com/partner-demo-1/release-1-artwork.jpg",
-  "trackName": "Track 1",
+  "audioUrl": "https://example.com/partner-demo-1/audio.mp3",
   "artworkUrl": "https://example.com/partner-demo-1/artwork.jpg",
-  "audioUrl": "https://example.com/partner-demo-1/audio.mp3"
-}
-```
-
-> **Example of a MediaAsset for a Release**
-
-```json
-{
-  "providerName": "partner-demo-api",
   "releaseId": "partner-demo-release-1",
-  "releaseType": "single",
-  "releaseName": "Rotor Pretenders Debut Album",
+  "releaseName": "Some Are Lovin'",
+  "releaseType": "album",
   "releaseArtworkUrl": "https://example.com/partner-demo-1/release-1-artwork.jpg"
 }
 ```
 
-The `MediaAsset` object represents an asset available for the user to select. It is defined as follows:
+> **Example of a release asset**
 
-| Prop Name         | Type                       | Description                                    | Required | Default |
-|-------------------|----------------------------|------------------------------------------------|----------|---------|
-| id                | string                     | The unique identifier for the Partner's track. | No       | -       |
-| artistName        | string                     | The name of the track's artist.                | No       | -       |
-| trackName         | string                     | The name of the track.                         | No       | -       |
-| artworkUrl        | string                     | The URL of the track's artwork.                | No       | -       |
-| audioUrl          | string                     | The URL of the track's audio file.             | No       | -       |
-| providerName      | string                     | The name of the media asset provider.          | Yes      | -       |
-| releaseId         | string                     | The unique identifier for the release.         | No       | null    |
-| releaseName       | string                     | The name of the release.                       | No       | null    |
-| releaseType       | album, compilation, single | The type of the release.                       | No       | null    |
-| releaseArtworkUrl | string                     | The URL of the release's artwork.              | No       | null    |
+```json
+{
+  "providerName": "partner-demo-api",
+  "releaseId": "partner-demo-release-2",
+  "releaseName": "Rotor Pretenders Debut",
+  "releaseType": "single",
+  "releaseArtworkUrl": "https://example.com/partner-demo-1/release-2-artwork.jpg"
+}
+```
+
+A `MediaAsset` represents an asset available for the user to select. There are
+two shapes, and the fields you send decide which one you get:
+
+- A **track asset** has an `id`. It imports the track's audio and artwork, and
+  may also carry the details of the release it belongs to.
+- A **release asset** has no `id` and a `releaseId`. It imports the release only.
+
+<aside class="warning">
+The <code>providerReferenceId</code> you open the embeddable with must exactly
+match an asset's <code>id</code> (track asset) or <code>releaseId</code> (release
+asset).
+</aside>
+
+A track asset and a release asset may carry the same `releaseId`. Releases are
+matched on `providerName` and `releaseId`, so both assets resolve to the same
+release rather than creating a duplicate.
+
+#### Track asset
+
+| Prop Name         | Type                           | Description                                                                    | Required |
+|-------------------|--------------------------------|--------------------------------------------------------------------------------|----------|
+| id                | string                         | Your unique identifier for the track. Open the embeddable with this value.     | Yes      |
+| providerName      | string                         | The name of the media asset provider.                                          | Yes      |
+| trackName         | string                         | The name of the track.                                                         | Yes      |
+| artistName        | string                         | The name of the track's artist.                                                | Yes      |
+| audioUrl          | string                         | The URL of the track's audio file.                                             | Yes      |
+| artworkUrl        | string                         | The URL of the track's artwork.                                                | No       |
+| releaseId         | string                         | Your unique identifier for the release. Supplying it also imports the release. | No       |
+| releaseName       | string                         | The name of the release.                                                       | No       |
+| releaseType       | album, compilation, ep, single | The type of the release.                                                       | No       |
+| releaseArtworkUrl | string                         | The URL of the release's artwork.                                              | No       |
+
+#### Release asset
+
+| Prop Name         | Type                           | Description                                                                  | Required |
+|-------------------|--------------------------------|------------------------------------------------------------------------------|----------|
+| providerName      | string                         | The name of the media asset provider.                                        | Yes      |
+| releaseId         | string                         | Your unique identifier for the release. Open the embeddable with this value. | Yes      |
+| releaseName       | string                         | The name of the release.                                                     | No       |
+| releaseType       | album, compilation, ep, single | The type of the release.                                                     | No       |
+| releaseArtworkUrl | string                         | The URL of the release's artwork.                                            | No       |
+| artistName        | string                         | The name of the release's artist.                                            | No       |
+
+#### Media requirements
+
+Assets are imported server side, so every URL you supply has to be fetchable
+without authentication — we send a `HEAD` request before downloading the file.
+Pre-signed URLs are fine, but they must stay valid until the import finishes,
+not just for as long as your page is open.
+
+- **Audio format** — WAV, MP3, M4A, AAC, OGG, FLAC or AIFF
+- **Audio length** — under 10 minutes
+- **Audio size** — 300 MB or less
+- **Artwork format** — JPEG, PNG, GIF or TIFF
 
 ### Creation Flows
 
@@ -234,7 +274,7 @@ The `OpenOptions` object contains the necessary information to open the Rotor Vi
 
 | Prop Name           | Type          | Description                                                                  | Required | Default |
 |---------------------|---------------|------------------------------------------------------------------------------|----------|---------|
-| providerReferenceId | string        | The unique identifier for the Partner's track                                | No       | null    |
+| providerReferenceId | string        | The identifier of the asset to open. Must match a `MediaAsset` `id` or `releaseId` | No       | null    |
 | creationFlow        | canvas,motion | The creation flow to open the modal with. Requires the `providerReferenceId` | No       | null    |
 
 <aside class="notice">
@@ -273,7 +313,7 @@ The `RotorVideosSmartButton` component is a button that opens the Rotor Videos m
 
 | Prop Name           | Type        | Description                                                  | Required | Default  |
 |---------------------|-------------|--------------------------------------------------------------|----------|----------|
-| providerReferenceId | string      | The unique identifier for the Partner's track                | Yes      | -        |
+| providerReferenceId | string      | The identifier of the asset to open. Must match a `MediaAsset` `id` or `releaseId` | Yes      | -        |
 | as                  | ElementType | The element type of the button (HTML tag or React component) | No       | 'button' |
 
 The rest of the props are passed to the button element.
