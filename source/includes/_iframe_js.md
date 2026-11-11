@@ -1,6 +1,6 @@
 # Iframe
 
-The iframe embed is the recommended way to add Rotor video creation to your site.
+The iframe embed is how you add Rotor video creation to your site.
 
 You install a small loader on your page. When you open it, the loader mounts the
 Rotor video creator in a full-screen `<iframe>` served from Rotor. Because the
@@ -156,14 +156,11 @@ configuration applies to the next `open`.
 | Prop Name            | Type           | Description                                                                                     | Required | Default    |
 |----------------------|----------------|-------------------------------------------------------------------------------------------------|----------|------------|
 | authConfig           | AuthConfig     | The authentication configuration [see more](#iframe-authentication)                             | Yes      | -          |
-| mediaAssets          | MediaAsset[]   | The list of available Partner assets for the user [see more](#react-rotorvideosprovider-mediaasset)                 | No       | []         |
+| mediaAssets          | MediaAsset[]   | The list of available Partner assets for the user [see more](#iframe-media-assets)              | No       | []         |
 | availableFlows       | CreationFlow[] | The creation flows available to the user [see more](#iframe-creation-flows)                     | No       | All flows  |
 | showDuplicateAction  | boolean        | Show the duplicate action for a video                                                            | No       | true       |
 | enableUnlinkedMode   | boolean        | Allow users to start a video without selecting one of your assets first                          | No       | false      |
 | enableExternalCreate | boolean        | Close the embed instead of starting creation, so your own page can handle the "create" action    | No       | false      |
-
-The `MediaAsset` shape is the same as for the React library — see
-[MediaAsset](#react-rotorvideosprovider-mediaasset).
 
 ### open
 
@@ -274,6 +271,93 @@ the browser — those credentials authorize your whole application, not a single
 user.
 </aside>
 
+## Media assets
+
+> **Example of a track asset**
+
+```json
+{
+  "id": "partner-demo-track-1",
+  "providerName": "partner-demo-api",
+  "trackName": "Rite",
+  "artistName": "Rotor Pretenders",
+  "audioUrl": "https://example.com/partner-demo-1/audio.mp3",
+  "artworkUrl": "https://example.com/partner-demo-1/artwork.jpg",
+  "releaseId": "partner-demo-release-1",
+  "releaseName": "Some Are Lovin'",
+  "releaseType": "album",
+  "releaseArtworkUrl": "https://example.com/partner-demo-1/release-1-artwork.jpg"
+}
+```
+
+> **Example of a release asset**
+
+```json
+{
+  "providerName": "partner-demo-api",
+  "releaseId": "partner-demo-release-2",
+  "releaseName": "Rotor Pretenders Debut",
+  "releaseType": "single",
+  "releaseArtworkUrl": "https://example.com/partner-demo-1/release-2-artwork.jpg"
+}
+```
+
+A `MediaAsset` represents an asset available for the user to select. Pass them
+to `init` as `mediaAssets`. There are two shapes, and the fields you send decide
+which one you get:
+
+- A **track asset** has an `id`. It imports the track's audio and artwork, and
+  may also carry the details of the release it belongs to.
+- A **release asset** has no `id` and a `releaseId`. It imports the release only.
+
+<aside class="warning">
+The <code>providerReferenceId</code> you pass to <code>open</code> must exactly
+match an asset's <code>id</code> (track asset) or <code>releaseId</code> (release
+asset).
+</aside>
+
+A track asset and a release asset may carry the same `releaseId`. Releases are
+matched on `providerName` and `releaseId`, so both assets resolve to the same
+release rather than creating a duplicate.
+
+### Track asset
+
+| Prop Name         | Type                           | Description                                                                    | Required |
+|-------------------|--------------------------------|--------------------------------------------------------------------------------|----------|
+| id                | string                         | Your unique identifier for the track. Pass this value to `open`.               | Yes      |
+| providerName      | string                         | The name of the media asset provider.                                          | Yes      |
+| trackName         | string                         | The name of the track.                                                         | Yes      |
+| artistName        | string                         | The name of the track's artist.                                                | Yes      |
+| audioUrl          | string                         | The URL of the track's audio file.                                             | Yes      |
+| artworkUrl        | string                         | The URL of the track's artwork.                                                | No       |
+| releaseId         | string                         | Your unique identifier for the release. Supplying it also imports the release. | No       |
+| releaseName       | string                         | The name of the release.                                                       | No       |
+| releaseType       | album, compilation, ep, single | The type of the release.                                                       | No       |
+| releaseArtworkUrl | string                         | The URL of the release's artwork.                                              | No       |
+
+### Release asset
+
+| Prop Name         | Type                           | Description                                                                  | Required |
+|-------------------|--------------------------------|------------------------------------------------------------------------------|----------|
+| providerName      | string                         | The name of the media asset provider.                                        | Yes      |
+| releaseId         | string                         | Your unique identifier for the release. Pass this value to `open`.           | Yes      |
+| releaseName       | string                         | The name of the release.                                                     | No       |
+| releaseType       | album, compilation, ep, single | The type of the release.                                                     | No       |
+| releaseArtworkUrl | string                         | The URL of the release's artwork.                                            | No       |
+| artistName        | string                         | The name of the release's artist.                                            | No       |
+
+### Media requirements
+
+Assets are imported server side, so every URL you supply has to be fetchable
+without authentication — we send a `HEAD` request before downloading the file.
+Pre-signed URLs are fine, but they must stay valid until the import finishes,
+not just for as long as your page is open.
+
+- **Audio format** — WAV, MP3, M4A, AAC, OGG, FLAC or AIFF
+- **Audio length** — under 10 minutes
+- **Audio size** — 300 MB or less
+- **Artwork format** — JPEG, PNG, GIF or TIFF
+
 ## Creation Flows
 
 > **Example of how to specify the flows available**
@@ -339,14 +423,45 @@ CSP Level 3.
 The loader adds no inline `<script>` and no inline `<style>` to your page, so it
 does not require `'unsafe-inline'` or `'unsafe-eval'`.
 
-## Differences from the React and Bundle libraries
+## Migrating from React or Bundle
+
+> **Bundle**
+
+```javascript
+RotorVideos.open({
+  authConfig: { clientId, accessToken },
+  mediaAssets,
+  providerReferenceId: 'partner-demo-track-1',
+});
+```
+
+> **The same launch with the iframe script-tag bundle**
+
+```javascript
+RotorVideos.init({
+  authConfig: { clientId, getToken },
+  mediaAssets,
+});
+
+RotorVideos.open({ providerReferenceId: 'partner-demo-track-1' });
+```
 
 If you are moving from `@rotorvideos/react` or `@rotorvideos/web`, note that:
 
+- `@rotorvideos/iframe` is on the public npm registry. Remove the `@rotorvideos`
+  lines you added to `.npmrc` for the private registry, otherwise npm looks for
+  the package there.
 - Configuration is split. What was one set of props is now the `init`
   configuration (stable, per-integration) and the `open` options (per-launch).
-- `availableFlows` replaces `creationFlows`, and `initialFlow` replaces
-  `creationFlow`.
+  The script-tag bundle keeps the `RotorVideos` global, but configuration moves
+  from `open` to `init`.
+- `availableFlows` replaces `creationFlows`, `initialFlow` replaces
+  `creationFlow`, and `mediaAssets` replaces `availableTracks`.
 - Authentication is always a `getToken` callback. There is no static
   `accessToken` option, because the embed refreshes tokens on its own.
 - There is no smart button. Render your own button and call `open` from it.
+- There is no `theme`, `localisationResources` or `logLevel`. The video creator
+  uses Rotor's own styling and text.
+
+Before you switch production over, register your origins and update your
+Content Security Policy as described in [Going live](#iframe-going-live).
