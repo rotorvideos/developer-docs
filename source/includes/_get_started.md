@@ -150,10 +150,8 @@ on rotorvideos.com so that you can embed them into your own pages.
 Through the embeddable, we ingest an artist's data, including Releases, Tracks, and accompanying assets. We use these in
 the background to feed the video creation process.
 
-The recommended integration is the <a href='#iframe'>Iframe</a> embed shown here: it works on any page, needs no
-registry credentials, and updates itself. We also provide <a href='#react'>React</a> components and a
-<a href='#bundle'>JavaScript bundle</a>, for integrations where the video creator needs to run inside your own
-application.
+You embed the video creator with the <a href='#iframe'>Iframe</a> library shown here. It works on any page, needs no
+registry credentials, and keeps itself up to date.
 
 See the <a href='#javascript-api'>JavaScript API</a> for more details.
 

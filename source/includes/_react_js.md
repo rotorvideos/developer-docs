@@ -1,9 +1,11 @@
-# React
+# React (Deprecated)
 
-<aside class="notice">
-For new integrations we recommend the <a href="#iframe">Iframe</a> embed, which
-needs no registry credentials and keeps itself up to date. Use the React library
-when the video creator needs to run inside your own React application.
+<aside class="warning">
+<code>@rotorvideos/react</code> is deprecated. From 1 January 2027 it will no
+longer receive new features or fixes. Existing integrations will keep working.
+Use the <a href="#iframe">Iframe</a> for new integrations, and move existing ones
+to it to get new features. See
+<a href="#iframe-migrating-from-react-or-bundle">Migrating from React or Bundle</a>.
 </aside>
 
 ## Installation
@@ -26,8 +28,9 @@ npm install @rotorvideos/react
 yarn add @rotorvideos/react
 ```
 
-To install the package, you need to add the NPM Registry token to your `.npmrc` file. You can find the token in your
-Partner Dashboard (Engineering -> JavaScript Integration). And then you can install the package using `npm` or `yarn`.
+To install the package, you need to add the NPM Registry token to your `.npmrc` file. If your integration has registry
+access, you can find the token in your Partner Dashboard (Engineering -> JavaScript Integration). And then you can
+install the package using `npm` or `yarn`.
 
 ## RotorVideosProvider
 
@@ -43,7 +46,6 @@ const App = () => {
         accessToken,
         clientId,
       }}
-      theme={customTheme}
     >
       ...
     </RotorVideosProvider>
@@ -65,7 +67,7 @@ Videos components.
 | creationFlows         | (motion,canvas)[]     | The list of available creation flows for the user.                                           | No       | [CreationFlow.canvas, CreationFlow.lyrics, CreationFlow.motion, CreationFlow.artwork]  |
 | showDuplicateAction   | boolean               | Show the duplicate action for the Video                                                      | No       | true                                                                                   |
 | logLevel              | quiet,debug           | The console log level                                                                        | No       | quiet                                                                                  |
-| theme                 | AppTheme              | The theme overrides object [see more](#theming)                                              | No       | -                                                                                      |
+
 ### AuthConfig
 
 > **Supplying a token on demand (recommended)**
@@ -115,89 +117,8 @@ ignored.
 
 ### MediaAsset
 
-> **Example of a track asset**
-
-```json
-{
-  "id": "partner-demo-track-1",
-  "providerName": "partner-demo-api",
-  "trackName": "Rite",
-  "artistName": "Rotor Pretenders",
-  "audioUrl": "https://example.com/partner-demo-1/audio.mp3",
-  "artworkUrl": "https://example.com/partner-demo-1/artwork.jpg",
-  "releaseId": "partner-demo-release-1",
-  "releaseName": "Some Are Lovin'",
-  "releaseType": "album",
-  "releaseArtworkUrl": "https://example.com/partner-demo-1/release-1-artwork.jpg"
-}
-```
-
-> **Example of a release asset**
-
-```json
-{
-  "providerName": "partner-demo-api",
-  "releaseId": "partner-demo-release-2",
-  "releaseName": "Rotor Pretenders Debut",
-  "releaseType": "single",
-  "releaseArtworkUrl": "https://example.com/partner-demo-1/release-2-artwork.jpg"
-}
-```
-
-A `MediaAsset` represents an asset available for the user to select. There are
-two shapes, and the fields you send decide which one you get:
-
-- A **track asset** has an `id`. It imports the track's audio and artwork, and
-  may also carry the details of the release it belongs to.
-- A **release asset** has no `id` and a `releaseId`. It imports the release only.
-
-<aside class="warning">
-The <code>providerReferenceId</code> you open the embeddable with must exactly
-match an asset's <code>id</code> (track asset) or <code>releaseId</code> (release
-asset).
-</aside>
-
-A track asset and a release asset may carry the same `releaseId`. Releases are
-matched on `providerName` and `releaseId`, so both assets resolve to the same
-release rather than creating a duplicate.
-
-#### Track asset
-
-| Prop Name         | Type                           | Description                                                                    | Required |
-|-------------------|--------------------------------|--------------------------------------------------------------------------------|----------|
-| id                | string                         | Your unique identifier for the track. Open the embeddable with this value.     | Yes      |
-| providerName      | string                         | The name of the media asset provider.                                          | Yes      |
-| trackName         | string                         | The name of the track.                                                         | Yes      |
-| artistName        | string                         | The name of the track's artist.                                                | Yes      |
-| audioUrl          | string                         | The URL of the track's audio file.                                             | Yes      |
-| artworkUrl        | string                         | The URL of the track's artwork.                                                | No       |
-| releaseId         | string                         | Your unique identifier for the release. Supplying it also imports the release. | No       |
-| releaseName       | string                         | The name of the release.                                                       | No       |
-| releaseType       | album, compilation, ep, single | The type of the release.                                                       | No       |
-| releaseArtworkUrl | string                         | The URL of the release's artwork.                                              | No       |
-
-#### Release asset
-
-| Prop Name         | Type                           | Description                                                                  | Required |
-|-------------------|--------------------------------|------------------------------------------------------------------------------|----------|
-| providerName      | string                         | The name of the media asset provider.                                        | Yes      |
-| releaseId         | string                         | Your unique identifier for the release. Open the embeddable with this value. | Yes      |
-| releaseName       | string                         | The name of the release.                                                     | No       |
-| releaseType       | album, compilation, ep, single | The type of the release.                                                     | No       |
-| releaseArtworkUrl | string                         | The URL of the release's artwork.                                            | No       |
-| artistName        | string                         | The name of the release's artist.                                            | No       |
-
-#### Media requirements
-
-Assets are imported server side, so every URL you supply has to be fetchable
-without authentication — we send a `HEAD` request before downloading the file.
-Pre-signed URLs are fine, but they must stay valid until the import finishes,
-not just for as long as your page is open.
-
-- **Audio format** — WAV, MP3, M4A, AAC, OGG, FLAC or AIFF
-- **Audio length** — under 10 minutes
-- **Audio size** — 300 MB or less
-- **Artwork format** — JPEG, PNG, GIF or TIFF
+The `MediaAsset` shape is the same as for the Iframe. See
+[Media assets](#iframe-media-assets).
 
 ### Creation Flows
 
@@ -225,7 +146,6 @@ Here's how to use the `creationFlows` prop when integrating the provider into yo
 <RotorVideosProvider
   {...rotorVideosConfig}
   mediaAssets={compactReleases}
-  theme={releasesDemoTheme}
   creationFlows={[CreationFlow.motion, CreationFlow.canvas]}
   showDuplicateAction={false}
 >

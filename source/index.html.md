@@ -22,8 +22,6 @@ includes:
   - iframe_js
   - react_js
   - bundle_js
-  - theming
-  - localization
 
 search: true
 
