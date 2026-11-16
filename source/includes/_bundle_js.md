@@ -1,9 +1,11 @@
-# Bundle
+# Bundle (Deprecated)
 
-<aside class="notice">
-For new integrations we recommend the <a href="#iframe">Iframe</a> embed, which
-also works on any page and needs no registry credentials. Use this bundle when
-the video creator needs to run inside your own application.
+<aside class="warning">
+<code>@rotorvideos/web</code> is deprecated. From 1 January 2027 it will no
+longer receive new features or fixes. Existing integrations will keep working.
+Use the <a href="#iframe">Iframe</a> for new integrations, and move existing ones
+to it to get new features. See
+<a href="#iframe-migrating-from-react-or-bundle">Migrating from React or Bundle</a>.
 </aside>
 
 ## Installation
@@ -26,14 +28,14 @@ the video creator needs to run inside your own application.
 
 In order to download the JavaScript bundle, follow the steps below:
 
-1. Follow the steps in the [React](#react) section to get the necessary credentials, obtain NPM Auth Token and create 
+1. Follow the steps in the [React](#react-deprecated) section to get the necessary credentials, obtain NPM Auth Token and create 
 a `.npmrc` file.
 2. In an empty folder run `npm init -y` to create a new `package.json` file.
 3. Run `npm pack  @rotorvideos/web && tar -xzf *.tgz` to download the JavaScript bundle.
 4. In the `package/dist` folder, you will find the `rv-embeddable-1.0.0.js` file.
 
 In fact, the bundle uses React version of the Rotor Embeddable, with slightly different interface. See the
-[React](#react) section for more information.
+[React](#react-deprecated) section for more information.
 
 ## Usage
 
@@ -85,7 +87,7 @@ type GlobalOpenOptions = RotorVideosProviderOptions & { providerReferenceId: str
 ```
 
 The `RotorVideos.open` method opens the Rotor Embeddable with the given configuration.
-It accepts an object with the same properties as the React's [RotorVideosProvider](#react-rotorvideosprovider)
+It accepts an object with the same properties as the React's [RotorVideosProvider](#react-deprecated-rotorvideosprovider)
 and an additional `providerReferenceId` property, to open the embeddable for a specific track.
 
 ### RotorVideos.close
@@ -104,4 +106,4 @@ RotorVideos.smartButton(document.getElementById('div'), {
 ```
 
 The `RotorVideos.smartButton` method creates a button in given DOM `element` that opens the Rotor Embeddable
-with the same properties as the React's [RotorVideosSmartButton](#react-rotorvideossmartbutton).
+with the same properties as the React's [RotorVideosSmartButton](#react-deprecated-rotorvideossmartbutton).
