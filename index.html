@@ -451,66 +451,44 @@
                     <a href="#iframe-authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
                   </li>
                   <li>
+                    <a href="#iframe-media-assets" class="toc-h2 toc-link" data-title="Media assets">Media assets</a>
+                  </li>
+                  <li>
                     <a href="#iframe-creation-flows" class="toc-h2 toc-link" data-title="Creation Flows">Creation Flows</a>
                   </li>
                   <li>
                     <a href="#iframe-going-live" class="toc-h2 toc-link" data-title="Going live">Going live</a>
                   </li>
                   <li>
-                    <a href="#iframe-differences-from-the-react-and-bundle-libraries" class="toc-h2 toc-link" data-title="Differences from the React and Bundle libraries">Differences from the React and Bundle libraries</a>
+                    <a href="#iframe-migrating-from-react-or-bundle" class="toc-h2 toc-link" data-title="Migrating from React or Bundle">Migrating from React or Bundle</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#react" class="toc-h1 toc-link" data-title="React">React</a>
+            <a href="#react-deprecated" class="toc-h1 toc-link" data-title="React (Deprecated)">React (Deprecated)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#react-installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
+                    <a href="#react-deprecated-installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
                   </li>
                   <li>
-                    <a href="#react-rotorvideosprovider" class="toc-h2 toc-link" data-title="RotorVideosProvider">RotorVideosProvider</a>
+                    <a href="#react-deprecated-rotorvideosprovider" class="toc-h2 toc-link" data-title="RotorVideosProvider">RotorVideosProvider</a>
                   </li>
                   <li>
-                    <a href="#react-userotorvideos" class="toc-h2 toc-link" data-title="useRotorVideos">useRotorVideos</a>
+                    <a href="#react-deprecated-userotorvideos" class="toc-h2 toc-link" data-title="useRotorVideos">useRotorVideos</a>
                   </li>
                   <li>
-                    <a href="#react-rotorvideossmartbutton" class="toc-h2 toc-link" data-title="RotorVideosSmartButton">RotorVideosSmartButton</a>
+                    <a href="#react-deprecated-rotorvideossmartbutton" class="toc-h2 toc-link" data-title="RotorVideosSmartButton">RotorVideosSmartButton</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#bundle" class="toc-h1 toc-link" data-title="Bundle">Bundle</a>
+            <a href="#bundle-deprecated" class="toc-h1 toc-link" data-title="Bundle (Deprecated)">Bundle (Deprecated)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#bundle-installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
+                    <a href="#bundle-deprecated-installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
                   </li>
                   <li>
-                    <a href="#bundle-usage" class="toc-h2 toc-link" data-title="Usage">Usage</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#theming" class="toc-h1 toc-link" data-title="Theming">Theming</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#theming-default-theme" class="toc-h2 toc-link" data-title="Default theme">Default theme</a>
-                  </li>
-                  <li>
-                    <a href="#theming-theme-components" class="toc-h2 toc-link" data-title="Theme Components">Theme Components</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#localization" class="toc-h1 toc-link" data-title="Localization">Localization</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#localization-localization-resources" class="toc-h2 toc-link" data-title="Localization resources">Localization resources</a>
-                  </li>
-                  <li>
-                    <a href="#localization-language-detection" class="toc-h2 toc-link" data-title="Language detection">Language detection</a>
-                  </li>
-                  <li>
-                    <a href="#localization-adding-new-language" class="toc-h2 toc-link" data-title="Adding new language">Adding new language</a>
+                    <a href="#bundle-deprecated-usage" class="toc-h2 toc-link" data-title="Usage">Usage</a>
                   </li>
               </ul>
           </li>
@@ -665,10 +643,8 @@ on rotorvideos.com so that you can embed them into your own pages.</p>
 <p>Through the embeddable, we ingest an artist&#39;s data, including Releases, Tracks, and accompanying assets. We use these in
 the background to feed the video creation process.</p>
 
-<p>The recommended integration is the <a href='#iframe'>Iframe</a> embed shown here: it works on any page, needs no
-registry credentials, and updates itself. We also provide <a href='#react'>React</a> components and a
-<a href='#bundle'>JavaScript bundle</a>, for integrations where the video creator needs to run inside your own
-application.</p>
+<p>You embed the video creator with the <a href='#iframe'>Iframe</a> library shown here. It works on any page, needs no
+registry credentials, and keeps itself up to date.</p>
 
 <p>See the <a href='#javascript-api'>JavaScript API</a> for more details.</p>
 <h1 id='rest-api'>REST API</h1><h1 id='authentication'>Authentication</h1>
@@ -1840,49 +1816,25 @@ The <code>video_url</code> will return as <code>null</code> here because this pr
 </tr>
 </tbody></table>
 <h1 id='javascript-api'>JavaScript API</h1>
-<p>Alongside the REST API, we provide client-side libraries that embed the Rotor
-video creator into your own pages, so your users never leave your platform to
-make a video.</p>
+<p>Alongside the REST API, we provide the <a href="#iframe">Iframe</a> library,
+<code>@rotorvideos/iframe</code>, which embeds the Rotor video creator into your own pages
+so your users never leave your platform to make a video. It uses the
+<a href="#get-started">server-side integration</a> above to get User Access Tokens.</p>
 
-<p>There are three ways to integrate. All of them use the same
-<a href="#get-started">server-side integration</a> and the same User Access Tokens.</p>
+<p>The embed loads the video creator from Rotor, so you get new features and fixes
+without upgrading anything, and there is no application code to pull into your
+build.</p>
 
-<table><thead>
-<tr>
-<th>Integration</th>
-<th>Use it when</th>
-<th>How you get it</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><a href="#iframe">Iframe</a></td>
-<td><strong>Recommended for new integrations.</strong> Any site, with or without React.</td>
-<td>Public npm package, or a script tag. No credentials needed.</td>
-</tr>
-<tr>
-<td><a href="#react">React</a></td>
-<td>The creator needs to run inside your own React application.</td>
-<td>Private npm registry, using a token from your Partner Dashboard.</td>
-</tr>
-<tr>
-<td><a href="#bundle">Bundle</a></td>
-<td>The same, on a page that isn&#39;t a React application.</td>
-<td>Private npm registry, using a token from your Partner Dashboard.</td>
-</tr>
-</tbody></table>
-
-<p>The <a href="#iframe">Iframe</a> embed loads the video creator from Rotor, so you get new
-features and fixes without upgrading anything, and there is no application code
-to pull into your build. The <a href="#react">React</a> and <a href="#bundle">Bundle</a> libraries run
-the creator inside your own application, which means pinning a version of our
-application and its dependencies alongside yours.</p>
-
-<aside class="notice">
-The React and Bundle libraries remain fully supported. If you are already using
-one of them, there is nothing you need to do.
+<aside class="warning">
+The <a href="#react-deprecated">React</a> (<code>@rotorvideos/react</code>) and
+<a href="#bundle-deprecated">Bundle</a> (<code>@rotorvideos/web</code>) libraries
+are deprecated. From 1 January 2027 they will no longer receive new features or
+fixes. Existing integrations will keep working, but to get new features you need
+to move to the Iframe. See
+<a href="#iframe-migrating-from-react-or-bundle">Migrating from React or Bundle</a>.
 </aside>
 <h1 id='iframe'>Iframe</h1>
-<p>The iframe embed is the recommended way to add Rotor video creation to your site.</p>
+<p>The iframe embed is how you add Rotor video creation to your site.</p>
 
 <p>You install a small loader on your page. When you open it, the loader mounts the
 Rotor video creator in a full-screen <code>&lt;iframe&gt;</code> served from Rotor. Because the
@@ -2056,7 +2008,7 @@ configuration applies to the next <code>open</code>.</p>
 <tr>
 <td>mediaAssets</td>
 <td>MediaAsset[]</td>
-<td>The list of available Partner assets for the user <a href="#react-rotorvideosprovider-mediaasset">see more</a></td>
+<td>The list of available Partner assets for the user <a href="#iframe-media-assets">see more</a></td>
 <td>No</td>
 <td>[]</td>
 </tr>
@@ -2089,9 +2041,6 @@ configuration applies to the next <code>open</code>.</p>
 <td>false</td>
 </tr>
 </tbody></table>
-
-<p>The <code>MediaAsset</code> shape is the same as for the React library — see
-<a href="#react-rotorvideosprovider-mediaasset">MediaAsset</a>.</p>
 <h3 id='iframe-rotorvideosclient-open'>open</h3>
 <blockquote>
 <p><strong>Example</strong></p>
@@ -2263,6 +2212,181 @@ Client Secret on the page, and do not call <code>POST /oauth/token</code> from
 the browser — those credentials authorize your whole application, not a single
 user.
 </aside>
+<h2 id='iframe-media-assets'>Media assets</h2>
+<blockquote>
+<p><strong>Example of a track asset</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-track-1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-api"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trackName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rite"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"artistName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rotor Pretenders"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"audioUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/audio.mp3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"artworkUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/artwork.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-release-1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some Are Lovin'"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"album"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseArtworkUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/release-1-artwork.jpg"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p><strong>Example of a release asset</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-api"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-release-2"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rotor Pretenders Debut"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"releaseArtworkUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/release-2-artwork.jpg"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>A <code>MediaAsset</code> represents an asset available for the user to select. Pass them
+to <code>init</code> as <code>mediaAssets</code>. There are two shapes, and the fields you send decide
+which one you get:</p>
+
+<ul>
+<li>A <strong>track asset</strong> has an <code>id</code>. It imports the track&#39;s audio and artwork, and
+may also carry the details of the release it belongs to.</li>
+<li>A <strong>release asset</strong> has no <code>id</code> and a <code>releaseId</code>. It imports the release only.</li>
+</ul>
+
+<aside class="warning">
+The <code>providerReferenceId</code> you pass to <code>open</code> must exactly
+match an asset's <code>id</code> (track asset) or <code>releaseId</code> (release
+asset).
+</aside>
+
+<p>A track asset and a release asset may carry the same <code>releaseId</code>. Releases are
+matched on <code>providerName</code> and <code>releaseId</code>, so both assets resolve to the same
+release rather than creating a duplicate.</p>
+<h3 id='iframe-media-assets-track-asset'>Track asset</h3>
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Your unique identifier for the track. Pass this value to <code>open</code>.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>providerName</td>
+<td>string</td>
+<td>The name of the media asset provider.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>trackName</td>
+<td>string</td>
+<td>The name of the track.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>artistName</td>
+<td>string</td>
+<td>The name of the track&#39;s artist.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>audioUrl</td>
+<td>string</td>
+<td>The URL of the track&#39;s audio file.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>artworkUrl</td>
+<td>string</td>
+<td>The URL of the track&#39;s artwork.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>releaseId</td>
+<td>string</td>
+<td>Your unique identifier for the release. Supplying it also imports the release.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>releaseName</td>
+<td>string</td>
+<td>The name of the release.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>releaseType</td>
+<td>album, compilation, ep, single</td>
+<td>The type of the release.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>releaseArtworkUrl</td>
+<td>string</td>
+<td>The URL of the release&#39;s artwork.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='iframe-media-assets-release-asset'>Release asset</h3>
+<table><thead>
+<tr>
+<th>Prop Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>providerName</td>
+<td>string</td>
+<td>The name of the media asset provider.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>releaseId</td>
+<td>string</td>
+<td>Your unique identifier for the release. Pass this value to <code>open</code>.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>releaseName</td>
+<td>string</td>
+<td>The name of the release.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>releaseType</td>
+<td>album, compilation, ep, single</td>
+<td>The type of the release.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>releaseArtworkUrl</td>
+<td>string</td>
+<td>The URL of the release&#39;s artwork.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>artistName</td>
+<td>string</td>
+<td>The name of the release&#39;s artist.</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3 id='iframe-media-assets-media-requirements'>Media requirements</h3>
+<p>Assets are imported server side, so every URL you supply has to be fetchable
+without authentication — we send a <code>HEAD</code> request before downloading the file.
+Pre-signed URLs are fine, but they must stay valid until the import finishes,
+not just for as long as your page is open.</p>
+
+<ul>
+<li><strong>Audio format</strong> — WAV, MP3, M4A, AAC, OGG, FLAC or AIFF</li>
+<li><strong>Audio length</strong> — under 10 minutes</li>
+<li><strong>Audio size</strong> — 300 MB or less</li>
+<li><strong>Artwork format</strong> — JPEG, PNG, GIF or TIFF</li>
+</ul>
 <h2 id='iframe-creation-flows'>Creation Flows</h2>
 <blockquote>
 <p><strong>Example of how to specify the flows available</strong></p>
@@ -2320,25 +2444,56 @@ CSP Level 3.</p>
 
 <p>The loader adds no inline <code>&lt;script&gt;</code> and no inline <code>&lt;style&gt;</code> to your page, so it
 does not require <code>&#39;unsafe-inline&#39;</code> or <code>&#39;unsafe-eval&#39;</code>.</p>
-<h2 id='iframe-differences-from-the-react-and-bundle-libraries'>Differences from the React and Bundle libraries</h2>
+<h2 id='iframe-migrating-from-react-or-bundle'>Migrating from React or Bundle</h2>
+<blockquote>
+<p><strong>Bundle</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">RotorVideos</span><span class="p">.</span><span class="nx">open</span><span class="p">({</span>
+  <span class="na">authConfig</span><span class="p">:</span> <span class="p">{</span> <span class="nx">clientId</span><span class="p">,</span> <span class="nx">accessToken</span> <span class="p">},</span>
+  <span class="nx">mediaAssets</span><span class="p">,</span>
+  <span class="na">providerReferenceId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p><strong>The same launch with the iframe script-tag bundle</strong></p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">RotorVideos</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+  <span class="na">authConfig</span><span class="p">:</span> <span class="p">{</span> <span class="nx">clientId</span><span class="p">,</span> <span class="nx">getToken</span> <span class="p">},</span>
+  <span class="nx">mediaAssets</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="nx">RotorVideos</span><span class="p">.</span><span class="nx">open</span><span class="p">({</span> <span class="na">providerReferenceId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">partner-demo-track-1</span><span class="dl">'</span> <span class="p">});</span>
+</code></pre></div>
 <p>If you are moving from <code>@rotorvideos/react</code> or <code>@rotorvideos/web</code>, note that:</p>
 
 <ul>
+<li><code>@rotorvideos/iframe</code> is on the public npm registry. Remove the <code>@rotorvideos</code>
+lines you added to <code>.npmrc</code> for the private registry, otherwise npm looks for
+the package there.</li>
 <li>Configuration is split. What was one set of props is now the <code>init</code>
-configuration (stable, per-integration) and the <code>open</code> options (per-launch).</li>
-<li><code>availableFlows</code> replaces <code>creationFlows</code>, and <code>initialFlow</code> replaces
-<code>creationFlow</code>.</li>
+configuration (stable, per-integration) and the <code>open</code> options (per-launch).
+The script-tag bundle keeps the <code>RotorVideos</code> global, but configuration moves
+from <code>open</code> to <code>init</code>.</li>
+<li><code>availableFlows</code> replaces <code>creationFlows</code>, <code>initialFlow</code> replaces
+<code>creationFlow</code>, and <code>mediaAssets</code> replaces <code>availableTracks</code>.</li>
 <li>Authentication is always a <code>getToken</code> callback. There is no static
 <code>accessToken</code> option, because the embed refreshes tokens on its own.</li>
 <li>There is no smart button. Render your own button and call <code>open</code> from it.</li>
+<li>There is no <code>theme</code>, <code>localisationResources</code> or <code>logLevel</code>. The video creator
+uses Rotor&#39;s own styling and text.</li>
 </ul>
-<h1 id='react'>React</h1>
-<aside class="notice">
-For new integrations we recommend the <a href="#iframe">Iframe</a> embed, which
-needs no registry credentials and keeps itself up to date. Use the React library
-when the video creator needs to run inside your own React application.
+
+<p>Before you switch production over, register your origins and update your
+Content Security Policy as described in <a href="#iframe-going-live">Going live</a>.</p>
+<h1 id='react-deprecated'>React (Deprecated)</h1>
+<aside class="warning">
+<code>@rotorvideos/react</code> is deprecated. From 1 January 2027 it will no
+longer receive new features or fixes. Existing integrations will keep working.
+Use the <a href="#iframe">Iframe</a> for new integrations, and move existing ones
+to it to get new features. See
+<a href="#iframe-migrating-from-react-or-bundle">Migrating from React or Bundle</a>.
 </aside>
-<h2 id='react-installation'>Installation</h2>
+<h2 id='react-deprecated-installation'>Installation</h2>
 <blockquote>
 <p><strong>Add NPM Registry token to your <code>.npmrc</code> file</strong></p>
 </blockquote>
@@ -2355,9 +2510,10 @@ when the video creator needs to run inside your own React application.
 <span class="c">## or </span>
 yarn add @rotorvideos/react
 </code></pre></div>
-<p>To install the package, you need to add the NPM Registry token to your <code>.npmrc</code> file. You can find the token in your
-Partner Dashboard (Engineering -&gt; JavaScript Integration). And then you can install the package using <code>npm</code> or <code>yarn</code>.</p>
-<h2 id='react-rotorvideosprovider'>RotorVideosProvider</h2>
+<p>To install the package, you need to add the NPM Registry token to your <code>.npmrc</code> file. If your integration has registry
+access, you can find the token in your Partner Dashboard (Engineering -&gt; JavaScript Integration). And then you can
+install the package using <code>npm</code> or <code>yarn</code>.</p>
+<h2 id='react-deprecated-rotorvideosprovider'>RotorVideosProvider</h2>
 <blockquote>
 <p><strong>Example</strong></p>
 </blockquote>
@@ -2370,7 +2526,6 @@ Partner Dashboard (Engineering -&gt; JavaScript Integration). And then you can i
         <span class="nx">accessToken</span><span class="p">,</span>
         <span class="nx">clientId</span><span class="p">,</span>
       <span class="p">}</span><span class="si">}</span>
-      <span class="na">theme</span><span class="p">=</span><span class="si">{</span><span class="nx">customTheme</span><span class="si">}</span>
     <span class="p">&gt;</span>
       ...
     <span class="p">&lt;/</span><span class="nc">RotorVideosProvider</span><span class="p">&gt;</span>
@@ -2379,7 +2534,7 @@ Partner Dashboard (Engineering -&gt; JavaScript Integration). And then you can i
 </code></pre></div>
 <p>Wrap your application with the <code>RotorVideosProvider</code> component to provide the necessary configuration for the Rotor
 Videos components.</p>
-<h3 id='react-rotorvideosprovider-parameters'>Parameters</h3>
+<h3 id='react-deprecated-rotorvideosprovider-parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Prop Name</th>
@@ -2438,15 +2593,8 @@ Videos components.</p>
 <td>No</td>
 <td>quiet</td>
 </tr>
-<tr>
-<td>theme</td>
-<td>AppTheme</td>
-<td>The theme overrides object <a href="#theming">see more</a></td>
-<td>No</td>
-<td>-</td>
-</tr>
 </tbody></table>
-<h3 id='react-rotorvideosprovider-authconfig'>AuthConfig</h3>
+<h3 id='react-deprecated-rotorvideosprovider-authconfig'>AuthConfig</h3>
 <blockquote>
 <p><strong>Supplying a token on demand (recommended)</strong></p>
 </blockquote>
@@ -2515,190 +2663,19 @@ Provide either <code>getToken</code> or <code>accessToken</code>, not both. If
 <code>getToken</code> is present it is used, and <code>accessToken</code> is
 ignored.
 </aside>
-<h3 id='react-rotorvideosprovider-mediaasset'>MediaAsset</h3>
-<blockquote>
-<p><strong>Example of a track asset</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-track-1"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-api"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"trackName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rite"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"artistName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rotor Pretenders"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"audioUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/audio.mp3"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"artworkUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/artwork.jpg"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"releaseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-release-1"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"releaseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some Are Lovin'"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"releaseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"album"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"releaseArtworkUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/release-1-artwork.jpg"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p><strong>Example of a release asset</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-api"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"releaseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-demo-release-2"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"releaseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rotor Pretenders Debut"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"releaseType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"releaseArtworkUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/partner-demo-1/release-2-artwork.jpg"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>A <code>MediaAsset</code> represents an asset available for the user to select. There are
-two shapes, and the fields you send decide which one you get:</p>
-
-<ul>
-<li>A <strong>track asset</strong> has an <code>id</code>. It imports the track&#39;s audio and artwork, and
-may also carry the details of the release it belongs to.</li>
-<li>A <strong>release asset</strong> has no <code>id</code> and a <code>releaseId</code>. It imports the release only.</li>
-</ul>
-
-<aside class="warning">
-The <code>providerReferenceId</code> you open the embeddable with must exactly
-match an asset's <code>id</code> (track asset) or <code>releaseId</code> (release
-asset).
-</aside>
-
-<p>A track asset and a release asset may carry the same <code>releaseId</code>. Releases are
-matched on <code>providerName</code> and <code>releaseId</code>, so both assets resolve to the same
-release rather than creating a duplicate.</p>
-<h4 id='react-rotorvideosprovider-mediaasset-track-asset'>Track asset</h4>
-<table><thead>
-<tr>
-<th>Prop Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>string</td>
-<td>Your unique identifier for the track. Open the embeddable with this value.</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>providerName</td>
-<td>string</td>
-<td>The name of the media asset provider.</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>trackName</td>
-<td>string</td>
-<td>The name of the track.</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>artistName</td>
-<td>string</td>
-<td>The name of the track&#39;s artist.</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>audioUrl</td>
-<td>string</td>
-<td>The URL of the track&#39;s audio file.</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>artworkUrl</td>
-<td>string</td>
-<td>The URL of the track&#39;s artwork.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>releaseId</td>
-<td>string</td>
-<td>Your unique identifier for the release. Supplying it also imports the release.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>releaseName</td>
-<td>string</td>
-<td>The name of the release.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>releaseType</td>
-<td>album, compilation, ep, single</td>
-<td>The type of the release.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>releaseArtworkUrl</td>
-<td>string</td>
-<td>The URL of the release&#39;s artwork.</td>
-<td>No</td>
-</tr>
-</tbody></table>
-<h4 id='react-rotorvideosprovider-mediaasset-release-asset'>Release asset</h4>
-<table><thead>
-<tr>
-<th>Prop Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>providerName</td>
-<td>string</td>
-<td>The name of the media asset provider.</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>releaseId</td>
-<td>string</td>
-<td>Your unique identifier for the release. Open the embeddable with this value.</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>releaseName</td>
-<td>string</td>
-<td>The name of the release.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>releaseType</td>
-<td>album, compilation, ep, single</td>
-<td>The type of the release.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>releaseArtworkUrl</td>
-<td>string</td>
-<td>The URL of the release&#39;s artwork.</td>
-<td>No</td>
-</tr>
-<tr>
-<td>artistName</td>
-<td>string</td>
-<td>The name of the release&#39;s artist.</td>
-<td>No</td>
-</tr>
-</tbody></table>
-<h4 id='react-rotorvideosprovider-mediaasset-media-requirements'>Media requirements</h4>
-<p>Assets are imported server side, so every URL you supply has to be fetchable
-without authentication — we send a <code>HEAD</code> request before downloading the file.
-Pre-signed URLs are fine, but they must stay valid until the import finishes,
-not just for as long as your page is open.</p>
-
-<ul>
-<li><strong>Audio format</strong> — WAV, MP3, M4A, AAC, OGG, FLAC or AIFF</li>
-<li><strong>Audio length</strong> — under 10 minutes</li>
-<li><strong>Audio size</strong> — 300 MB or less</li>
-<li><strong>Artwork format</strong> — JPEG, PNG, GIF or TIFF</li>
-</ul>
-<h3 id='react-rotorvideosprovider-creation-flows'>Creation Flows</h3>
+<h3 id='react-deprecated-rotorvideosprovider-mediaasset'>MediaAsset</h3>
+<p>The <code>MediaAsset</code> shape is the same as for the Iframe. See
+<a href="#iframe-media-assets">Media assets</a>.</p>
+<h3 id='react-deprecated-rotorvideosprovider-creation-flows'>Creation Flows</h3>
 <p>There are various media types your users can create: <strong>Apple Music Album Motion</strong>, <strong>Spotify Canvas Video</strong>, <strong>Lyric Video</strong>, and <strong>Artwork Video</strong>. By default, all creation flows are available to users. However, you can customize which flows appear by configuring the <code>creationFlows</code> prop in the <code>RotorVideosProvider</code> when integrating our toolkit into your React app.</p>
-<h4 id='react-rotorvideosprovider-creation-flows-how-creation-flows-work'>How Creation Flows Work</h4>
+<h4 id='react-deprecated-rotorvideosprovider-creation-flows-how-creation-flows-work'>How Creation Flows Work</h4>
 <ul>
 <li><strong>Creation flows</strong> control which media types will be available for your users to create.</li>
 <li>By <strong>customizing the <code>creationFlows</code> prop</strong>, you choose exactly which flows are available.</li>
 <li><strong>Empty array (<code>[]</code>)</strong>: All flows are enabled (default behavior).</li>
 <li><strong>Specific entries</strong>: Only the flows listed will be enabled.</li>
 </ul>
-<h4 id='react-rotorvideosprovider-creation-flows-available-creation-flows'>Available Creation Flows</h4>
+<h4 id='react-deprecated-rotorvideosprovider-creation-flows-available-creation-flows'>Available Creation Flows</h4>
 <ul>
 <li><code>CreationFlow.canvas</code> — Spotify Canvas video</li>
 <li><code>CreationFlow.motion</code> — Apple Music Album Motion</li>
@@ -2714,13 +2691,12 @@ not just for as long as your page is open.</p>
 <div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nc">RotorVideosProvider</span>
   <span class="si">{</span><span class="p">...</span><span class="nx">rotorVideosConfig</span><span class="si">}</span>
   <span class="na">mediaAssets</span><span class="p">=</span><span class="si">{</span><span class="nx">compactReleases</span><span class="si">}</span>
-  <span class="na">theme</span><span class="p">=</span><span class="si">{</span><span class="nx">releasesDemoTheme</span><span class="si">}</span>
   <span class="na">creationFlows</span><span class="p">=</span><span class="si">{</span><span class="p">[</span><span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">motion</span><span class="p">,</span> <span class="nx">CreationFlow</span><span class="p">.</span><span class="nx">canvas</span><span class="p">]</span><span class="si">}</span>
   <span class="na">showDuplicateAction</span><span class="p">=</span><span class="si">{</span><span class="kc">false</span><span class="si">}</span>
 <span class="p">&gt;</span>
   <span class="si">{</span><span class="cm">/* Your app content */</span><span class="si">}</span>
 <span class="p">&lt;/</span><span class="nc">RotorVideosProvider</span><span class="p">&gt;</span>
-</code></pre></div><h2 id='react-userotorvideos'>useRotorVideos</h2>
+</code></pre></div><h2 id='react-deprecated-userotorvideos'>useRotorVideos</h2>
 <blockquote>
 <p><strong>Example</strong></p>
 </blockquote>
@@ -2758,7 +2734,7 @@ not just for as long as your page is open.</p>
 <td>The function to close the Rotor Videos modal.</td>
 </tr>
 </tbody></table>
-<h3 id='react-userotorvideos-openoptions'>OpenOptions</h3>
+<h3 id='react-deprecated-userotorvideos-openoptions'>OpenOptions</h3>
 <blockquote>
 <p><strong>OpenOptions Example</strong></p>
 </blockquote>
@@ -2797,7 +2773,7 @@ not just for as long as your page is open.</p>
 Whenever the <code>providerReferenceId</code> is not provided, the Rotor Embeddable will open the Dashboard with all user-created videos.
 This flow doesn't allow the user to create a new video, as there is no track reference to start the creation process.
 </aside>
-<h2 id='react-rotorvideossmartbutton'>RotorVideosSmartButton</h2>
+<h2 id='react-deprecated-rotorvideossmartbutton'>RotorVideosSmartButton</h2>
 <blockquote>
 <p><strong>Example</strong></p>
 </blockquote>
@@ -2818,7 +2794,7 @@ This flow doesn't allow the user to create a new video, as there is no track ref
 <span class="p">-</span> <span class="sb">`Make Videos`</span> when the track is ready to create videos
 </code></pre></div>
 <p>The <code>RotorVideosSmartButton</code> component is a button that opens the Rotor Videos modal when clicked.</p>
-<h3 id='react-rotorvideossmartbutton-parameters'>Parameters</h3>
+<h3 id='react-deprecated-rotorvideossmartbutton-parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Prop Name</th>
@@ -2877,13 +2853,15 @@ This flow doesn't allow the user to create a new video, as there is no track ref
     <span class="p">&lt;/</span><span class="nc">RotorVideosProvider</span><span class="p">&gt;</span>
   <span class="p">);</span>
 <span class="p">};</span>
-</code></pre></div><h1 id='bundle'>Bundle</h1>
-<aside class="notice">
-For new integrations we recommend the <a href="#iframe">Iframe</a> embed, which
-also works on any page and needs no registry credentials. Use this bundle when
-the video creator needs to run inside your own application.
+</code></pre></div><h1 id='bundle-deprecated'>Bundle (Deprecated)</h1>
+<aside class="warning">
+<code>@rotorvideos/web</code> is deprecated. From 1 January 2027 it will no
+longer receive new features or fixes. Existing integrations will keep working.
+Use the <a href="#iframe">Iframe</a> for new integrations, and move existing ones
+to it to get new features. See
+<a href="#iframe-migrating-from-react-or-bundle">Migrating from React or Bundle</a>.
 </aside>
-<h2 id='bundle-installation'>Installation</h2>
+<h2 id='bundle-deprecated-installation'>Installation</h2>
 <blockquote>
 <p><strong>Add the script to the page</strong></p>
 </blockquote>
@@ -2902,7 +2880,7 @@ the video creator needs to run inside your own application.
 <p>In order to download the JavaScript bundle, follow the steps below:</p>
 
 <ol>
-<li>Follow the steps in the <a href="#react">React</a> section to get the necessary credentials, obtain NPM Auth Token and create 
+<li>Follow the steps in the <a href="#react-deprecated">React</a> section to get the necessary credentials, obtain NPM Auth Token and create 
 a <code>.npmrc</code> file.</li>
 <li>In an empty folder run <code>npm init -y</code> to create a new <code>package.json</code> file.</li>
 <li>Run <code>npm pack  @rotorvideos/web &amp;&amp; tar -xzf *.tgz</code> to download the JavaScript bundle.</li>
@@ -2910,8 +2888,8 @@ a <code>.npmrc</code> file.</li>
 </ol>
 
 <p>In fact, the bundle uses React version of the Rotor Embeddable, with slightly different interface. See the
-<a href="#react">React</a> section for more information.</p>
-<h2 id='bundle-usage'>Usage</h2>
+<a href="#react-deprecated">React</a> section for more information.</p>
+<h2 id='bundle-deprecated-usage'>Usage</h2>
 <blockquote>
 <p><strong>Example</strong></p>
 </blockquote>
@@ -2966,18 +2944,18 @@ a <code>.npmrc</code> file.</li>
 <td>The function to create a theme for the Rotor Videos components.</td>
 </tr>
 </tbody></table>
-<h3 id='bundle-usage-rotorvideos-open'>RotorVideos.open</h3>
+<h3 id='bundle-deprecated-usage-rotorvideos-open'>RotorVideos.open</h3>
 <blockquote>
 <p><strong>GlobalOpenOptions Definition</strong></p>
 </blockquote>
 <div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">type</span> <span class="nx">GlobalOpenOptions</span> <span class="o">=</span> <span class="nx">RotorVideosProviderOptions</span> <span class="o">&amp;</span> <span class="p">{</span> <span class="na">providerReferenceId</span><span class="p">:</span> <span class="kr">string</span> <span class="p">};</span>
 </code></pre></div>
 <p>The <code>RotorVideos.open</code> method opens the Rotor Embeddable with the given configuration.
-It accepts an object with the same properties as the React&#39;s <a href="#react-rotorvideosprovider">RotorVideosProvider</a>
+It accepts an object with the same properties as the React&#39;s <a href="#react-deprecated-rotorvideosprovider">RotorVideosProvider</a>
 and an additional <code>providerReferenceId</code> property, to open the embeddable for a specific track.</p>
-<h3 id='bundle-usage-rotorvideos-close'>RotorVideos.close</h3>
+<h3 id='bundle-deprecated-usage-rotorvideos-close'>RotorVideos.close</h3>
 <p>The <code>RotorVideos.close</code> method closes the Rotor Embeddable.</p>
-<h3 id='bundle-usage-rotorsvideos-smartbutton'>RotorsVideos.smartButton</h3>
+<h3 id='bundle-deprecated-usage-rotorsvideos-smartbutton'>RotorsVideos.smartButton</h3>
 <blockquote>
 <p><strong>Example</strong></p>
 </blockquote>
@@ -2987,947 +2965,7 @@ and an additional <code>providerReferenceId</code> property, to open the embedda
 <span class="p">});</span>
 </code></pre></div>
 <p>The <code>RotorVideos.smartButton</code> method creates a button in given DOM <code>element</code> that opens the Rotor Embeddable
-with the same properties as the React&#39;s <a href="#react-rotorvideossmartbutton">RotorVideosSmartButton</a>.</p>
-<h1 id='theming'>Theming</h1><h2 id='theming-default-theme'>Default theme</h2>
-<blockquote>
-<p><strong>Default Rotor Theme</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="na">dimensions</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">appbarHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">8.4em</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">appbarHeightClips</span><span class="p">:</span> <span class="dl">'</span><span class="s1">8.4em</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">appHeaderHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">8.4em</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">appHeaderMobileHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">6.8em</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">mobileFixedFooterHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">8.4em</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">wizardLayout</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">actionsHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">9.4em</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">optionsWidth</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">md</span><span class="p">:</span> <span class="dl">'</span><span class="s1">36em</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">lg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">42em</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">xl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">48em</span><span class="dl">'</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="na">fontFamily</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">regular</span><span class="p">:</span> <span class="dl">'</span><span class="s1">neue-haas-grotesk-text, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">display</span><span class="p">:</span> <span class="dl">'</span><span class="s1">neue-haas-grotesk-display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">titling</span><span class="p">:</span> <span class="dl">'</span><span class="s1">titling-gothic-fb, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">titlingBold</span><span class="p">:</span> <span class="dl">'</span><span class="s1">titling-gothic-fb-wide, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">monospace</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace</span><span class="dl">'</span>
-  <span class="p">},</span>
-  <span class="na">palette</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">grayscale</span><span class="p">:</span> <span class="p">{</span>
-      <span class="mi">0</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#ffffff</span><span class="dl">'</span><span class="p">,</span>
-      <span class="mi">10</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#e7e7e7</span><span class="dl">'</span><span class="p">,</span>
-      <span class="mi">20</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#d2d2d2</span><span class="dl">'</span><span class="p">,</span>
-      <span class="mi">30</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#bbbbbb</span><span class="dl">'</span><span class="p">,</span>
-      <span class="mi">40</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#a5a5a5</span><span class="dl">'</span><span class="p">,</span>
-      <span class="mi">50</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#8e8e8e</span><span class="dl">'</span><span class="p">,</span>
-      <span class="mi">60</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#787878</span><span class="dl">'</span><span class="p">,</span>
-      <span class="mi">70</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#616161</span><span class="dl">'</span><span class="p">,</span>
-      <span class="mi">80</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#4b4b4b</span><span class="dl">'</span><span class="p">,</span>
-      <span class="mi">90</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#343434</span><span class="dl">'</span><span class="p">,</span>
-      <span class="mi">100</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
-      <span class="mi">110</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#0f0f0f</span><span class="dl">'</span>
-    <span class="p">},</span>
-    <span class="na">text</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">default</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">inverse</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">white</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">black</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span>
-    <span class="p">},</span>
-    <span class="na">backgrounds</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">default</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">inverse</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">white</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">black</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span>
-    <span class="p">},</span>
-    <span class="na">brand</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">primary</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#00bad8</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">secondary</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#f15c99</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">hotpink</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#eb2782</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">facebook</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#3b5998</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">twitter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#5ea9dd</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">google</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#4285f4</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">youtube</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#e5272b</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">vimeo</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1eb6e9</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">spotify</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1db954</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">soundcloud</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#f50</span><span class="dl">'</span>
-    <span class="p">},</span>
-    <span class="na">utility</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">info</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#0192d0</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">error</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#da1e28</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">success</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#37cd7d</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">warning</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fef3cd</span><span class="dl">'</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="na">zIndex</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">floatingActionButton</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
-    <span class="na">notification</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
-    <span class="na">clipDrawerBackdrop</span><span class="p">:</span> <span class="mi">160</span><span class="p">,</span>
-    <span class="na">stickyHeader</span><span class="p">:</span> <span class="mi">160</span><span class="p">,</span>
-    <span class="na">clipDrawer</span><span class="p">:</span> <span class="mi">170</span><span class="p">,</span>
-    <span class="na">activeUploads</span><span class="p">:</span> <span class="mi">190</span><span class="p">,</span>
-    <span class="na">footer</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-    <span class="na">sidebar</span><span class="p">:</span> <span class="mi">550</span><span class="p">,</span>
-    <span class="na">popout</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
-    <span class="na">header</span><span class="p">:</span> <span class="mi">700</span><span class="p">,</span>
-    <span class="na">modalOverlay</span><span class="p">:</span> <span class="mi">1050</span><span class="p">,</span>
-    <span class="na">modalContent</span><span class="p">:</span> <span class="mi">1060</span><span class="p">,</span>
-    <span class="na">popoverContent</span><span class="p">:</span> <span class="mi">1070</span><span class="p">,</span>
-    <span class="na">menuContent</span><span class="p">:</span> <span class="mi">1080</span><span class="p">,</span>
-    <span class="na">tooltip</span><span class="p">:</span> <span class="mi">1090</span><span class="p">,</span>
-    <span class="na">flashMessage</span><span class="p">:</span> <span class="mi">2000</span>
-  <span class="p">},</span>
-  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">AudioPlayer</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">theme</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">primaryColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">backgroundColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">transparent</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">barColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">timeColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">rgba(255, 255, 255, 0.7)</span><span class="dl">'</span><span class="p">,</span>
-      <span class="p">},</span>
-    <span class="p">},</span>
-    <span class="na">Button</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">theme</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">borderRadius</span><span class="p">:</span> <span class="dl">'</span><span class="s1">100em</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">borderRadiusAlt</span><span class="p">:</span> <span class="dl">'</span><span class="s1">5px</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">fontFamily</span><span class="p">:</span>
-            <span class="dl">'</span><span class="s1">neue-haas-grotesk-display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">fontSize</span><span class="p">:</span> <span class="p">{</span>
-          <span class="na">xs</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1em</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">sm</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1.2em</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">md</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1.4em</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">lg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1.6em</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">xl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1.8em</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">xxl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">2em</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">xxxl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">2.2em</span><span class="dl">'</span><span class="p">,</span>
-        <span class="p">},</span>
-        <span class="na">fontWeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">600</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">gap</span><span class="p">:</span> <span class="dl">'</span><span class="s1">0.8em</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">height</span><span class="p">:</span> <span class="dl">'</span><span class="s1">3em</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">heightTall</span><span class="p">:</span> <span class="dl">'</span><span class="s1">4.4em</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">lineHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">outline</span><span class="p">:</span> <span class="dl">'</span><span class="s1">0</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">outlineOffset</span><span class="p">:</span> <span class="dl">'</span><span class="s1">0</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">paddingInline</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1.6em</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">paddingInlineWide</span><span class="p">:</span> <span class="dl">'</span><span class="s1">3.2em</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">palette</span><span class="p">:</span> <span class="p">{</span>
-          <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">labelInverse</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">primary</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#00bad8</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">primaryHover</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#00A1BF</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">primaryActive</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#00A1BF</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">primaryFocus</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#00A1BF</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">primaryFocusOutline</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#00A1BF</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">primaryHoverFocus</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#00A1BF</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">secondary</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#f15c99</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">secondaryHover</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#D84380</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">secondaryActive</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#D84380</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">secondaryFocus</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#D84380</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">secondaryFocusOutline</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#D84380</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">secondaryHoverFocus</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#D84380</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">tertiary</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">tertiaryBorder</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">tertiaryLabel</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">tertiaryLabelInverse</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">tertiaryHover</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">tertiaryActive</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">tertiaryFocus</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">tertiaryFocusOutline</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
-          <span class="na">tertiaryHoverFocus</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#1e1e1e</span><span class="dl">'</span><span class="p">,</span>
-        <span class="p">},</span>
-        <span class="na">transition</span><span class="p">:</span>
-            <span class="dl">'</span><span class="s1">background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms</span><span class="dl">'</span><span class="p">,</span>
-      <span class="p">},</span>
-    <span class="p">},</span>
-    <span class="na">MenuItem</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">theme</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">rgba(255, 255, 255, 0.9)</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">activeBackgroundColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#000</span><span class="dl">'</span><span class="p">,</span>
-      <span class="p">},</span>
-    <span class="p">},</span>
-    <span class="na">RangeInput</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">theme</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">trackColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#28d3ea</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">trackBgColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#979797</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">trackHeight</span><span class="p">:</span> <span class="dl">'</span><span class="s1">4px</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">thumbColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#bef2f9</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">thumbSize</span><span class="p">:</span> <span class="dl">'</span><span class="s1">12px</span><span class="dl">'</span><span class="p">,</span>
-      <span class="p">},</span>
-    <span class="p">},</span>
-    <span class="na">Slider</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">theme</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">navigationSize</span><span class="p">:</span> <span class="dl">'</span><span class="s1">3em</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">navigationColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">paginationSize</span><span class="p">:</span> <span class="dl">'</span><span class="s1">.8em</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">paginationColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
-      <span class="p">},</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>The <code>theme</code> object provided to the <a href="#react-rotorvideosprovider">RotorVideosProvider</a>  contains the styling configuration for
-the Rotor Videos components. When it is not empty,
-the resulted theme is a combination of provided and default theme. The merging of the two themes uses deep merge, so you
-can override any part of the default theme.</p>
-<h2 id='theming-theme-components'>Theme Components</h2>
-<blockquote>
-<p><strong>Theme Components Definition</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">type</span> <span class="nx">ThemeProps</span> <span class="o">=</span> <span class="p">{</span> <span class="na">theme</span><span class="p">:</span> <span class="nx">AppTheme</span><span class="p">;</span> <span class="p">};</span>
-<span class="kd">type</span> <span class="nx">ComponentStyle</span><span class="o">&lt;</span><span class="nx">ComponentProps</span> <span class="o">=</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;&gt;</span> <span class="o">=</span> <span class="nx">Interpolation</span><span class="o">&lt;</span><span class="nx">ThemeProps</span> <span class="o">&amp;</span> <span class="nx">ComponentProps</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="kd">type</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="nx">ThemeDataProps</span> <span class="o">=</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;&gt;</span> <span class="o">=</span> <span class="nx">ThemeDataProps</span> <span class="o">|</span> <span class="p">((</span><span class="nx">theme</span><span class="p">:</span> <span class="nx">AppTheme</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">ThemeDataProps</span><span class="p">);</span>
-
-<span class="kd">type</span> <span class="nx">GenericThemeComponents</span> <span class="o">=</span> <span class="nb">Record</span><span class="o">&lt;</span>
-  <span class="kr">string</span><span class="p">,</span>
-  <span class="p">{</span>
-    <span class="nx">theme</span><span class="p">?:</span> <span class="nx">ComponentThemeData</span><span class="p">;</span>
-    <span class="nl">defaultProps</span><span class="p">?:</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;</span><span class="p">;</span>
-    <span class="nl">styleOverrides</span><span class="p">?:</span> <span class="nb">Record</span><span class="o">&lt;</span>
-      <span class="kr">string</span><span class="p">,</span>
-      <span class="nx">ComponentStyle</span>
-    <span class="o">&gt;</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="o">&gt;</span><span class="p">;</span>
-</code></pre></div>
-<blockquote>
-<p><strong>Theme Components Examples</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight typescript tab-typescript"><code>
-<span class="kd">const</span> <span class="nx">theme</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="p">...,</span>
-  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">StyleGroupTabs</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-        <span class="c1">// Component with custom props</span>
-        <span class="na">StyleGroupTabsItem</span><span class="p">:</span> <span class="p">({</span> <span class="nx">theme</span><span class="p">,</span> <span class="nx">active</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
-          <span class="k">if</span> <span class="p">(</span><span class="nx">active</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="p">{</span>
-              <span class="na">color</span><span class="p">:</span> <span class="nx">theme</span><span class="p">.</span><span class="nx">palette</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">inverse</span><span class="p">,</span>
-              <span class="dl">'</span><span class="s1">&amp;:after</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span>
-                <span class="na">backgroundColor</span><span class="p">:</span> <span class="nx">theme</span><span class="p">.</span><span class="nx">palette</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">inverse</span><span class="p">,</span>
-              <span class="p">},</span>
-            <span class="p">};</span>
-          <span class="p">}</span>
-        <span class="p">},</span>
-      <span class="p">},</span>
-    <span class="p">},</span>
-    <span class="na">VideoCard</span><span class="p">:</span> <span class="p">{</span>
-      <span class="c1">// Theme as a function</span>
-      <span class="na">theme</span><span class="p">:</span> <span class="p">(</span><span class="nx">theme</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
-        <span class="na">backgroundColor</span><span class="p">:</span> <span class="nx">theme</span><span class="p">.</span><span class="nx">palette</span><span class="p">.</span><span class="nx">backgrounds</span><span class="p">.</span><span class="nx">inverse</span><span class="p">,</span>
-        <span class="na">textColor</span><span class="p">:</span> <span class="nx">theme</span><span class="p">.</span><span class="nx">palette</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">inverse</span><span class="p">,</span>
-      <span class="p">}),</span>
-    <span class="p">},</span>
-    <span class="na">VideoCardDownloadButton</span><span class="p">:</span> <span class="p">{</span>
-      <span class="c1">// Override default props</span>
-      <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">primary</span><span class="dl">'</span><span class="p">,</span>
-      <span class="p">},</span>
-    <span class="p">},</span>
-    <span class="na">VideoPlayerControls</span><span class="p">:</span> <span class="p">{</span>
-      <span class="c1">// Override styles with theme</span>
-      <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">VideoPlayerControlsRoot</span><span class="p">:</span> <span class="p">({</span> <span class="nx">theme</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">({</span>
-          <span class="na">backgroundColor</span><span class="p">:</span> <span class="nx">theme</span><span class="p">.</span><span class="nx">palette</span><span class="p">.</span><span class="nx">backgrounds</span><span class="p">.</span><span class="nx">black</span><span class="p">,</span>
-        <span class="p">}),</span>
-      <span class="p">},</span>
-    <span class="p">},</span>
-    <span class="na">WizardStep</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-        <span class="c1">// Override styles as an object</span>
-        <span class="na">WizardStepMeta</span><span class="p">:</span> <span class="p">{</span>
-          <span class="na">opacity</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="p">},</span>
-      <span class="p">},</span>
-    <span class="p">},</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre></div>
-<blockquote>
-<p><strong>Theme Components Properties</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">type</span> <span class="nx">ThemeComponents</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">ActionButton</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">AffectedVideos</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">showVideosList</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">AlbumMotionArtworkAsset</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">AlbumMotionArtworkAssetInfo</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">AlbumMotionArtworkButton</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">showIcon</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
-      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">AlbumMotionArtworkUploaderIdle</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">AlbumMotionArtworkUploaderInfo</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">AudioPlayer</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
-      <span class="na">primaryColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">backgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">barColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">timeColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">Button</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
-      <span class="na">borderRadius</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">borderRadiusAlt</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">fontFamily</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">fontSize</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">xs</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">sm</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">md</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">lg</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">xl</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">xxl</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">xxxl</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="p">},</span>
-      <span class="na">fontWeight</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">gap</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">height</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">heightTall</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">lineHeight</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">outline</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">outlineOffset</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">paddingInline</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">paddingInlineWide</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">palette</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">label</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">labelInverse</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">primary</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">primaryHover</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">primaryActive</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">primaryFocus</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">primaryFocusOutline</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">primaryHoverFocus</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">secondary</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">secondaryHover</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">secondaryActive</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">secondaryFocus</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">secondaryFocusOutline</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">secondaryHoverFocus</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">tertiary</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">tertiaryBorder</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">tertiaryLabel</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">tertiaryLabelInverse</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">tertiaryHover</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">tertiaryActive</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">tertiaryFocus</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">tertiaryFocusOutline</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-        <span class="na">tertiaryHoverFocus</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="p">},</span>
-      <span class="na">transition</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">CanvasCartActionButton</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">CanvasWizardFooter</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">CanvasWizardFooterPreview</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">CarouselViewAllLink</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">CarouselViewAllLinkRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">ClipCustomizationEditButton</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">showIcon</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
-      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">ClipsLibraryPage</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">ClipsLibraryMobileSearchLink</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">ClipsSearchBox</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">ClipsSearchBoxInput</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">ClipsSelectorCloseButton</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">useIcon</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">ClipsTabs</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">ClipsTabsRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-      <span class="na">ClipsTabsLink</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">ClipsUploader</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">ClipsMobileButton</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">ClipsUploaderBrowseButton</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">showIcon</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
-      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">CompactWizardContainer</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">CompactWizardContainerRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">CreateVideoModal</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">CreateVideoModalRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-      <span class="na">CreateVideoOption</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-      <span class="na">CreateVideoOptionTitle</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-      <span class="na">CreateVideoOptionIconWrapper</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="o">&lt;</span><span class="p">{</span> <span class="na">creationFlow</span><span class="p">:</span> <span class="nx">CreationFlow</span> <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">CropAdjustmentFrame</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">alwaysEditing</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">CropDragHandle</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">CropDragHandleInner</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">DialogModal</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">mode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">light</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">dark</span><span class="dl">'</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">FileUploadCard</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">showHelp</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">FileUploadCardRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-      <span class="na">FileUploadCardIcon</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-      <span class="na">FileUploadCardDropzone</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">FileUploader</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">enabledLegalNotice</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">FileUploaderCard</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">FileUploaderCardRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">FileUploaderCardDragging</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">small</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">FileUploaderCopyright</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">FileUploaderCopyrightCancelButton</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">FileUploaderDragOverlay</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">FileUploaderDragOverlayRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">Flash</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">FlashContainer</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">FullscreenModal</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">FullscreenModalRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">Header</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">HeaderRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">MenuItem</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
-      <span class="na">color</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">activeBackgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-    <span class="p">}</span><span class="o">&gt;</span>
-  <span class="p">},</span>
-  <span class="na">ModalContent</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">ModalContentRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">ModalHeader</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
-      <span class="na">backgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">textColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">borderColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">MoodCard</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">MoodCardRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="o">&lt;</span><span class="p">{</span> <span class="na">state</span><span class="p">:</span> <span class="dl">'</span><span class="s1">tab-item</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">list-item</span><span class="dl">'</span> <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">NewVideoCard</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">NewVideoCardRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">NextPageButton</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">NextPageButtonContent</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">OrderCanvasContent</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
-      <span class="na">backgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">textColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">borderColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">PreviewModal</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">PreviewModalCloseButton</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">RangeInput</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
-      <span class="na">trackColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">trackBgColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">trackHeight</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">thumbColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">thumbSize</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">RotorLoadingIcon</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">RotorLoadingIconStyleProps</span><span class="o">&gt;</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">SelectedClipCard</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">SelectedClipCardRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-      <span class="na">SelectedClipCardOverlay</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-      <span class="na">SelectedClipCardFooter</span><span class="p">:</span> <span class="nx">ComponentStyle</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">SelectedClipsList</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">SelectedClipsListRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-
-  <span class="na">Slider</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
-      <span class="na">navigationSize</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">navigationColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">paginationSize</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">paginationColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">StyleCard</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">StyleCardTitle</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-      <span class="na">StyleCardThumb</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">StyleGroupTabs</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">StyleGroupTabsItem</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="o">&lt;</span><span class="p">{</span> <span class="na">active</span><span class="p">:</span> <span class="nx">boolean</span> <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">ToggleClipSelectionButton</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
-      <span class="na">color</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">UploadsPage</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">UploadsPageContent</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">VideoCard</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">theme</span><span class="p">:</span> <span class="nx">ComponentThemeData</span><span class="o">&lt;</span><span class="p">{</span>
-      <span class="na">backgroundColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-      <span class="na">textColor</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
-    <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">VideoCardActions</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
-      <span class="na">variant</span><span class="p">:</span> <span class="nx">ButtonVariant</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">VideoCardCartActionButton</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
-      <span class="na">variant</span><span class="p">:</span> <span class="nx">ButtonVariant</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">VideoCardDownloadButton</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">defaultProps</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">color</span><span class="p">:</span> <span class="nx">ButtonColor</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">VideoPlayerControls</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">VideoPlayerControlsRoot</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">WizardAsset</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">WizardAssetTitle</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-  <span class="na">WizardStep</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleOverrides</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">WizardStepIcon</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="o">&lt;</span><span class="p">{</span> <span class="na">expanded</span><span class="p">:</span> <span class="nx">boolean</span> <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
-      <span class="na">WizardStepTitle</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-      <span class="na">WizardStepToggleTitle</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="o">&lt;</span><span class="p">{</span> <span class="na">expanded</span><span class="p">:</span> <span class="nx">boolean</span> <span class="p">}</span><span class="o">&gt;</span><span class="p">,</span>
-      <span class="na">WizardStepMeta</span><span class="p">:</span> <span class="nx">ComponentStyle</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>The <code>components</code> property of the theme object is a record of components that can be styled. Each component can have the following properties:</p>
-
-<ul>
-<li><code>theme</code>: This property is used to define the theme-specific styles for the component. If it&#39;s a function, it can use the current theme to compute the styles.</li>
-<li><code>defaultProps</code>: This property is used to define and override the default props for the component.</li>
-<li><code>styleOverrides</code>: This property is used to define and override the styles for the children styled components.</li>
-</ul>
-<h1 id='localization'>Localization</h1><h2 id='localization-localization-resources'>Localization resources</h2>
-<blockquote>
-<p><strong>Definitions</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">type</span> <span class="nx">Language</span> <span class="o">=</span> <span class="kr">string</span><span class="p">;</span>
-<span class="kd">type</span> <span class="nx">Namespace</span> <span class="o">=</span> <span class="kr">string</span><span class="p">;</span>
-<span class="kd">type</span> <span class="nx">LocalisationResources</span> <span class="o">=</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="nx">Language</span><span class="p">,</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="nx">Namespace</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;&gt;</span><span class="p">;</span>
-</code></pre></div>
-<blockquote>
-<p><strong>Default Localizations</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"en"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"general"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"retry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Try again"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Close"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"or"</span><span class="p">:</span><span class="w"> </span><span class="s2">"or"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"general_error_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something went wrong"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"general_error_message_with_refresh"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something went wrong. Please refresh the page."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"premium_clip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Premium Clip"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"premium_collection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Premium Collection"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"play"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Play"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"view"</span><span class="p">:</span><span class="w"> </span><span class="s2">"View"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"view_all"</span><span class="p">:</span><span class="w"> </span><span class="s2">"View all"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"back"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Back"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"done"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Done"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"new"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"clips"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clips"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"beta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beta"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"remove"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"use"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"images"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Images"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"go_back"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Go back"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"delete"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"video"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"progress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Video in progress"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{totalProgress}}% complete"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"draft"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Draft"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"card_actions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"menu_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"More"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"delete"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"duplicate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Duplicate"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"download_video"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{aspectRatio}} Video"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Videos"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"create_video_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create New Video"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"show_more_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Show more videos"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"processing_audio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing audio..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"download"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Download"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"cart"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Added to cart ✅"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open cart"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"add"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add to cart"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"canvas_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canvas Video"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"album_motion_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Album Motion Video"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"create_video_dialog"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What do you want to create?"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"album_motion_video"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple Artwork"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"canvas_video"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spotify Canvas Video"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"delete_video_dialog"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"loading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deleting..."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Are you sure you want to delete this video?"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"duplicate_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Make another version"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"purchased_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You've purchased this video"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"cart_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Canvas Video has been added to the cart"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"download_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Download video"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"remove_from_cart_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove from cart"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order confirmation #{{outputId}}"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"smart_button"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"error_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed to load!"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"loading_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Loading..."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"videos_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Videos ({{count}})"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"make_videos_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Make Videos"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"album_motion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"asset_step"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"artwork_alt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Selected artwork"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"browse_uploads"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Browse your uploads"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"change_artwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Change Artwork"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"guideline_notice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please read &lt;2&gt;apple’s guidelines&lt;/2&gt; to ensure your artwork is accepted"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"square_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1:1 Artwork"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"upload_info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Recommended Size 3840px x 3840px"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"upload_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Drop an image here"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"wizard_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Step 1: Add Artwork"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"upload_error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please upload a square image"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"style_step"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"wizard_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Step 2: Choose Style"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"canvas"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"applying_loading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applying..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"wizard_heading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create Your Canvas"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"looping_mode_step"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Choose Looping Mode"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Select hard or seamless video looping"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"preview_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Preview Canvas"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"customization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"edit_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edit snippet"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Select Snippet"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Position the crop and select a 3-8 second snippet of the video"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canvas videos are vertical and 3 to 8 seconds long"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"submit_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use Snippet"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"upload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"choose_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Select a video clip from your device"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"choose_clip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Choose a clip from our extensive library"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"drop_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Drop a video clip here"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"browse_library"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Browse our clip library"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"audio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"choose_file_tooltip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Click to add your audio"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"alert_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heads up: Your final Canvas video won't contain any audio"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"alert_details_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Find out why →"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"alert_confirm_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ok, got it"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"remove"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove Audio"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"upload"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Upload"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"applying_style"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Applying {{style}} Style"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"error_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Choose a different clip or style and try again"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"track"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"title_placeholder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Song Title"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"artist_name_placeholder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Artist Name"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"add_details"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add your track details"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"preview_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"video"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Video only"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"clips_step"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"list_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Select 3-8 seconds of your video clip to use in your canvas"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add Clip"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add your own content or use a clip from our library"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status_added"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clip Added"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"style_step"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Choose Style"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Styles add visual effects to your video"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"clips_selector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"processing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"uploading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uploading"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"delete_upload"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete this upload"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"create_video_modal_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add this clip to your music or canvas video"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"create_video_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Make a video with this clip"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"clip_details_collection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Part of the &lt;1&gt;{{name}}&lt;/1&gt; Collection"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Keywords"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"clip_details_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clip: {{uuid}} {{appTitle}}"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"featured_clips"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Featured Clips"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"aria_list_of_clips"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List of clips"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"collections"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Collections"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"moods"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moods"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"search_clips"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Search Clips"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"search_result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;strong&gt;{{count}}&lt;/strong&gt; result"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"search_result_other"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;strong&gt;{{count}}&lt;/strong&gt; results"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"search_result_with_term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;strong&gt;{{ count }}&lt;/strong&gt; result for </span><span class="se">\"</span><span class="s2">{{searchQuery}}</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"search_result_with_term_other"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;strong&gt;{{ count }}&lt;/strong&gt; results for </span><span class="se">\"</span><span class="s2">{{searchQuery}}</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"popular_keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Popular Keywords"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"show_more_clips"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Show more clips"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"library_menu_item"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Library"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"uploads_menu_item"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uploaded Clips"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"collection_exclusive_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Exclusive to {{scope}}"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"collection_details_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{collection}} Clips {{appTitle}}"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"collection_clips_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{count}} Clip"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"collection_clips_count_other"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{count}} Clips"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"collections_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Collections {{appTitle}}"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"too_many_files_error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You're attempting to upload too many files simultaneously. The maximum is {{maxFiles}}."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"upload_clips_touch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tap here to upload files"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"upload_clips_desktop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Drop files here to upload"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"supported_extensions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We support {{supportedExtensions}}"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"max_clips_alert"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You've reached the limit of clips ({{maxClips}}) that can be used with this style"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"mood_details_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{mood}} Clips {{appTitle}}"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"moods_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moods | Clips {{appTitle}}"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"output_progress_header_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clip selected"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"output_progress_header_count_other"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clips selected"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"smart_select_clips_loading"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finding clips…"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"smart_select_clips"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smart Select Clips"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"remove_all"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove all"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"similar_clips_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"More Like This"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"remove_clip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Remove this clip"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"added_clip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Added"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"adding_clip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adding"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"tooltip_max_clips_limit_reached"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your selected video style allows you to use up to {{maxClips}} clips"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"use_clip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use this clip"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"uploads_page_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uploads {{appTitle}}"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"user_uploads"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Uploads"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"show_more_uploads"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Show more uploads"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"filter_uploads_all"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All Uploads"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"filter_uploads_all_short"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"ui"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"create_video_modal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"video_name_header"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Give your new {{videoTypeLabel}} Video a name"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"video_name_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Video name"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"video_name_placeholder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e.g. Your Track Name"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"creation_flow_header"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What do you want to create?"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"creation_flow"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"rotor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Music Video"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use our footage or upload clips to create your music video"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"artwork"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Art Track Video"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Just add your artwork for a video that vibes to the beat"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"canvas"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spotify Canvas Video"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A 3-8 second loop video for your track on Spotify"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"lyrics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lyric Video"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Promote your music with dynamic, professional lyric videos"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"motion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple Music Album Motion"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Put your Album Art in motion with our tool designed for Apple Music"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"delete_clip_modal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"error_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something went wrong, please try again later."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"error_back_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Go back"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"videos_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deleting this clip will remove it from videos you have created"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"videos_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"If your videos are still in progress we recommend that you complete and download your videos before deleting the clip."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"videos_back_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Never mind, go back"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"videos_confirm_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete clip anyway"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"affected_videos_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This clip is used in {{count}} video"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"affected_videos_count_other"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This clip is used in {{count}} videos"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Are you sure you want to delete this clip?"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"back_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No, go back"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"confirm_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yes, delete clip"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"error_alert"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please refresh the page and try again. If the problem persists contact support."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"reload_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reload Page"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"file_uploader"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"permission_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Do you have permission to use this file?"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"permission_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We don't want you getting in trouble for using copyrighted material"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"permission_confirm_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yes I do"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"permission_cancel_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No I don't"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"drag_accept_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Those files look good. Go ahead and drop them."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"drag_reject_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some of the files will not be uploaded"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"image_uploader_dragging"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Drop this file to upload your image"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"maintenance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"fallback"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We are currently performing maintenance. We will be back shortly."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"order_acceptance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Due to unforeseen technical issues, we are currently unable to accept orders."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"closing_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thank you for your patience and understanding."</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"style_group_list"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"compact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Styles add visual effects to your video"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"user_active_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"user_history_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"History"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>The <code>localisationResources</code> object provided to the <a href="#react-rotorvideosprovider">RotorVideosProvider</a> component is used to
-localize or override
-the text strings used in the Rotor Videos components.
-By providing this object, you can override the default localizations, as it uses deep merge to combine both objects.</p>
-<h2 id='localization-language-detection'>Language detection</h2>
-<blockquote>
-<p><strong>Language detection source</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight markdown tab-markdown"><code><span class="p">-</span> cookie (set cookie i18next=LANGUAGE)
-<span class="p">-</span> sessionStorage (set key i18nextLng=LANGUAGE)
-<span class="p">-</span> localStorage (set key i18nextLng=LANGUAGE)
-<span class="p">-</span> navigator (set browser language)
-<span class="p">-</span> querystring (append ?lng=LANGUAGE to URL)
-<span class="p">-</span> htmlTag (add html language tag &lt;html lang="LANGUAGE" ...)
-<span class="p">-</span> path (http://my.site.com/LANGUAGE/...)
-<span class="p">-</span> subdomain (http://LANGUAGE.site.com/...)
-
-</code></pre></div>
-<p>By default, the current language is automatically detected from the user&#39;s browser, but you can also set the language
-manually
-by following the instructions
-in <a href="https://github.com/i18next/i18next-browser-languageDetector">i18next-browser-languageDetector</a> plugin.</p>
-<h2 id='localization-adding-new-language'>Adding new language</h2>
-<blockquote>
-<p><strong>Example of a new language localization</strong></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"es"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"general"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"retry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Intentar de nuevo"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cerrar"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>In order to add a new language, you need to provide a new top-level key, which is the language code, in
-the <code>localisationResources</code> object.</p>
+with the same properties as the React&#39;s <a href="#react-deprecated-rotorvideossmartbutton">RotorVideosSmartButton</a>.</p>
 
       </div>
       <div class="dark-box">
