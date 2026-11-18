@@ -379,6 +379,7 @@ create all of them; set `availableFlows` to offer a subset.
 - `CreationFlow.motion` — Apple Music Album Motion
 - `CreationFlow.artwork` — Artwork video
 - `CreationFlow.lyrics` — Lyric video
+- `CreationFlow.rotor` — Music video
 
 The `CreationFlow` values are plain strings, so the script-tag bundle can use
 them directly — `availableFlows: ['lyrics', 'artwork']` is equivalent to the
